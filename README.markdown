@@ -1,10 +1,10 @@
-# PublicServantsPrayer.org Website
+# USA Prays Website
 
 ## Installation Instructions:
 
 Set hostname:
 
-    echo "publicservantsprayer.org" > /etc/hostsname
+    echo "usaprays.org" > /etc/hostsname
 
 Upgrade packages:
 
