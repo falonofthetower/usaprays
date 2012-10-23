@@ -1,0 +1,22 @@
+<% content_for :page_title do %>
+  <h1 class="page-header"><%= @state.name %> Elected Leaders</h1>
+<% end %>
+
+<% content_for :main do %>
+  <div class="thumbnail-leaders">
+    <h2>U.S. Senate</h2>
+    <%= render :partial => 'legislative_body', locals: {legislative_body: @state.us_senate} %>
+    <hr />
+
+    <h2>U.S. House</h2>
+    <%= render :partial => 'legislative_body', locals: {legislative_body: @state.us_house} %>
+    <hr />
+
+    <h2>State Senate</h2>
+    <%= render :partial => 'legislative_body', locals: {legislative_body: @state.state_senate} %>
+    <hr />
+
+    <h2>State House</h2>
+    <%= render :partial => 'legislative_body', locals: {legislative_body: @state.state_house} %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<footer class="container-fluid">
+<p class="lead">
+  <%= link_to "Find Your State", "/states" %>
+</p>
+<hr />
+<p>
+<% if usaprays? %>
+  <strong>Copyright &copy; 2012 Capitol Commission. All rights reserved.</strong>
+<% else %>
+  <strong>Copyright &copy; 2012 Public Servants' Prayer. All rights reserved.</strong>
+<% end %>
+</p>
+<div class="row">
+  <div class="offset2 span8 well">
+
+    <hr />
+
+    <div class="row">
+      <div class="span4">
+        <p style="padding-left:5em">
+        Powered by the exellent data services of <a href="https://www.knowwho.com/" target="_blank">KnowWho.com</a>
+        </p>
+      </div>
+      <div class="span4">
+        <%= link_to image_tag("/assets/know-who-logo.jpg", alt: "KnowWho", style: "width:50%"), "https://www.knowwho.com/",  target: "_blank" %>
+      </div>
+    </div>
+  </div>
+</div>
+</footer>

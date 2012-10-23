@@ -1,21 +1,34 @@
 require 'spec_helper'
 
 describe Subscription do
-  context "#update_segment" do
-    it "sets up a daily segment" do
-      FactoryGirl.create(:state, code: "TX", name: "Texas", daily_segment_id: nil)
-      segment = {"id" => "123", "name" => "Daily-TX-Texas"}
-      Subscription.update_segment(segment)
 
-      State.find('tx').daily_segment_id.should == 123
+  let :subscription do
+    Subscription.new(
+      name: "bob", 
+      email: "bob@bobmail.com",
+      state_code: "tx",
+      cycle: "daily")
+  end
+
+  context "#save" do
+    it "saves form info to mail chimp list" do
+      VCR.use_cassette "subscription/saves_form_info" do
+        subscription.save.should be_true
+      end
     end
 
-    it "sets up a weekly segment" do
-      FactoryGirl.create(:state, code: "TX", name: "Texas", weekly_segment_id: nil)
-      segment = {"id" => "123", "name" => "Weekly-TX-Texas"}
-      Subscription.update_segment(segment)
+    it "does not save if email missing" do
+      VCR.use_cassette "subscription/email_missing" do
+        subscription.email = ""
+        subscription.save.should be_false
+      end
+    end
 
-      State.find('tx').weekly_segment_id.should == 123
+    it "does not save if email invalid" do
+      VCR.use_cassette "subscription/email_invalid" do
+        subscription.email = "not an email"
+        subscription.save.should be_false
+      end
     end
   end
 end

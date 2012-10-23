@@ -2,33 +2,35 @@
   <h1 class="page-header"><%= @state.name %></h1>
 <% end %>
 
-<h2 style="margin:1em"><%= @subscription.calendar_name %></h2>
+<% content_for :main do %>
+  <h2 style="margin:1em"><%= @segment.public_name %></h2>
 
 
-<%= simple_form_for @subscription, 
-        url: "/states/#{@state.to_param}/subscriptions", 
-        html: { class: 'well form-horizontal' } do |f| %>
-  <h3>Sign up with email</h3>
-  <% if params[:id] == "daily" %>
-    <p>
-    The <%= @subscription.calendar_name %> contains one Federal and two State leaders along
-    with some basic public information that will help you more effectively pray.  It is sent out
-    once per day.</p>
-    <p>Please enter your name and email address to join us.</p>
-  <% else %>
-    <p>
-    The <%= @subscription.calendar_name %> contains the next seven days worth of leaders.  Each day one Federal and two State leaders along
-    with some basic public information are provided to help you more effectively pray.  It is sent out
-    once per week.</p>
-    <p>Please enter your name and email address to join us.</p>
+  <%= simple_form_for @subscription, 
+          url: "/states/#{@state.to_param}/subscriptions", 
+          html: { class: 'well form-horizontal' } do |f| %>
+    <h3>Sign up with email</h3>
+    <% if params[:id] == "daily" %>
+      <p>
+      The <%= @segment.public_name %> contains one Federal and two State leaders along
+      with some basic public information that will help you more effectively pray.  It is sent out
+      once per day.</p>
+      <p>Please enter your name and email address to join us.</p>
+    <% else %>
+      <p>
+      The <%= @segment.public_name %> contains the next seven days worth of leaders.  Each day one Federal and two State leaders along
+      with some basic public information are provided to help you more effectively pray.  It is sent out
+      once per week.</p>
+      <p>Please enter your name and email address to join us.</p>
+    <% end %>
+    <br />
+    <%= f.input :name, input_html: {class: "xlarge"} %>
+    <%= f.input :email, input_html: {class: "xlarge"} %>
+    <%= f.input :cycle, as: :hidden %>
+    <%= f.input :state_code, as: :hidden %>
+    <div class="form-actions">
+      <%= f.button :submit, "Subscribe", input_html: {class: "btn btn-large btn-primary"}  %>
+    </div>
   <% end %>
-  <br />
-  <%= f.input :name, input_html: {class: "xlarge"} %>
-  <%= f.input :email, input_html: {class: "xlarge"} %>
-  <%= f.input :calendar_id, as: :hidden %>
-  <%= f.input :state_id, as: :hidden %>
-  <div class="form-actions">
-    <%= f.button :submit, "Subscribe", input_html: {class: "btn btn-large btn-primary"}  %>
-  </div>
 <% end %>
 

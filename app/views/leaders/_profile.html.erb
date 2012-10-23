@@ -1,0 +1,41 @@
+<div class="well">
+  <div class="row-fluid">
+
+    <div class="span3">
+      <%= image_tag leader.photo_src, class: 'head-shot' %>
+      <h2 class="leader-name visible-phone" style="margin-top:0.25em">
+        <%= leader.name %> <small><%= leader.title.strip %></small>
+      </h2>
+    </div>
+
+    <div class="span9">
+      <h2 class="leader-name hidden-phone">
+        <%= leader.name.strip %> <small><%= leader.title.strip %></small>
+      </h2>
+      <div class="row-fluid">
+        <div class="span8">
+          <table class="table table-striped table-bordered table-condensed">
+            <%= leader_data_tr leader.district_residence, "District" %>
+            <%= leader_data_tr leader.religion, "Religion" %>
+            <%= leader_data_tr leader.spouse, "Spouse" %>
+            <%= leader_data_tr leader.family, "Family" %>
+            <%= leader_data_tr leader.birthday, "Birthday" %>
+          </table>
+        </div>
+        <div class="span3" style="padding-left:0.75em">
+          <br />
+          <div style="text-align:right;padding-left:0.5em">
+            <ul class="unstyled">
+              <%= content_tag('li', link_to("Website", leader.website)) unless leader.website.blank? %>
+              <%= content_tag('li', link_to("Contact Form", leader[:webform])) unless leader[:webform].blank? %>
+              <%= content_tag('li', link_to("Facebook", leader.facebook)) unless leader.facebook.blank? %>
+              <%= content_tag('li', link_to("Email", "mailto: #{leader.email}")) unless leader.email.blank? %>
+              <%= content_tag('li', link_to("Twitter", leader.twitter)) unless leader[:twitter].blank? %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -11,6 +11,7 @@
 /public/assets
 
 /config/database.yml
+/config/initializers/mail_chimp.rb
 
 *.swp
 
@@ -24,3 +25,14 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/spec/vcr
+
+/.vagrant
+
+/cookbooks
+/site-cookbooks
+/soloistrc
+/Vagrantfile
+/Cheffile
+/Cheffile.lock
+/bootstrap.sh

@@ -1,15 +1,16 @@
 class CalendarsController < ApplicationController
-  layout "states"
+  layout "templates/states"
 
   def index
 
   end
 
   def show
-    @state = State.find(params[:state_id])
+    @state = UsState.new(params[:state_id])
+    @segment = MailListSegment.new(@state, params[:id])
     @subscription = Subscription.new(
-      calendar_id: params[:id], 
-      state_id: params[:state_id]
+      state_code: params[:state_id],
+      cycle: params[:id]
     )
   end
 end

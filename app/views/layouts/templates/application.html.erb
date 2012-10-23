@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <%= render :partial => 'partials/head' %>
+  <body>
+    <%= cms_toolbar %>
+    <%= render :partial => 'partials/navbar' %>
+
+    <div class="container">
+      <%= render :partial => 'partials/flash_messages' %>
+
+      <div class="row">
+
+        <div class="span9">
+          <%= yield :page_title %>
+          <%= yield %>
+          <div id="main"><%= container :main %></div>
+        </div>
+
+        <div class="span3" style="padding:0.25">
+          <%= render :partial => 'partials/right_column' %>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div><!-- end .container -->
+
+  <%= render :partial => 'partials/footer' %>
+  </body>
+</html>

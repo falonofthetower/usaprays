@@ -1,10 +1,11 @@
 require 'spec_helper'
 
-describe "Daily calendar feed" do
+describe "Daily calendar twitter feed" do
   it "Shows current daily calendar" do
-    pending
-    FactoryGirl.create(:state_with_dual_chamber, code: "IN")
-    visit "/states/in/feed.rss"
-    page.should have_xpath("//rss/channel/item/title")
+    VCR.use_cassette('feed/daily') do
+      get "/states/in/calendars/daily/twitter.rss"
+      response.should be_success
+      response.content_type.should eq("application/rss+xml")
+    end
   end
 end

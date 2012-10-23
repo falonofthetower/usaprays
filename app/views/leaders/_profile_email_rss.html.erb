@@ -1,0 +1,29 @@
+<hr />
+<%= image_tag "http://publicservantsprayer.org/#{member.photo_src}" %>
+
+<h3><%= member.name.strip %></h3>
+<h4><%= member.title.strip %></h4>
+
+
+<div>
+  <table>
+    <%= member_data_tr member.district_residence, "District" %>
+    <%= member_data_tr member.religion, "Religion" %>
+    <%= member_data_tr member.spouse, "Spouse" %>
+    <%= member_data_tr member.family, "Family" %>
+    <%= member_data_tr member.birthday, "Birthday" %>
+  </table>
+</div>
+
+<div>
+  <div>
+    <ul>
+      <%= content_tag('li', link_to("Website", member.website)) unless member.website.blank? %>
+      <%= content_tag('li', link_to("Contact Form", member[:webform])) unless member[:webform].blank? %>
+      <%= content_tag('li', link_to("Facebook", member.facebook)) unless member.facebook.blank? %>
+      <%= content_tag('li', link_to("Email", "mailto:#{member.email}")) unless member.email.blank? %>
+      <%= content_tag('li', link_to("Twitter", member.twitter)) unless member[:twitter].blank? %>
+    </ul>
+  </div>
+</div>
+

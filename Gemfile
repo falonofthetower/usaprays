@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 gem 'bootstrap-sass', "~> 2.0.0"
 
-#gem "mongoid", "~> 2.4"
-#gem "bson_ext", "~> 1.5"
+gem 'pg'
+gem 'httparty'
+gem 'hashie'
 
 # geoip also needs these packages from aptitude
 # geoip-bin
@@ -16,7 +17,7 @@ gem "friendly_id", "~> 4.0.1"
 
 gem "gibbon"
 gem "simple_form"
-gem 'wicked_pdf'
+#gem 'wicked_pdf'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -38,19 +39,16 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
-  gem 'sqlite3'
   gem 'rspec-rails', '2.8.1'
   gem 'capybara', '1.1.2'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'database_cleaner', "~> 0.7.2"
   gem 'factory_girl_rails', "~> 3.0"
   gem 'delorean'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
-group :production do
-  gem 'pg'
-end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -66,3 +64,5 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem "browsercms", "3.5.4"

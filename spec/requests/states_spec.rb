@@ -1,81 +1,37 @@
 require 'spec_helper'
 
-describe "States page" do
-  before do
-    indiana = FactoryGirl.create(:state_with_dual_chamber, code: "IN", name: "Indiana")
-    nebraska = FactoryGirl.create(:state_with_single_chamber, code: "NE", name: "Nebraska")
+describe "States page", :skip => false do
+
+  it "presents a home page" do
+    visit "/"
+    page.should have_content('Find Your State')
   end
 
-  #context "Date" do
-  #  it "show the date for any date in url" do
-  #    visit "/states/in/2012/05/23"
-  #    page.should have_content("Wednesday, May 23, 2012")
-  #  end
-  #end
-
-  context "Indiana" do
+  context "Indiana" do 
     before do
-      visit "/states/in"
-    end
-
-    it "shows a unique date, each day" do
-      date = find(".date").text
-      time_travel_to("tomorrow") do
+      VCR.use_cassette "states_page/in" do
         visit "/states/in"
-        date.should_not == find(".date").text
       end
-    end
-
-    context "Rotation" do
-      it "shows a different member on different days" do
-        name = find(".member-name").text
-        time_travel_to("tomorrow") do
-          visit "/states/in"
-          name.should_not == find(".member-name").text
-        end
-      end
-    end
-  end
-
-  context "nebraska" do
-    before do
-      visit "/states/ne"
-    end
-
-    it "shows specific state" do
-      page.should have_content("Nebraska")
-    end
-
-    it "shows name of member for state" do
-      #page.should have_content("Joe Shmoe")
-    end
-
-    it "shows name of member for state" do
-      #page.should have_content("Joe2 Shmoe2")
     end
 
     it "shows a unique date, each day" do
-      date = find(".date").text
-      time_travel_to("tomorrow") do
-        visit "/states/ne"
-        date.should_not == find(".date").text
-      end
-    end
-
-    context "Rotation" do
-      it "shows a different member on different days" do
-        name = find(".member-name").text
-        time_travel_to("tomorrow") do
-          visit "/states/ne"
-          name.should_not == find(".member-name").text
+      VCR.use_cassette "states_page/unique_date" do
+        date = find(".date").text
+        time_travel_to(Date.tomorrow) do
+          visit "/states/in"
+          date.should_not == find(".date").text
         end
       end
     end
-  end
 
-  context "Indiana" do
-    before do
-      visit "/states/in"
+    it "shows a different leader on different days" do
+      VCR.use_cassette "states_page/unique_date" do
+        name = find(".leader-name").text
+        time_travel_to(Date.tomorrow) do
+          visit "/states/in"
+          name.should_not == find(".leader-name").text
+        end
+      end
     end
 
     it "shows specific state" do
@@ -95,21 +51,44 @@ describe "States page" do
     end
 
     it "has navigation to all leaders for a state" do
-      click_on("Leaders")
-      current_path.should == "/states/in/leaders"
+      VCR.use_cassette "states_page/all_leaders" do
+        click_on("Leaders")
+        current_path.should == "/states/in/leaders"
+      end
+    end
+  end
+
+  context "nebraska" do
+    before do
+      VCR.use_cassette "states_page/ne" do
+        visit "/states/ne"
+      end
     end
 
-    it "has navigation to daily calendar" do
-      pending
-      click_on("Daily Prayer Calendar")
-      current_path.should == "/states/in"
+    it "shows specific state" do
+      page.should have_content("Nebraska")
     end
 
-    it "has navigation to weekly calendar" do
-      pending
-      click_on("Weekly Prayer Calendar")
-      current_path.should == "/states/in"
+    it "shows a unique date, each day" do
+      VCR.use_cassette "states_page/ne_each_day" do
+        date = find(".date").text
+        time_travel_to(Date.tomorrow) do
+          visit "/states/ne"
+          date.should_not == find(".date").text
+        end
+      end
     end
 
+    context "Rotation" do
+      it "shows a different leader on different days" do
+        VCR.use_cassette "states_page/ne_different_days" do
+          name = find(".leader-name").text
+          time_travel_to(Date.tomorrow) do
+            visit "/states/ne"
+            name.should_not == find(".leader-name").text
+          end
+        end
+      end
+    end
   end
 end

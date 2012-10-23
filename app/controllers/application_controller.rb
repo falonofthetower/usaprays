@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  include Cms::Acts::ContentPage
+  layout "templates/application"
+
   before_filter :get_ip
   helper_method :usaprays?
 

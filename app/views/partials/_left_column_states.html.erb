@@ -1,0 +1,45 @@
+    <ul class="nav nav-list">
+      <% if params[:controller] == "states" %>
+        <li class="active">
+        <%= link_to state_path(@state) do %>
+          <i class="icon-white icon-home"></i>
+          State Home
+        <% end %>
+        </li>
+      <% else %>
+        <li>
+        <%= link_to state_path(@state) do %>
+          <i class="icon-home"></i>
+          State Home
+        <% end %>
+        </li>
+      <% end %>
+
+      <% if params[:controller] == "members" %>
+        <li class="active">
+        <%= link_to state_leaders_path(@state) do %>
+          <i class="icon-white icon-user"></i>
+          State Leaders
+        <% end %>
+        </li>
+      <% else %>
+        <li>
+        <%= link_to state_leaders_path(@state) do %>
+          <i class="icon-user"></i>
+          State Leaders
+        <% end %>
+        </li>
+      <% end %>
+      <li class="nav-header">Prayer Calendar</li>
+      <li><%= link_to "Subscribe Daily", state_calendar_path(@state, 'daily') %></li>
+      <li><%= link_to "Subscribe Weekly", state_calendar_path(@state, 'weekly') %></li>
+      <% if usaprays? %>
+        <li><%= link_to "Twitter: @#{@state.code}_Prays", "https://twitter.com/#{@state.code}_Prays" %></li>
+      <% else %>
+        <li><%= link_to "Twitter: @Praying4_#{@state.code}", "https://twitter.com/Praying4_#{@state.code}" %></li>
+      <% end %>
+    </ul>
+
+    <div style="margin-top:1em">
+      <%= image_tag "http://publicservantsprayer.org/assets/capitols/#{@state.code}-400.png" %>
+    </div>

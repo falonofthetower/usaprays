@@ -1,10 +1,10 @@
 module StatesHelper
 
-  def member_data_tr(member_field, member_label)
-    unless member_field.blank?
+  def leader_data_tr(leader_field, leader_label)
+    unless leader_field.blank?
       str =  "<tr>"
-      str += "<th>#{member_label}</th>"
-      str += "<td>#{member_field}</td>"
+      str += "<th>#{leader_label}</th>"
+      str += "<td>#{leader_field}</td>"
       str += "</tr>"
       str.html_safe
     end

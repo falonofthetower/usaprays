@@ -1,9 +1,13 @@
 Psp::Application.routes.draw do
+
   root to: 'states#index'
   #match "/states/:code" => "states#show"
   #match "/states", to: 'states#index'
+
+  resources :leaders
+
   resources :states do
-    resources :members, path: "leaders", as: "leaders"
+    resources :leaders
     resources :calendars
     resources :subscriptions
   end
@@ -70,4 +74,6 @@ Psp::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  mount_browsercms
 end

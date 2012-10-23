@@ -4,32 +4,16 @@
   <h1 class="page-header"><%= @state.name %></h1>
 <% end %>
 
-<div class="row-fluid">
-  <% if @date == Date.today %>
+<% content_for :main do %>
+  <div class="row-fluid">
     <h2 class="state-header">Legislators Being Prayed For Today</h2>
-  <% elsif @date > Date.today %>
-    <h2 class="state-header">These <%= @state.name %> Legislators Will Be Prayed For On</h2>
-  <% else %>
-    <h2 class="state-header">These <%= @state.name %> Legislators Were Prayed For On</h2>
-  <% end %>
-
-  <h3 class="date"><%= @date.strftime("%A, %B %-d, %Y") %></h3>
-  <div class="">
-    <%= render :partial => 'members/profile', formats: [:html], locals: {member: @member0} %>
-    <%= render :partial => 'members/profile', formats: [:html], locals: {member: @member1} %>
-    <%= render :partial => 'members/profile', formats: [:html], locals: {member: @member2} %>
-  </div>
-</div>
-
-<% if false %>
-<div class="row">
-  <div class="span12">
-    <div class="well">
-      <h2>In the news</h2>
-      <p>
-      <%= debug @member1 %>
-      </p>
+    <h3 class="date"><%= Date.current.strftime("%A, %B %-d, %Y") %></h3>
+    <div class="">
+      <% @legislators.each do |leader| %>
+        <%= render :partial => 'leaders/profile', 
+          formats: [:html], 
+          locals: {leader: leader} %>
+      <% end %>
     </div>
   </div>
-</div>
 <% end %>

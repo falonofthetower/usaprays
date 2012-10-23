@@ -1,4 +1,10 @@
 Psp::Application.configure do
+  # Uncomment and set this to match your production URL. Used for emailing links to the CMS. (default: localhost:3000)
+  # config.cms.site_domain = "www.example.com"
+
+  # Configure your mail server's address below
+  #config.action_mailer.smtp_settings = {:address => 'mail.yourmailserver.com', :domain => config.cms.site_domain}}
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -7,6 +13,7 @@ Psp::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  #config.action_controller.asset_host = "http://publicservantsprayer.org"
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
@@ -15,7 +22,7 @@ Psp::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
