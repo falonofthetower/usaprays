@@ -1,6 +1,6 @@
 # USA Prays Website
 
-## Installation Instructions:
+## Production Installation Instructions:
 
 Set hostname:
 
@@ -141,24 +141,59 @@ Back on production server, remove default nginx and restart
     
     service nginx restart
 
-Site should be available, but without Know Who data, log in to production as deployer.  Navigate to /apps/psp/current 
 
-    rake know_who:download_latest_data
+## Development - how to get the specs running
 
-currently unzip doesn't work yet, manually unzip files in the know_who/raw directory
+### This assumes a fairly clean Ubuntu 12.04 dev work station with Rbenv/RVM installed ruby 1.9.3
 
-    cd know_who/raw && unzip \*.zip
+Install packages to enable PPA repositories and other things
 
-import data 
+    apt-get -y install curl git-core python-software-properties
 
-    rake know_who:import
+Add repository for latest version of PostgreSQL
 
-Install wkhtmltopdf
+    add-apt-repository ppa:pitti/postgresql
 
-    wget http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
-    bunzip2 wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2
-    tar -xf wkhtmltopdf-0.11.0_rc1-static-amd64.tar
-    cp wkhtmltopdf-amd64 /usr/local/bin/wkhtmltopdf
-    aptitude install -y libxrender1 libfontconfig
+Update repo and install PostgreSQL
 
-Rejoice
+    aptitude update && aptitude -y install postgresql libpq-dev
+
+Enter into postgres shell as the postgres user
+
+    sudo -u postgres psql
+
+Create user that can create databases
+
+    postgres=# create user usaprays with createdb password 'changeme';
+    CREATE ROLE
+
+Exit postgres shell
+
+    \quit
+
+Install node.js repository
+
+    add-apt-repository ppa:chris-lea/node.js
+
+Update and install node.js
+
+    aptitude update && aptitude -y install nodejs
+
+Copy the mail_chimp example file and fill in with key and list number
+
+    cp config/initializers/mail_chimp.example.rb config/intitializers/mail_chimp.rb
+
+Run Bundler
+
+    bundle install
+
+Then run guard
+
+    bundle exec guard
+
+The first time you run the tests they will be quite slow as they are actually hitting the APIs.  After that VCR kicks in and replays the http responses so it doen't need to hit the network - making it much faster.
+
+Use Unicorn to run a local dev server
+
+    unicorn_rails
+
