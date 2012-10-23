@@ -15,9 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: post_development
+  database: usaprays_development
+  host: localhost
   pool: 5
-  username: post
+  username: usaprays
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -41,15 +42,17 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: post_test
+  database: usaprays_test
+  host: localhost
   pool: 5
-  username: post
+  username: usaprays
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: post_production
+  database: usaprays_production
+  host: localhost
   pool: 5
-  username: post
+  username: usaprays
   password:
