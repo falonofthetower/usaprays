@@ -17,12 +17,12 @@ class LegislatorSelector
   end
 
   def state_senate
-    rate = (@state_code == 'ne' ? 2 : 1)
+    rate = (@state_code == 'ne' ? 5 : 2)
     rotation_select('state_senate', rate)
   end
 
   def state_house
-    rotation_select('state_house')
+    rotation_select('state_house', 3)
   end
 
   def rotation_select(chamber, rate=1)

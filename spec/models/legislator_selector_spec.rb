@@ -28,11 +28,11 @@ describe LegislatorSelector do
     end
   end
 
-  it "returns 2 state senators for nebraska" do
+  it "returns 5 state senators for nebraska" do
     VCR.use_cassette "legislator_selector/nebraska_senate" do
       state = UsState.new('ne')
       legislators = LegislatorSelector.new(state).state_senate
-      legislators.length.should == 2
+      legislators.length.should == 5
     end
   end
 

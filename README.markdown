@@ -10,13 +10,11 @@ Upgrade packages:
 
     aptitude update && aptitude upgrade
 
-(keep locally modified grub if asked)
-
 Install public key, delete root password
 
-Install packages to enable PPA repositories and other things
+Install curl
 
-    apt-get -y install curl git-core python-software-properties htop unzip tofrodos bzip2
+    apt-get -y install curl
 
 Add Nginx repository
 
@@ -71,45 +69,10 @@ Create a less priveledged user 'deployer'
 
     adduser deployer --ingroup sudo
 
-Change to this new user and go to home directory
-
-    su deployer
-    cd ~
-
-Use the rbenv-installer to install Ruby:  https://github.com/fesplugas/rbenv-installer
-
-    curl -L https://raw.github.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
-
-Edit ~/.bashrc adding this code at the top of the file
-
-    export RBENV_ROOT="${HOME}/.rbenv"
-
-    if [ -d "${RBENV_ROOT}" ]; then
-      export PATH="${RBENV_ROOT}/bin:${PATH}"
-      eval "$(rbenv init -)"
-    fi
-
-Reload .bashrc
-
-    . ~/.bashrc
-
-Set up rbenv with this command
-
-    rbenv bootstrap-ubuntu-12-04
 
 Install Ruby
 
-    rbenv install 1.9.3-p125
-
-Get a cup of tea...
-
-Make this the global version of Ruby
-
-    rbenv global 1.9.3-p125
-
-Install Bundler and Rake
-
-    rbenv bootstrap
+curl -L https://gist.github.com/raw/3949650/43a25b811366d053c6448d8bde1faf317ae51d13/install-ruby | bash
 
 Attempt to connect to github and say 'yes' when asked to continue.  This adds githubs host key.  Expect permission denied error.
 
