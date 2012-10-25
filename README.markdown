@@ -84,7 +84,7 @@ Install Ruby via this script: https://gist.github.com/3949650
 
 Install postgres and nodejs
 
-    aptitude -y install nginx postgresql libpq-dev nodejs
+    aptitude -y install postgresql libpq-dev nodejs
 
 Set up a postgres user
 
