@@ -1,15 +1,15 @@
 require "bundler/capistrano"
 
-server "208.82.102.152", :web, :app, :db, primary: true
+server "208.82.101.23", :web, :app, :db, primary: true
 
-set :application, "psp"
+set :application, "usaprays"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, 'git'
-set :repository,  "git@github.com:publicservantsprayer/psp.git"
+set :repository,  "git@github.com:capitolcom/usaprays.git"
 set :branch, 'master'
 
 default_run_options[:pty] = true
