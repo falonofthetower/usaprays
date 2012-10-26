@@ -11,6 +11,11 @@ class LeaderFinder
     leader
   end
 
+  # temp
+  def self.get_result(slug)
+    result = get("/v1/leaders/#{slug}")
+  end
+
   def self.by_state(state_code)
     get_leaders "/v1/states/#{state_code}/leaders"
   end

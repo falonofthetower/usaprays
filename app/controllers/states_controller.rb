@@ -7,15 +7,13 @@ class StatesController < ApplicationController
 
   def show
     @state = UsState.new(params[:id])
-    @legislators = LegislatorSelector.today(@state)
-
-    respond_to do |format|
-      format.html
-      format.pdf do
-        @sunday = @date.next_week.next_day(6)
-        render pdf: "calendar.pdf",
-          orientation: "Landscape"
+    if Rails.env == "development"
+      @leaders = []
+      6.times do
+        @leaders << Leader.ron_paul
       end
+    else
+      @leaders = LegislatorSelector.today(@state)
     end
   end
 

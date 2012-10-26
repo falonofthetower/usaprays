@@ -5,15 +5,44 @@
 <% end %>
 
 <% content_for :main do %>
-  <div class="row-fluid">
+  <div class="row">
     <h2 class="state-header">Legislators Being Prayed For Today</h2>
+
     <h3 class="date"><%= Date.current.strftime("%A, %B %-d, %Y") %></h3>
-    <div class="">
-      <% @legislators.each do |leader| %>
-        <%= render :partial => 'leaders/profile', 
-          formats: [:html], 
-          locals: {leader: leader} %>
-      <% end %>
+
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[0]} %>
+    </div>
+
+    <div class="span6">
+      <%= render :partial => 'partials/right_column' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[1]} %>
+    </div>
+
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[2]} %>
+    </div>
+
+    <div class="span3">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[3]} %>
+    </div>
+
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[4]} %>
+    </div>
+
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[5]} %>
     </div>
   </div>
 <% end %>

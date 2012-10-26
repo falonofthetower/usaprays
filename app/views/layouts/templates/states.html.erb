@@ -10,22 +10,17 @@
 
       <div class="row">
 
-        <div class="span9">
+        <div class="span12">
           <%= yield :page_title %>
           <div class="row">
             <div class="span3">
               <%= render :partial => 'partials/left_column_states' %>
             </div>
-            <div class="span6">
-              <%#= yield %>
+            <div class="span9">
               <%= container :main %>
+              <%= container :right_column %>
             </div>
           </div>
-        </div>
-
-        <div class="span3" style="padding:0.25">
-          <%= render :partial => 'partials/right_column' %>
-          <%= container :right_column %>
         </div>
 
       </div><!-- end .row -->

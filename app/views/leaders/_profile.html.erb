@@ -1,31 +1,35 @@
 <div class="well">
+
   <div class="row-fluid">
-
-    <div class="span3">
-      <%= image_tag leader.photo_src, class: 'head-shot' %>
+    <div class="span5">
+      <%= image_tag leader.photo_src, class: '' %>
     </div>
 
-    <div class="span9">
-      <h2 class="leader-name">
-        <%= leader.name.strip %>
-      </h2>
-      <small><%= leader.title.strip %></small>
-          <table class="table table-striped table-bordered table-condensed">
-            <%= leader_data_tr leader.district_residence, "District" %>
-            <%= leader_data_tr leader.spouse, "Spouse" %>
-            <tr>
-              <td colspan="2">
-                <%= link_to(image_tag('glyph/glyphicons_329_web_browser.png'), leader.website) unless leader.website.blank? %>
-                <%= link_to(image_tag('glyph/glyphicons_309_comments.png'), leader.webform) unless leader.webform.blank? %>
-                <%= link_to(image_tag('glyph/glyphicons_399_e-mail.png'), leader.email) unless leader.email.blank? %>
-                <%= link_to(image_tag('glyph/glyphicons_391_twitter_t.png'), leader.twitter) unless leader.twitter.blank? %>
-                <%= link_to(image_tag('glyph/glyphicons_390_facebook.png'), leader.facebook) unless leader.facebook.blank? %>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
+    <div class="span7">
+
+      <h3 class="leader-name"><%= leader.name.strip %></h3>
+      <h3><small><%= leader.title.strip %></small></h3>
+
+      <% unless leader.district_residence.blank? %>
+        <p>
+        <h6>District</h6>
+        <%= leader.district_residence %>
+        </p>
+        <p>
+      <% end %>
+
+      <% unless leader.spouse.blank? %>
+        <h6>Spouse</h6>
+        <%= leader.spouse %>
+        </p>
+      <% end %>
     </div>
+
+    <%= glyph_link_to('329_web_browser', leader.website) %>
+    <%= glyph_link_to('309_comments', leader.webform) %>
+    <%= glyph_link_to('399_e-mail', 'mailto:'+leader.email) %>
+    <%= glyph_link_to('391_twitter_t', leader.twitter) %>
+    <%= glyph_link_to('390_facebook', leader.facebookk) %>
 
   </div>
 </div>

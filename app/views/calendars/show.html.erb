@@ -9,14 +9,15 @@
   <%= simple_form_for @subscription, 
           url: "/states/#{@state.to_param}/subscriptions", 
           html: { class: 'well form-horizontal' } do |f| %>
-    <h3>Sign up with email</h3>
     <% if params[:id] == "daily" %>
+    <h3>Sign Up for Daily Email</h3>
       <p>
       The <%= @segment.public_name %> contains one Federal and two State leaders along
       with some basic public information that will help you more effectively pray.  It is sent out
       once per day.</p>
       <p>Please enter your name and email address to join us.</p>
     <% else %>
+    <h3>Sign Up for Weekly Email</h3>
       <p>
       The <%= @segment.public_name %> contains the next seven days worth of leaders.  Each day one Federal and two State leaders along
       with some basic public information are provided to help you more effectively pray.  It is sent out

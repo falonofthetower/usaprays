@@ -4,6 +4,7 @@ module StatesHelper
     unless leader_field.blank?
       str =  "<tr>"
       str += "<th>#{leader_label}</th>"
+      str += "</tr><tr>"
       str += "<td>#{leader_field}</td>"
       str += "</tr>"
       str.html_safe
