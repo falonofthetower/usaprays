@@ -1,45 +1,58 @@
-    <ul class="nav nav-list">
-      <% if params[:controller] == "states" %>
-        <li class="active">
-        <%= link_to state_path(@state) do %>
-          <i class="icon-white icon-home"></i>
-          State Home
-        <% end %>
-        </li>
-      <% else %>
-        <li>
-        <%= link_to state_path(@state) do %>
-          <i class="icon-home"></i>
-          State Home
-        <% end %>
-        </li>
-      <% end %>
+<ul class="nav nav-list">
+  <% if params[:controller] == "states" %>
+    <li class="active">
+    <%= link_to state_path(@state) do %>
+      <i class="icon-white icon-home"></i>
+      State Home
+    <% end %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to state_path(@state) do %>
+      <i class="icon-home"></i>
+      State Home
+    <% end %>
+    </li>
+  <% end %>
 
-      <% if params[:controller] == "members" %>
-        <li class="active">
-        <%= link_to state_leaders_path(@state) do %>
-          <i class="icon-white icon-user"></i>
-          State Leaders
-        <% end %>
-        </li>
-      <% else %>
-        <li>
-        <%= link_to state_leaders_path(@state) do %>
-          <i class="icon-user"></i>
-          State Leaders
-        <% end %>
-        </li>
-      <% end %>
-      <li class="nav-header">Prayer Calendar</li>
-      <li><%= link_to "Subscribe Daily", state_calendar_path(@state, 'daily') %></li>
-      <li><%= link_to "Subscribe Weekly", state_calendar_path(@state, 'weekly') %></li>
-      <% if usaprays? %>
-        <li><%= link_to "Twitter: @#{@state.code}_Prays", "https://twitter.com/#{@state.code}_Prays" %></li>
-      <% else %>
-        <li><%= link_to "Twitter: @Praying4_#{@state.code}", "https://twitter.com/Praying4_#{@state.code}" %></li>
-      <% end %>
-    </ul>
+  <% if params[:controller] == "members" %>
+    <li class="active">
+    <%= link_to state_leaders_path(@state) do %>
+      <i class="icon-white icon-user"></i>
+      State Leaders
+    <% end %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to state_leaders_path(@state) do %>
+      <i class="icon-user"></i>
+      State Leaders
+    <% end %>
+    </li>
+  <% end %>
 
-    <div style="margin-top:1em">
-      <%= image_tag "http://publicservantsprayer.org/assets/capitols/#{@state.code}-400.png" %>
-    </div>
+  <li>
+    <%= link_to how_to_pray_path do %>
+      <i class="icon-calendar"></i>
+      Subscribe Daily
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to state_calendar_path('daily') do %>
+      <i class="icon-list"></i>
+     Subcribe Weekly 
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to state_calendar_path('weekly') do %>
+      <i class="icon-fire"></i>
+      How to Pray 
+    <% end %>
+  </li>
+</ul>
+
+<div style="margin-top:1em">
+  <%= image_tag "http://publicservantsprayer.org/assets/capitols/#{@state.code}-400.png" %>
+</div>

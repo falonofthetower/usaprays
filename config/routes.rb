@@ -1,5 +1,7 @@
 Psp::Application.routes.draw do
 
+  match "how_to_pray" => "static#how_to_pray"
+
   root to: 'states#index'
   #match "/states/:code" => "states#show"
   #match "/states", to: 'states#index'
