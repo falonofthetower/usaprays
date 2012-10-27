@@ -1,56 +1,20 @@
 <ul class="nav nav-list">
-  <% if params[:controller] == "states" %>
-    <li class="active">
-    <%= link_to state_path(@state) do %>
-      <i class="icon-white icon-home"></i>
-      State Home
-    <% end %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to state_path(@state) do %>
-      <i class="icon-home"></i>
-      State Home
-    <% end %>
-    </li>
-  <% end %>
+  <% active = params[:controller] == "states" %>
+  <%= state_nav_li('State Home', state_path(@state), 'home', active) %>
 
-  <% if params[:controller] == "members" %>
-    <li class="active">
-    <%= link_to state_leaders_path(@state) do %>
-      <i class="icon-white icon-user"></i>
-      State Leaders
-    <% end %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to state_leaders_path(@state) do %>
-      <i class="icon-user"></i>
-      State Leaders
-    <% end %>
-    </li>
-  <% end %>
+  <% active = params[:controller] == "leaders" %>
+  <%= state_nav_li('State Leaders', state_path(@state), 'user', active) %>
 
-  <li>
-    <%= link_to how_to_pray_path do %>
-      <i class="icon-calendar"></i>
-      Subscribe Daily
-    <% end %>
-  </li>
 
-  <li>
-    <%= link_to state_calendar_path('daily') do %>
-      <i class="icon-list"></i>
-     Subcribe Weekly 
-    <% end %>
-  </li>
+  <% active = params[:action] == "how_to_pray" %>
+  <%= state_nav_li('How to Pray', how_to_pray_path, 'user', active) %>
 
-  <li>
-    <%= link_to state_calendar_path('weekly') do %>
-      <i class="icon-fire"></i>
-      How to Pray 
-    <% end %>
-  </li>
+  <% active = params[:id] == "daily" %>
+  <%= state_nav_li('Subscribe Daily', state_calendar_path(@state, 'daily'), 'calendar', active) %>
+
+  <% active = params[:id] == "weekly" %>
+  <%= state_nav_li('Subscribe Weekly', state_calendar_path(@state, 'weekly'), 'list', active) %>
+
 </ul>
 
 <div style="margin-top:1em">
