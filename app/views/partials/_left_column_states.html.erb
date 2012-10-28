@@ -3,8 +3,7 @@
   <%= state_nav_li('State Home', state_path(@state), 'home', active) %>
 
   <% active = params[:controller] == "leaders" %>
-  <%= state_nav_li('State Leaders', state_path(@state), 'user', active) %>
-
+  <%= state_nav_li('State Leaders', state_leaders_path(@state), 'user', active) %>
 
   <% active = params[:action] == "how_to_pray" %>
   <%= state_nav_li('How to Pray', how_to_pray_path, 'user', active) %>

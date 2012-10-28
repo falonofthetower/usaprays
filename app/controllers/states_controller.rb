@@ -6,8 +6,10 @@ class StatesController < ApplicationController
   end
 
   def show
+    cookies[:state_code] = params[:id]
     @state = UsState.new(params[:id])
-    if Rails.env == "development"
+    # Change false to true to test in dev without hitting api
+    if Rails.env == "development" and false
       @leaders = []
       6.times do
         @leaders << Leader.ron_paul

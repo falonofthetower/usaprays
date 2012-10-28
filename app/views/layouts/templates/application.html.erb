@@ -8,10 +8,9 @@
     <div class="container">
       <%= render :partial => 'partials/flash_messages' %>
 
+      <%= yield :page_title %>
       <div class="row">
-
         <div class="span9">
-          <%= yield :page_title %>
           <%= yield %>
           <div id="main"><%= container :main %></div>
         </div>

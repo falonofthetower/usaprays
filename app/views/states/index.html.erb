@@ -4,57 +4,25 @@
 
 <% content_for :main do %>
   <p class="lead">
-  You are invited to join us as we pray daily for these elected officials.  To find your leaders, select your state on the map or select a region in the left column.
+  You are invited to join us as we pray daily for these elected officials.  To find your leaders, select your state on the map or select a region. 
   </p>
 
-  <div class="hidden-phone">
+  <div style="position:relative">
+
+  <%= render :partial => 'map' %>
+
+  <%= render :partial => 'region_button', 
+    locals: {region: 'northeast', position: 'top:0;right:5%'} %>
+
+  <%= render :partial => 'region_button', 
+    locals: {region: 'midwest', position: 'top:0;right:40%'} %>
+
+  <%= render :partial => 'region_button', 
+    locals: {region: 'south', position: 'bottom:50%;right:5%'} %>
+
+  <%= render :partial => 'region_button', 
+    locals: {region: 'west', position: 'top:20%;left:0'} %>
+
   </div>
 
-  <div class="tabbable tabs-left">
-    <ul class="nav nav-tabs">
-      <li class="active hidden-phone"><a href="#map" data-toggle="tab">Map</a></li>
-      <li><a href="#northeast" data-toggle="tab">Northeast</a></li>
-      <li><a href="#midwest" data-toggle="tab">Midwest</a></li>
-      <li><a href="#south" data-toggle="tab">South</a></li>
-      <li><a href="#west" data-toggle="tab">West</a></li>
-    </ul>
-
-    <div class="tab-content">
-      <div class="hidden-phone tab-pane active" id="map">
-        <%= render :partial => 'map' %>
-      </div>
-      <div class="tab-pane" id="northeast">
-        <h2>States in the Northeast</h2>
-        <ul class="nav nav-pills nav-stacked">
-          <% UsState.northeast.each do |state| %>
-            <li><%= link_to state.name, state_path(state) %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="tab-pane" id="midwest">
-        <h2>States in the Midwest</h2>
-        <ul class="nav nav-pills nav-stacked">
-          <% UsState.midwest.each do |state| %>
-            <li><%= link_to state.name, state_path(state) %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="tab-pane" id="south">
-        <h2>States in the South</h2>
-        <ul class="nav nav-pills nav-stacked">
-          <% UsState.south.each do |state| %>
-            <li><%= link_to state.name, state_path(state) %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="tab-pane" id="west">
-        <h2>States in the West</h2>
-        <ul class="nav nav-pills nav-stacked">
-          <% UsState.west.each do |state| %>
-            <li><%= link_to state.name, state_path(state) %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
 <% end %>

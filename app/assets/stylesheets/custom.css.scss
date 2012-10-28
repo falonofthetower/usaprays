@@ -37,27 +37,11 @@ body {
 }
 
 .head-shot {
-  //margin: 0 1em 1em 0;
-  margin: 0.5em;
 }
 
 .member-name small {
   color: #700f16;
   padding-left: 0.5em;
-}
-footer {
-  margin: 15em 0 0 0;
-  padding-top: 1em;
-  text-align: center;
-  border-top: 10px solid #700f16;
-  background-color: #fff;
-  background-image: url(/assets/footer-gradient.png);
-  background-repeat: repeat-x;
-  text-align: center;
-}
-footer .well {
-  margin-top: 1em;
-  background-color: #fff;
 }
 .right-align {
   text-align: right;
@@ -67,4 +51,39 @@ footer .well {
 }
 .center-align {
   text-align: center;
+}
+footer {
+  color: rgb(237, 238, 238);
+  font-size: 11px;
+  line-height: 13px;
+  padding: 25px 16px 7px 24px;
+  position: relative;
+  background: linear-gradient(to bottom, rgb(20, 62, 118) 0%, rgb(14, 46, 88) 100%) repeat scroll 0% 0% transparent;
+}
+
+#header {
+  background: none repeat scroll 0% 0% rgb(245, 245, 245);
+  padding: 19px 46px 14px 35px;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  position: relative;
+}
+
+
+.block-info {
+  text-align: center;
+  position: relative;
+  top: -18px;
+  background: linear-gradient(to bottom, rgb(251, 251, 251) 0%, rgb(237, 238, 238) 100%) repeat scroll 0% 0% transparent;
+  box-shadow: 0px -1px 0px 0px rgb(177, 177, 177) inset, 0px 1px 0px 0px rgb(217, 217, 217);
+  border-radius: 0px 0px 6px 6px;
+  min-width: 45%;
+  overflow: hidden;
+  padding: 16px 15px 11px;
+}
+
+h1.usa-prays {
+  font-weight: normal;
+}
+h1.usa-prays small {
+  font-style: italic;
 }

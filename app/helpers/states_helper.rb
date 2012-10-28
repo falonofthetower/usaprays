@@ -10,4 +10,5 @@ module StatesHelper
       str.html_safe
     end
   end
+
 end

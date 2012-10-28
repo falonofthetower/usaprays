@@ -1,26 +1,17 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
+<div class="navbar-static-top">
+  <header id="header">
+  <div class="row-fluid">
+    <div class="span7">
+      <%= image_tag("cc-logo-top.png", alt: "Capitol Commission Reaching Capitol Communities for Christ") %>
+    </div>
 
-      <% if usaprays? %>
-        <%#= link_to "USA Prays", root_path, class: "brand" %>
-        <%= link_to "USA Prays", "/", class: "brand" %>
-      <% else %>
-        <%#= link_to "Public Servants' Prayer", root_path, class: "brand" %>
-        <%= link_to "Public Servants' Prayer", "/", class: "brand" %>
-      <% end %>
-
-
-      <div class="nav-collapse">
-        <ul class="nav pull-right">
-          <li class="active"><%= link_to "Find Your State", "/states" %></li>
-        </ul>
+    <div class="span5">
+      <div class="block-info">
+        <%= link_to 'Find your State', states_path %>
+        | <%= link_to 'Capitol Commission Home', 'http://capitolcom.org' %>
       </div>
+      <h1 class="usa-prays">USA Prays<br /><small>A Ministry of Capitol Commission</small></h1>
     </div>
   </div>
+  </header>
 </div>

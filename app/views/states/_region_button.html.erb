@@ -1,0 +1,11 @@
+<div class="btn-group" style="position:absolute;<%= position %>">
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    <%= region.titlecase %>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <% UsState.send(region).each do |state| %>
+      <li><%= link_to state.name, state_path(state) %></li>
+    <% end %>
+  </ul>
+</div>

@@ -14,7 +14,7 @@ class UsState < Struct.new(:code)
   end
 
   def self.south
-    regions %w[al ar dc de fl ga ky la md ms nc ok sc tn tx va wv]
+    regions %w[al ar de fl ga ky la md ms nc ok sc tn tx va wv]
   end
 
   def self.west
