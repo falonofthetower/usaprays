@@ -1,11 +1,8 @@
 <footer>
-<div style="float:right">
-<%#= link_to image_tag("/assets/know-who-logo.jpg", alt: "KnowWho"), 
-  target: "_blank" %>
-  Powered by <span style="font-size:24px">KnowWho</span>
-</div>
-<p>
+<div style="float:left">
   Copyright &copy; 2012 Capitol Commission. All rights reserved.
-</p>
-<br />
+</div>
+<div style="float:right">
+  Powered by <%= link_to(image_tag("logo-knowwho.png", alt: 'KnowWho Logo', style: 'position:relative;bottom:10px'), 'https://www.knowwho.com/', target: '_blank') %>
+</div>
 </footer>
