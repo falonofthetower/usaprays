@@ -9,7 +9,7 @@ class StatesController < ApplicationController
     cookies[:state_code] = params[:id]
     @state = UsState.new(params[:id])
     # Change false to true to test in dev without hitting api
-    if Rails.env == "development" and true
+    if Rails.env == "development" and false
       @leaders = []
       6.times do
         @leaders << Leader.ron_paul
