@@ -1,3 +1,5 @@
+$linkColor: #143e76;
+
 @import "bootstrap";
 @import "bootstrap-responsive";
 
@@ -52,38 +54,95 @@ body {
 .center-align {
   text-align: center;
 }
+
+#header {
+  background: none repeat scroll 0% 0% #eeeeee; 
+  padding: 0 70px 0 35px;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  position: absolute;
+  height: 107px;
+  overflow: hide;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -5;
+  box-shadow: 0px -1px 0px 0px rgb(177, 177, 177) inset, 0px 1px 0px 0px rgb(217, 217, 217);
+}
+
+#cc-logo {
+  padding: 15px;
+  position: relative;
+  left: 70px;
+}
+
+.cc-gradient {
+  width: 450px;
+  height: 106px;
+  position: relative;
+  right: 70px;
+
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(left,  #eeeeee 0%, #ffffff 45%, #ffffff 55%, #eeeeee 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#eeeeee), color-stop(45%,#ffffff), color-stop(55%,#ffffff), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #eeeeee 0%,#ffffff 45%,#ffffff 55%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #eeeeee 0%,#ffffff 45%,#ffffff 55%,#eeeeee 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #eeeeee 0%,#ffffff 45%,#ffffff 55%,#eeeeee 100%); /* IE10+ */
+  background: linear-gradient(to right,  #eeeeee 0%,#ffffff 45%,#ffffff 55%,#eeeeee 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=1 ); /* IE6-9 */
+
+
+}
+
+
+h1.usa-prays {
+  color: rgb(14, 46, 88);
+  padding-top: 16px;
+  padding-left: 1em;
+  font-weight: normal;
+  line-height: 0.8em;
+}
+h1.usa-prays small {
+  font-style: italic;
+  font-size: 16px;
+  padding-left: 4px;
+}
+
+.block-info {
+  text-align: center;
+  box-shadow: 0px -1px 0px 0px rgb(177, 177, 177) inset, 0px 1px 0px 0px rgb(217, 217, 217);
+  border-radius: 0px 0px 6px 6px;
+  padding: 5px 15px 11px;
+  width: 270px;
+
+  background: #fbfbfb; /* Old browsers */
+  background: -moz-linear-gradient(top,  #fbfbfb 0%, #edeeee 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfbfb), color-stop(100%,#edeeee)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #fbfbfb 0%,#edeeee 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #fbfbfb 0%,#edeeee 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #fbfbfb 0%,#edeeee 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #fbfbfb 0%,#edeeee 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#edeeee',GradientType=0 ); /* IE6-9 */
+
+}
+
 footer {
+  margin-top: 5em;
   color: rgb(237, 238, 238);
   font-size: 11px;
   line-height: 13px;
   padding: 25px 16px 7px 24px;
   position: relative;
-  background: linear-gradient(to bottom, rgb(20, 62, 118) 0%, rgb(14, 46, 88) 100%) repeat scroll 0% 0% transparent;
   height: 3em;
+  border-top: 1px solid rgb(202, 202, 202);
+  box-shadow: 0px +1px 0px 0px rgb(177, 177, 177) inset, 0px -1px 0px 0px rgb(217, 217, 217);
+  
+  background: #143e76; /* Old browsers */
+  background: -moz-linear-gradient(top,  #143e76 0%, #0e2e58 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#143e76), color-stop(100%,#0e2e58)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #143e76 0%,#0e2e58 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #143e76 0%,#0e2e58 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #143e76 0%,#0e2e58 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #143e76 0%,#0e2e58 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#143e76', endColorstr='#0e2e58',GradientType=0 ); /* IE6-9 */
 }
 
-#header {
-  background: none repeat scroll 0% 0% rgb(245, 245, 245);
-  padding: 19px 46px 14px 35px;
-  border-bottom: 1px solid rgb(202, 202, 202);
-  position: relative;
-}
-
-.block-info {
-  text-align: center;
-  position: relative;
-  top: -18px;
-  background: linear-gradient(to bottom, rgb(251, 251, 251) 0%, rgb(237, 238, 238) 100%) repeat scroll 0% 0% transparent;
-  box-shadow: 0px -1px 0px 0px rgb(177, 177, 177) inset, 0px 1px 0px 0px rgb(217, 217, 217);
-  border-radius: 0px 0px 6px 6px;
-  min-width: 45%;
-  overflow: hidden;
-  padding: 16px 15px 11px;
-}
-
-h1.usa-prays {
-  font-weight: normal;
-}
-h1.usa-prays small {
-  font-style: italic;
-}
