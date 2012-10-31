@@ -9,30 +9,23 @@ describe "States page", :skip => false do
 
   context "Indiana" do 
     before do
-      VCR.use_cassette "states_page/in" do
-        visit "/states/in"
-      end
+      visit "/states/in/2012/01/01"
     end
 
     it "shows a unique date, each day" do
-      VCR.use_cassette "states_page/unique_date" do
-        date = find(".date").text
-        time_travel_to(Date.tomorrow) do
-          visit "/states/in"
-          date.should_not == find(".date").text
-        end
-      end
+      visit "/states/in/2012/01/01"
+      date = find(".date").text
+      visit "/states/in/2012/01/02"
+      date.should_not == find(".date").text
     end
 
     it "shows a different leader on different days" do
-      VCR.use_cassette "states_page/unique_date" do
-        name = find(".leader-name").text
-        time_travel_to(Date.tomorrow) do
-          visit "/states/in"
-          name.should_not == find(".leader-name").text
-        end
-      end
+      visit "/states/in/2012/01/01"
+      name = find(".leader-name").text
+      visit "/states/in/2012/01/02"
+      name.should_not == find(".leader-name").text
     end
+
 
     it "shows specific state" do
       page.should have_content("Indiana")

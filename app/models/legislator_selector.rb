@@ -1,12 +1,13 @@
 class LegislatorSelector
-  attr_accessor :state_code
+  attr_accessor :state_code, :date
 
-  def initialize(state)
+  def initialize(state, date=Date.current)
     @state_code = state.to_param
+    @date = date
   end
 
-  def self.today(state)
-    selected = LegislatorSelector.new(state)
+  def self.for_day(state, date=Date.current)
+    selected = LegislatorSelector.new(state, date)
     selected.us_congress +
     selected.state_senate +
     selected.state_house
@@ -25,10 +26,12 @@ class LegislatorSelector
     rotation_select('state_house', 3)
   end
 
-  def rotation_select(chamber, rate=1)
-    name = "#{@state_code}_#{chamber}"
-    leaders = LeaderFinder.send(chamber, @state_code)
-    Rotation.select(name, leaders, rate)
-  end
+  private
+
+    def rotation_select(chamber, rate=1)
+      name = "#{@state_code}_#{chamber}"
+      leaders = LeaderFinder.send(chamber, @state_code)
+      Rotation.select(name, leaders, rate: rate, date: date)
+    end
 
 end

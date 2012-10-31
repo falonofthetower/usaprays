@@ -14,9 +14,11 @@ describe LegislatorSelector do
 
   it "returns different set of US Congress each day" do
     VCR.use_cassette "legislator_selector/us_congress" do
-      todays_leaders = LegislatorSelector.new(state).us_congress
-      time_travel_to(Date.tomorrow) do
-        todays_leaders.should_not == LegislatorSelector.new(state).us_congress
+      time_travel_to(Date.new(1972, 9, 15)) do
+        todays_leaders = LegislatorSelector.new(state).us_congress
+        time_travel_to(Date.new(1972, 9, 16)) do
+          todays_leaders.should_not == LegislatorSelector.new(state).us_congress
+        end
       end
     end
   end
@@ -38,12 +40,14 @@ describe LegislatorSelector do
 
   it "returns 2 different senators each day for nebraska" do
     VCR.use_cassette "legislator_selector/nebraska_senate2" do
-      state = UsState.new('ne')
-      todays_leaders = LegislatorSelector.new(state).us_congress
-      time_travel_to(Date.tomorrow) do
-        tomorrows_leaders = LegislatorSelector.new(state).us_congress
-        todays_leaders.include?(tomorrows_leaders.first).should be_false
-        todays_leaders.include?(tomorrows_leaders.last).should be_false
+      time_travel_to(Date.new(1972, 9, 15)) do
+        state = UsState.new('ne')
+        todays_leaders = LegislatorSelector.new(state).us_congress
+        time_travel_to(Date.new(1972, 9, 16)) do
+          tomorrows_leaders = LegislatorSelector.new(state).us_congress
+          todays_leaders.include?(tomorrows_leaders.first).should be_false
+          todays_leaders.include?(tomorrows_leaders.last).should be_false
+        end
       end
     end
   end
@@ -60,7 +64,7 @@ describe LegislatorSelector do
       legislators = LegislatorSelector.new(state).us_congress +
         LegislatorSelector.new(state).state_senate +
         LegislatorSelector.new(state).state_house
-      LegislatorSelector.today(state).should == legislators
+      LegislatorSelector.for_day(state).should == legislators
     end
   end
 end

@@ -8,7 +8,7 @@
   <div class="row">
     <h2 class="state-header">Legislators Being Prayed For Today</h2>
 
-    <h3 class="date"><%= Date.current.strftime("%A, %B %-d, %Y") %></h3>
+    <h3 class="date"><%= @date.strftime("%A, %B %-d, %Y") %></h3>
 
     <div class="span3">
       <%= render :partial => 'leaders/profile', locals: {leader: @leaders[0]} %>

@@ -14,6 +14,8 @@ Psp::Application.routes.draw do
     resources :subscriptions
   end
 
+  match "/states/:id/:year/:month/:day", to: "states#show", as: "states_date"
+
   match "/states/:state_id/calendars/daily/twitter", to: "states#daily_twitter_feed", as: "daily_twitter_feed"
   match "/states/:state_id/calendars/daily/email", to: "states#daily_email_feed", as: "daily_email_feed"
   match "/states/:state_id/calendars/weekly/email", to: "states#weekly_email_feed", as: "weekly_email_feed"

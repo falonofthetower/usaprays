@@ -8,20 +8,13 @@ class StatesController < ApplicationController
   def show
     cookies[:state_code] = params[:id]
     @state = UsState.new(params[:id])
-    # Change false to true to test in dev without hitting api
-    if Rails.env == "development" and true
-      @leaders = []
-      6.times do
-        @leaders << Leader.ron_paul
-      end
-    else
-      @leaders = LegislatorSelector.today(@state)
-    end
+    @date = build_date
+    @leaders = LegislatorSelector.for_day(@state)
   end
 
   def daily_twitter_feed
     @state = UsState.new(params[:state_id])
-    @legislators = LegislatorSelector.today(@state)
+    @legislators = LegislatorSelector.for_day(@state)
     @member0= @legislators[0]
     @member1= @legislators[1]
     @member2= @legislators[2]
@@ -53,4 +46,13 @@ class StatesController < ApplicationController
       format.rss { render :layout => false } #index.rss.builder
     end
   end
+
+  private
+
+    def build_date
+      year = params[:year] || Date.current.year
+      month = params[:month] || Date.current.month
+      day = params[:day] || Date.current.day
+      Date.new(year.to_i, month.to_i, day.to_i)
+    end
 end
