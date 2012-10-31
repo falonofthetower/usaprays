@@ -8,80 +8,53 @@ describe "States page", :skip => false do
   end
 
   context "Indiana" do 
-    before do
-      visit "/states/in/2012/01/01"
+    let :jan_1_url do 
+      "/states/in/2012/01/01"
+    end
+
+    let :jan_2_url do
+      "/states/in/2012/01/02"
     end
 
     it "shows a unique date, each day" do
-      visit "/states/in/2012/01/01"
+      visit jan_1_url
       date = find(".date").text
-      visit "/states/in/2012/01/02"
+      visit jan_2_url
       date.should_not == find(".date").text
     end
 
     it "shows a different leader on different days" do
-      visit "/states/in/2012/01/01"
+      visit jan_1_url
       name = find(".leader-name").text
-      visit "/states/in/2012/01/02"
+      visit jan_2_url
       name.should_not == find(".leader-name").text
     end
 
-
     it "shows specific state" do
+      visit jan_1_url
       page.should have_content("Indiana")
     end
 
     it "shows representative for state" do
+      visit jan_1_url
       page.should have_content("Representative")
     end
 
     it "shows senator for state" do
+      visit jan_1_url
       page.should have_content("Senator")
     end
 
     it "includes image of member" do
+      visit jan_1_url
       page.should have_selector('img.head-shot')
     end
 
     it "has navigation to all leaders for a state" do
-      VCR.use_cassette "states_page/all_leaders" do
-        click_on("Leaders")
-        current_path.should == "/states/in/leaders"
-      end
+      visit jan_1_url
+      click_on("Leaders")
+      current_path.should == "/states/in/leaders"
     end
   end
 
-  context "nebraska" do
-    before do
-      VCR.use_cassette "states_page/ne" do
-        visit "/states/ne"
-      end
-    end
-
-    it "shows specific state" do
-      page.should have_content("Nebraska")
-    end
-
-    it "shows a unique date, each day" do
-      VCR.use_cassette "states_page/ne_each_day" do
-        date = find(".date").text
-        time_travel_to(Date.tomorrow) do
-          visit "/states/ne"
-          date.should_not == find(".date").text
-        end
-      end
-    end
-
-    context "Rotation" do
-      it "shows a different leader on different days" do
-        VCR.use_cassette "states_page/ne_different_days" do
-          name = find(".leader-name").text
-          time_travel_to(Date.tomorrow) do
-            visit "/states/ne"
-            name.should_not == find(".leader-name").text
-          end
-        end
-      end
-    end
-  end
 end

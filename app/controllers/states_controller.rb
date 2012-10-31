@@ -9,7 +9,7 @@ class StatesController < ApplicationController
     cookies[:state_code] = params[:id]
     @state = UsState.new(params[:id])
     @date = build_date
-    @leaders = LegislatorSelector.for_day(@state)
+    @leaders = LegislatorSelector.for_day(@state, @date)
   end
 
   def daily_twitter_feed
