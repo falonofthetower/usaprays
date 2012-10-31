@@ -5,7 +5,6 @@ $linkColor: #143e76;
 
 
 body {
-  //background: #0F2D4D;
   margin: 0;
 }
 
@@ -71,15 +70,13 @@ body {
 
 #cc-logo {
   padding: 15px;
-  position: relative;
+  Xposition: relative;
   left: 70px;
 }
 
 .cc-gradient {
-  width: 450px;
-  height: 106px;
-  position: relative;
-  right: 70px;
+  width: 300px;
+  height: 103px;
 
   background: #eeeeee; /* Old browsers */
   background: -moz-linear-gradient(left,  #eeeeee 0%, #ffffff 45%, #ffffff 55%, #eeeeee 100%); /* FF3.6+ */
@@ -96,7 +93,8 @@ body {
 
 h1.usa-prays {
   color: rgb(14, 46, 88);
-  padding-top: 16px;
+  margin-top: 0;
+  padding-top: 0px;
   padding-left: 1em;
   font-weight: normal;
   line-height: 0.8em;
@@ -107,12 +105,12 @@ h1.usa-prays small {
   padding-left: 4px;
 }
 
-.block-info {
+.block-nav {
   text-align: center;
   box-shadow: 0px -1px 0px 0px rgb(177, 177, 177) inset, 0px 1px 0px 0px rgb(217, 217, 217);
   border-radius: 0px 0px 6px 6px;
-  padding: 5px 15px 11px;
-  width: 270px;
+  padding: 2px 0px 0px 6px;
+  width: 300px;
 
   background: #fbfbfb; /* Old browsers */
   background: -moz-linear-gradient(top,  #fbfbfb 0%, #edeeee 100%); /* FF3.6+ */
@@ -132,7 +130,7 @@ footer {
   line-height: 13px;
   padding: 25px 16px 7px 24px;
   position: relative;
-  height: 3em;
+  min-height: 3em;
   border-top: 1px solid rgb(202, 202, 202);
   box-shadow: 0px +1px 0px 0px rgb(177, 177, 177) inset, 0px -1px 0px 0px rgb(217, 217, 217);
   
