@@ -30,7 +30,9 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/initializers"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+    put File.read("config/initializers/mail_chimp.example.rb"), "#{shared_path}/config/initializers/mail_chimp.rb"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
