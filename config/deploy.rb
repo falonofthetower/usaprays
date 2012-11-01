@@ -30,14 +30,16 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/initializers"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+    put File.read("config/initializers/mail_chimp.example.rb"), "#{shared_path}/config/initializers/mail_chimp.rb"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
 
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/photos #{release_path}/public/photos"
+    run "ln -nfs #{shared_path}/config/initializers/mail_chimp.rb #{release_path}/config/initializers/mail_chimp.rb"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 
