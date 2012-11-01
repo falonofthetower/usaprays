@@ -1,28 +1,25 @@
 <hr />
-<%= image_tag "http://publicservantsprayer.org/#{member.photo_src}" %>
+<%= image_tag leader.photo_src %>
 
-<h3><%= member.name.strip %></h3>
-<h4><%= member.title.strip %></h4>
+<h3><%= leader.name.strip %></h3>
+<h4><%= leader.title.strip %></h4>
 
 
 <div>
   <table>
-    <%= member_data_tr member.district_residence, "District" %>
-    <%= member_data_tr member.religion, "Religion" %>
-    <%= member_data_tr member.spouse, "Spouse" %>
-    <%= member_data_tr member.family, "Family" %>
-    <%= member_data_tr member.birthday, "Birthday" %>
+    <%= leader_data_tr leader.district_residence, "District" %>
+    <%= leader_data_tr leader.spouse, "Spouse" %>
   </table>
 </div>
 
 <div>
   <div>
     <ul>
-      <%= content_tag('li', link_to("Website", member.website)) unless member.website.blank? %>
-      <%= content_tag('li', link_to("Contact Form", member[:webform])) unless member[:webform].blank? %>
-      <%= content_tag('li', link_to("Facebook", member.facebook)) unless member.facebook.blank? %>
-      <%= content_tag('li', link_to("Email", "mailto:#{member.email}")) unless member.email.blank? %>
-      <%= content_tag('li', link_to("Twitter", member.twitter)) unless member[:twitter].blank? %>
+      <%= content_tag('li', link_to("Website", leader.website)) unless leader.website.blank? %>
+      <%= content_tag('li', link_to("Contact Form", leader[:webform])) unless leader[:webform].blank? %>
+      <%= content_tag('li', link_to("Facebook", leader.facebook)) unless leader.facebook.blank? %>
+      <%= content_tag('li', link_to("Email", "mailto:#{leader.email}")) unless leader.email.blank? %>
+      <%= content_tag('li', link_to("Twitter", leader.twitter)) unless leader[:twitter].blank? %>
     </ul>
   </div>
 </div>

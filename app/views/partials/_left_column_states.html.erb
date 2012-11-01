@@ -9,10 +9,10 @@
   <%= state_nav_li('How to Pray', how_to_pray_path, 'user', active) %>
 
   <% active = params[:id] == "daily" %>
-  <%= state_nav_li('Sign Up for Daily Email', state_calendar_path(@state, 'daily'), 'calendar', active) %>
+  <%= state_nav_li('Sign Up for Daily Email', state_subscription_path(@state, 'daily'), 'calendar', active) %>
 
   <% active = params[:id] == "weekly" %>
-  <%= state_nav_li('Sign Up for Weekly Email', state_calendar_path(@state, 'weekly'), 'list', active) %>
+  <%= state_nav_li('Sign Up for Weekly Email', state_subscription_path(@state, 'weekly'), 'list', active) %>
 </ul>
 
 <div style="margin-top:1em">
