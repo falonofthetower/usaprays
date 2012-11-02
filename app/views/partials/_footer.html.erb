@@ -1,10 +1,18 @@
 <footer>
 <div class="container">
-  <div class="pull-left">
-    Copyright &copy; 2012 Capitol Commission. All rights reserved.
-  </div>
-  <div class="pull-right">
-    Powered by <%= link_to(image_tag("logo-knowwho.png", alt: 'KnowWho Logo', style: 'position:relative;bottom:10px'), 'https://www.knowwho.com/', target: '_blank') %>
+  <div class="row">
+    <div class="span4" style="text-align:center">
+      Copyright &copy; 2012 Capitol Commission.<br />
+      <%= link_to(image_tag("cc-logo-white.png", alt: 'KnowWho Inc.', style: 'position:relative;top:5px'), 'http://capitolcom.org/', target: '_blank') %>
+    </div>
+    <div class="offset1 span2" style="text-align:center">
+      Powered by:<br />
+      <%= link_to(image_tag("logo-knowwho.png", alt: 'KnowWho Inc.', style: 'xposition:relative;bottom:17px'), 'https://www.knowwho.com/', target: '_blank') %>
+    </div>
+    <div class="offset1 span4" style="text-align:center">
+      In partnership with:<br />
+      <%= link_to(image_tag("public-servants-prayer.png", alt: 'Public Servants Prayer', style: 'xposition:relative;bottom:8px'), 'http://publicservantsprayer.org/', target: '_blank') %>
+    </div>
   </div>
 </div>
 </footer>
