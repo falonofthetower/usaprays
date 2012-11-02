@@ -57,4 +57,15 @@ describe "States page", :skip => false do
     end
   end
 
+  context "RSS" do
+    it "shows rss view" do
+      #visit "/states/in", :handlers => [:rss]
+
+      get "/states/in", :format => "rss"
+      response.should be_success
+      response.should render_template("states/show")
+      response.content_type.should eq("application/rss+xml")
+    end
+  end
+
 end

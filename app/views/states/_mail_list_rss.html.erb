@@ -1,0 +1,44 @@
+<h1>Leaders Being Prayed For Today</h1>
+<h2><%= @date.strftime("%A, %B %-d, %Y") %></h2>
+
+<table cellpadding="4" cellspacing="4">
+  <tr>
+    <td>
+      <%= render partial: "leaders/profile_email_rss.html.erb", 
+        locals: { leader: @leaders[0] } %>
+    </td>
+    <td colspan="2" valign="top" border="1">
+      <div style="padding:2em; margin:2em; border: 2px solid navy">
+      <%= render partial: "partials/right_column.html.erb" %>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= render partial: "leaders/profile_email_rss.html.erb", 
+        locals: { leader: @leaders[1] } %>
+    </td>
+    <td>
+      <%= render partial: "leaders/profile_email_rss.html.erb", 
+        locals: { leader: @leaders[2] } %>
+    </td>
+    <td>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= render partial: "leaders/profile_email_rss.html.erb", 
+        locals: { leader: @leaders[3] } %>
+    </td>
+    <td>
+      <%= render partial: "leaders/profile_email_rss.html.erb", 
+        locals: { leader: @leaders[4] } %>
+    </td>
+    <td>
+      <%= render partial: "leaders/profile_email_rss.html.erb", 
+        locals: { leader: @leaders[5] } %>
+    </td>
+  </tr>
+</table>

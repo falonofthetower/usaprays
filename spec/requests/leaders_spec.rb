@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe "State Leaders page" do
   before do
-    VCR.use_cassette('state_leaders_page/leaders') do
-      visit "/states/in/leaders"
-    end
+    visit "/states/in/leaders"
   end
 
   it "shows a particular state" do
@@ -16,9 +14,7 @@ describe "State Leaders page" do
   end
 
   it "links each leader to individual leader page" do
-    VCR.use_cassette('state_leaders_page/individual_leader') do
-      find("a.thumbnail").click
-      page.should have_selector(".leader-name")
-    end
+    find("a.thumbnail").click
+    page.should have_selector(".leader-name")
   end
 end
