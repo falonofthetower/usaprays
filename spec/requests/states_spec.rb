@@ -6,6 +6,23 @@ describe "States page", :skip => false do
     visit "/"
     page.should have_content('Find Your State')
   end
+  
+  context "Consistantly keeps track of current leaders while" do
+    let :todays_path do
+      "/states/tx"
+    end
+
+    let :tomorrows_path do
+      "/states/tx/#{Date.tomorrow.year}/#{Date.tomorrow.month}/#{Date.tomorrow.day}"
+    end
+
+    it "shows future leaders" do
+      visit tomorrows_path
+      tomorrows_leader = find(".leader-name").text
+      visit todays_path
+      find(".leader-name").text.should_not == tomorrows_leader
+    end
+  end
 
   context "Indiana" do 
     let :jan_1_url do 
@@ -59,8 +76,6 @@ describe "States page", :skip => false do
 
   context "RSS" do
     it "shows rss view" do
-      #visit "/states/in", :handlers => [:rss]
-
       get "/states/in", :format => "rss"
       response.should be_success
       response.should render_template("states/show")

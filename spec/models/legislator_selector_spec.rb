@@ -5,66 +5,64 @@ describe LegislatorSelector do
     state = UsState.new('tx')
   end
 
-  it "returns an array of one or more members of the US Congress" do
-    VCR.use_cassette "legislator_selector/array_members" do
-      legislators = LegislatorSelector.new(state).us_congress
+  let :b_day do
+    Date.new(2012, 7, 4)
+  end
+
+  context "#us_congress" do
+    it "returns an array of members of the US Congress" do
+      legislators = LegislatorSelector.new(state, b_day).us_congress
       legislators.first.title.include?("US ").should be_true
     end
-  end
 
-  it "returns different set of US Congress each day" do
-    VCR.use_cassette "legislator_selector/us_congress" do
-      time_travel_to(Date.new(1972, 9, 15)) do
-        todays_leaders = LegislatorSelector.new(state).us_congress
-        time_travel_to(Date.new(1972, 9, 16)) do
-          todays_leaders.should_not == LegislatorSelector.new(state).us_congress
-        end
-      end
+    it "returns different set of US Congress each day" do
+      leaders = LegislatorSelector.new(state, b_day.prev_day).us_congress
+      leaders.should_not == LegislatorSelector.new(state, b_day).us_congress
+    end
+
+    it "returns 2 different senators for sequential days" do
+      state = UsState.new('ne')
+      leaders = LegislatorSelector.new(state, b_day).us_congress
+      next_days_leaders = LegislatorSelector.new(state, b_day.next_day).us_congress
+      leaders.include?(next_days_leaders.first).should be_false
+      leaders.include?(next_days_leaders.last).should be_false
     end
   end
 
-  it "returns an array of state senate" do
-    VCR.use_cassette "legislator_selector/state_senate" do
-      legislators = LegislatorSelector.new(state).state_senate
+  context "#state_senate" do
+    it "returns an array of state senate" do
+      legislators = LegislatorSelector.new(state, b_day).state_senate
       legislators.first.title.should == "Texas Senator"
     end
-  end
 
-  it "returns 5 state senators for nebraska" do
-    VCR.use_cassette "legislator_selector/nebraska_senate" do
+    it "returns 5 state senators for nebraska" do
       state = UsState.new('ne')
-      legislators = LegislatorSelector.new(state).state_senate
+      legislators = LegislatorSelector.new(state, b_day).state_senate
       legislators.length.should == 5
     end
-  end
 
-  it "returns 2 different senators each day for nebraska" do
-    VCR.use_cassette "legislator_selector/nebraska_senate2" do
-      time_travel_to(Date.new(1972, 9, 15)) do
-        state = UsState.new('ne')
-        todays_leaders = LegislatorSelector.new(state).us_congress
-        time_travel_to(Date.new(1972, 9, 16)) do
-          tomorrows_leaders = LegislatorSelector.new(state).us_congress
-          todays_leaders.include?(tomorrows_leaders.first).should be_false
-          todays_leaders.include?(tomorrows_leaders.last).should be_false
-        end
+    it "returns 2 state senators for non nebraska states" do
+      state_codes = %w[ in tx nc ]
+      state_codes.each do |state_code|
+        legislators = LegislatorSelector.new(UsState.new(state_code), b_day).state_senate
+        legislators.length.should == 2
       end
     end
   end
 
-  it "returns an array of state house members" do
-    VCR.use_cassette "legislator_selector/state_house" do
-      legislators = LegislatorSelector.new(state).state_house
+  context "#state_house" do
+    it "returns an array of state house members" do
+      legislators = LegislatorSelector.new(state, b_day).state_house
       legislators.first.title.should == "Texas Representative"
     end
   end
 
-  it "returns an array of todays legislators" do
-    VCR.use_cassette "legislator_selector/todays_legislators" do
-      legislators = LegislatorSelector.new(state).us_congress +
-        LegislatorSelector.new(state).state_senate +
-        LegislatorSelector.new(state).state_house
-      LegislatorSelector.for_day(state).should == legislators
+  context "#self.for_day" do
+    it "returns a complete array of legislators" do
+      legislators = LegislatorSelector.new(state, b_day).us_congress +
+        LegislatorSelector.new(state, b_day).state_senate +
+        LegislatorSelector.new(state, b_day).state_house
+      LegislatorSelector.for_day(state, b_day).should == legislators
     end
   end
 end
