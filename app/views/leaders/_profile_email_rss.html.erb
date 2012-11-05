@@ -1,26 +1,25 @@
-<div style="padding:1em;border:1px solid red">
 <%= image_tag leader.photo_src %>
-    <h3 <%= leader.name.strip %></h3>
-    <h3><small><%= leader.title.strip %></small></h3>
-  </div>
-</div>
+<h3><%= leader.name.strip %></h3>
+<h4><%= leader.title.strip %></h4>
 
 <% unless leader.district_residence.blank? %>
   <p>
-  <h6>District</h6>
+  <b>District</b>
+  <br />
   <%= leader.district_residence %>
   </p>
-  <p>
 <% end %>
 
 <% unless leader.spouse.blank? %>
-  <h6>Spouse</h6>
+  <p>
+  <b>Spouse</b>
+  <br />
   <%= leader.spouse %>
   </p>
 <% end %>
 
-<%= glyph_link_to('329_web_browser', leader.website) %>
-<%= glyph_link_to('309_comments', leader.webform) %>
-<%= glyph_link_to('399_e-mail', 'mailto:'+leader.email) %>
-<%= glyph_link_to('391_twitter_t', leader.twitter) %>
-<%= glyph_link_to('390_facebook', leader.facebookk) %>
+<%= glyph_link_to('329_web_browser', leader.website, "Website") %>
+<%= glyph_link_to('309_comments', leader.webform, "Contact") %>
+<%= glyph_link_to('399_e-mail', 'mailto:'+leader.email, "Email") %>
+<%= glyph_link_to('391_twitter_t', leader.twitter, "Twitter") %>
+<%= glyph_link_to('390_facebook', leader.facebook, "Facebook") %>

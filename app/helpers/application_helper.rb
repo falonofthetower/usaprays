@@ -1,8 +1,8 @@
 module ApplicationHelper
-  def glyph_link_to(glyph, link)
+  def glyph_link_to(glyph, link, title="")
     return "" if link.blank?
-    glyph_path = "glyph/glyphicons_#{glyph}.png" 
-    link_to(image_tag(glyph_path), link)
+    glyph_path = "http://www.usaprays.org/assets/glyph/glyphicons_#{glyph}.png" 
+    link_to(image_tag(glyph_path), link, title: title)
   end
 
   def state_nav_li(text, path, icon, active)

@@ -12,6 +12,9 @@ Psp::Application.routes.draw do
 
   match "how_to_pray" => "static#how_to_pray"
 
+
+  match "/states/:id/email", to: "states#email", as: "state_email"
+
   match "/states/:id/:year/:month/:day", to: "states#show", as: "state_date"
 
   # The priority is based upon order of creation:

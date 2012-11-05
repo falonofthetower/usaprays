@@ -17,6 +17,13 @@ class StatesController < ApplicationController
     end
   end
 
+  def email
+    @state = UsState.new(params[:id])
+    @date = build_date
+    @leaders = LegislatorSelector.for_day(@state, @date)
+    render layout: false
+  end
+
   private
 
     def build_date

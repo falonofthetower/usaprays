@@ -83,4 +83,11 @@ describe "States page", :skip => false do
     end
   end
 
+  context "Email test" do
+    it "shows a view of what it might look like in email" do
+      visit "/states/in/email"
+      page.should have_content("Email Test")
+    end
+  end
+
 end
