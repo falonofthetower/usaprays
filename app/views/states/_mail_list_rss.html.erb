@@ -1,49 +1,23 @@
-<style type="text/css">
-.leader {
-  border:20px solid #ffffff !important;
-  background-color: #F5F5F5;
-  padding: 1em;
-  margin: 1em;
-}
-.leader p {
-  margin: 7px 3px;
-
-}
-.leader h3 {
-  padding: 0;
-  margin: 7px 3px 0 3px;
-}
-.leader h4 {
-  padding: 0;
-  margin: 3px;
-  color: #555555 !important;
-}
-.scripture {
-  font-size: larger;
-  font-weight: bold;
-  color: #747474 !important;
-}
-</style>
 <h1 style="color:#143e76 !important">Leaders Being Prayed For Today</h1>
 <h2 style="color:#333333 !important"><%= @date.strftime("%A, %B %-d, %Y") %></h2>
 
 <table cellpadding="5" cellspacing="0" border="0" align="center">
   <tr>
-    <td width="200" valign="top" class="leader">
+    <td width="200" valign="top" style="border:20px solid #ffffff !important;background-color: #F5F5F5;padding: 1em;margin: 1em">
       <%= render partial: "leaders/profile_email_rss.html.erb", 
         locals: { leader: @leaders[0] } %>
     </td>
-    <td width="200" valign="top" class="scripture" colspan="2">
+    <td width="200" valign="top" style="font-size: larger;font-weight: bold;color: #747474 !important;" colspan="2">
       <%= render partial: "partials/right_column.html.erb" %>
     </td>
   </tr>
 
   <tr>
-    <td width="200" valign="top" class="leader">
+    <td width="200" valign="top" style="border:20px solid #ffffff !important;background-color: #F5F5F5;padding: 1em;margin: 1em">
       <%= render partial: "leaders/profile_email_rss.html.erb", 
         locals: { leader: @leaders[1] } %>
     </td>
-    <td width="200" valign="top" class="leader">
+    <td width="200" valign="top" style="border:20px solid #ffffff !important;background-color: #F5F5F5;padding: 1em;margin: 1em">
       <%= render partial: "leaders/profile_email_rss.html.erb", 
         locals: { leader: @leaders[2] } %>
     </td>
@@ -52,15 +26,15 @@
   </tr>
 
   <tr>
-    <td width="200" valign="top" class="leader">
+    <td width="200" valign="top" style="border:20px solid #ffffff !important;background-color: #F5F5F5;padding: 1em;margin: 1em">
       <%= render partial: "leaders/profile_email_rss.html.erb", 
         locals: { leader: @leaders[3] } %>
     </td>
-    <td width="200" valign="top" class="leader">
+    <td width="200" valign="top" style="border:20px solid #ffffff !important;background-color: #F5F5F5;padding: 1em;margin: 1em">
       <%= render partial: "leaders/profile_email_rss.html.erb", 
         locals: { leader: @leaders[4] } %>
     </td>
-    <td width="200" valign="top" class="leader">
+    <td width="200" valign="top" style="border:20px solid #ffffff !important;background-color: #F5F5F5;padding: 1em;margin: 1em">
       <%= render partial: "leaders/profile_email_rss.html.erb", 
         locals: { leader: @leaders[5] } %>
     </td>
