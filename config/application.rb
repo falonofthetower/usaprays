@@ -61,5 +61,8 @@ module Psp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Work around this bug: https://github.com/browsermedia/browsercms/issues/553
+    config.assets.precompile += ["*.js", "cms/*.css", "cms/*.js", "bcms/*.js"]
   end
 end
