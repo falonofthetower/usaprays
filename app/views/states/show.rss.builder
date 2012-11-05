@@ -1,8 +1,8 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "Public Servants' Prayer List"
-    xml.description "#{@state.name} legislators we are praying for" 
+    xml.title "USA Prays List for #{@state.name}"
+    xml.description "#{@state.name} leaders we are praying for" 
     xml.link "http://usaprays.com/states/#{params[:state_id]}/feed.rss"
     xml.item do
       xml.link state_date_url(params[:id], @date.year, @date.month, @date.day)
