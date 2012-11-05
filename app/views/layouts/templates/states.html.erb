@@ -2,7 +2,6 @@
 <html>
   <%= render :partial => 'partials/head' %>
   <body>
-    <%= cms_toolbar %>
     <%= render :partial => 'partials/navbar' %>
 
     <div class="container">
@@ -17,8 +16,8 @@
               <%= render :partial => 'partials/left_column_states' %>
             </div>
             <div class="span9">
-              <%= container :main %>
-              <%= container :right_column %>
+              <%= yield :main %>
+              <%= yield :right_column %>
             </div>
           </div>
         </div>

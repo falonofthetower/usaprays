@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Postgresql
 gem 'pg'
@@ -30,7 +30,6 @@ gem 'bootstrap-sass', "~> 2.0.0"
 gem "simple_form"
 
 # Content Managment
-gem "browsercms", "3.5.4"
 
 # Used by LeaderFinder
 gem 'httparty'

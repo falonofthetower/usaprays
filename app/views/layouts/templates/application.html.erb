@@ -2,7 +2,6 @@
 <html>
   <%= render :partial => 'partials/head' %>
   <body>
-    <%= cms_toolbar %>
     <%= render :partial => 'partials/navbar' %>
 
     <div class="container">
@@ -12,7 +11,6 @@
       <div class="row">
         <div class="span9">
           <%= yield %>
-          <div id="main"><%= container :main %></div>
         </div>
 
         <div class="span3" style="padding:0.25">
