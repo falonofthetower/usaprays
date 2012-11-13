@@ -1,7 +1,5 @@
-<% content_for :page_title do %>
-  <h1 class="page-header"><%= @leader.name %></h1>
+<% content_for :title do %>
+  <%= @leader.name %>
 <% end %>
 
-<% content_for :main do %>
-  <%= render :partial => 'profile', locals: {leader: @leader} %>
-<% end %>
+<%= render :partial => 'profile', locals: {leader: @leader} %>

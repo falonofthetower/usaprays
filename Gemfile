@@ -30,6 +30,7 @@ gem 'bootstrap-sass', "~> 2.0.0"
 gem "simple_form"
 
 # Content Managment
+gem 'refinerycms'
 
 # Used by LeaderFinder
 gem 'httparty'

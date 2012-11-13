@@ -1,13 +1,12 @@
-<% content_for :page_title do %>
-  <h1 class="page-header">Find Your State</h1>
+<% content_for :title do %>
+  Find Your State
 <% end %>
 
-<% content_for :main do %>
-  <p class="lead">
-  You are invited to join us as we pray daily for these elected officials.  To find your leaders, select your state on the map or select a region. 
-  </p>
+<p class="lead">
+You are invited to join us as we pray daily for these elected officials.  To find your leaders, select your state on the map or select a region. 
+</p>
 
-  <div style="position:relative">
+<div style="position:relative">
 
   <%= render :partial => 'map' %>
 
@@ -23,6 +22,4 @@
   <%= render :partial => 'region_button', 
     locals: {region: 'west', position: 'top:20%;left:0'} %>
 
-  </div>
-
-<% end %>
+</div>

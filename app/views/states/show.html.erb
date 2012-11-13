@@ -1,55 +1,51 @@
-<%= auto_discovery_link_tag(:rss, "/states/#{params[:id]}/feed.rss") %>
-
-<% content_for :page_title do %>
-  <h1 class="page-header"><%= @state.name %></h1>
+<% content_for :title do %>
+  <%= @state.name %>
 <% end %>
 
-<% content_for :main do %>
-    <h2 class="state-header">Legislators Being Prayed For Today</h2>
+<h2 class="state-header">Legislators Being Prayed For Today</h2>
 
-    <h3 class="date"><%= @date.strftime("%A, %B %-d, %Y") %></h3>
+<h3 class="date"><%= @date.strftime("%A, %B %-d, %Y") %></h3>
 
-  <div class="row-fluid">
-    <div class="span3">
-      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[0]} %>
-    </div>
+<div class="row-fluid">
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[0]} %>
+  </div>
 
-    <div class="span6">
-      <div class="hidden-phone">
+  <div class="span6">
+    <div class="hidden-phone">
       <%= render :partial => 'partials/right_column' %>
-      </div>
-    </div>
-
-    <div class="span3">
     </div>
   </div>
 
-  <div class="row-fluid">
-    <div class="span3">
-      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[1]} %>
-    </div>
+  <div class="span3">
+  </div>
+</div>
 
-    <div class="span3">
-      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[2]} %>
-    </div>
-
-    <div class="span3">
-    </div>
-    <div class="span3">
-    </div>
+<div class="row-fluid">
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[1]} %>
   </div>
 
-  <div class="row-fluid">
-    <div class="span3">
-      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[3]} %>
-    </div>
-
-    <div class="span3">
-      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[4]} %>
-    </div>
-
-    <div class="span3">
-      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[5]} %>
-    </div>
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[2]} %>
   </div>
-<% end %>
+
+  <div class="span3">
+  </div>
+  <div class="span3">
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[3]} %>
+  </div>
+
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[4]} %>
+  </div>
+
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[5]} %>
+  </div>
+</div>
