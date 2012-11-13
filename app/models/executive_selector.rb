@@ -6,8 +6,9 @@ class ExecutiveSelector
     @date = date
   end
 
-  def self.for_day(state, date)
-    Refinery::Executives::Executive.all(order: "position")
+  def self.for_day(state_code, date)
+    Refinery::Executives::Executive.where(state_code: nil).order("position") +
+    Refinery::Executives::Executive.where(state_code: state_code).order("position") 
   end
 
   def leader_type

@@ -72,16 +72,6 @@ describe "States page", :skip => false do
       click_on("Leaders")
       current_path.should == "/states/in/leaders"
     end
-
-    it "shows justices on the last day of month" do
-      visit "/states/in/2012/11/30"
-      page.should have_content("Justice")
-    end
-
-    it "shows justices on the last day of different month" do
-      visit "/states/in/2012/12/31"
-      page.should have_content("Justice")
-    end
   end
 
   context "RSS" do

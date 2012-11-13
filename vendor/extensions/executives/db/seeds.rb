@@ -51,4 +51,25 @@ Refinery::Executives::Executive.create(name: "John Boehner",
                                        facebook: "https://www.facebook.com/johnboehner",
                                        twitter: "https://twitter.com/johnboehner")
 
+Refinery::Executives::Executive.create(name: "Beverly Eaves \"Bev\" Perdue",
+                                       title: "Governor of the U.S. state of North Carolina",
+                                       spouse: "Bob Eaves",
+                                       website: "http://www.governor.state.nc.us/",
+                                       webform: "",
+                                       email: "",
+                                       facebook: "",
+                                       twitter: "",
+                                       state_code: "nc")
+
+
+Refinery::Executives::Executive.create(name: "Walter H. Dalton",
+                                       title: "Lieutenant Governor of North Carolina",
+                                       spouse: "Lucille Dalton",
+                                       website: "http://www.walterdalton.org/",
+                                       webform: "",
+                                       email: "",
+                                       facebook: "",
+                                       twitter: "",
+                                       state_code: "nc")
+
 
