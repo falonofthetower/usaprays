@@ -9,7 +9,7 @@ class StatesController < ApplicationController
     cookies[:state_code] = params[:id]
     @state = UsState.new(params[:id])
     @date = build_date
-    @leaders = LegislatorSelector.for_day(@state, @date)
+    @leaders = LeaderSelector.for_day(@state, @date)
 
     respond_to do |format|
       format.html

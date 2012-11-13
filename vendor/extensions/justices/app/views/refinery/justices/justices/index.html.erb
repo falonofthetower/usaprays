@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="justices">
+    <% @justices.each do |justice| %>
+      <li>
+        <%= link_to justice.name, refinery.justices_justice_path(justice) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

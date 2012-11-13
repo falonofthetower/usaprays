@@ -1,0 +1,36 @@
+sk:
+  refinery:
+    plugins:
+      executives:
+        title: Executives
+    executives:
+      admin:
+        executives:
+          actions:
+            create_new: Pridať Executive
+            reorder: Preusporiadať Executives
+            reorder_done: Koniec radenia Executives
+          records:
+            title: Executives
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Executives. Kliknite na "Pridať Executive" pre pridanie prvého executive.
+          executive:
+            view_live_html: Zobraziť náhľad executive<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť executive
+            delete: Zmazať executive
+      executives:
+        show:
+          other: Daľšie Executives
+  activerecord:
+    attributes:
+      'refinery/executives/executive':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse
+        website: Website
+        webform: Webform
+        email: Email
+        twitter: Twitter
+        facebook: Facebook
+        state_code: State Code

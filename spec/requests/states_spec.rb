@@ -53,12 +53,12 @@ describe "States page", :skip => false do
     end
 
     it "shows representative for state" do
-      visit jan_1_url
+      visit jan_2_url
       page.should have_content("Representative")
     end
 
     it "shows senator for state" do
-      visit jan_1_url
+      visit jan_2_url
       page.should have_content("Senator")
     end
 
@@ -71,6 +71,16 @@ describe "States page", :skip => false do
       visit jan_1_url
       click_on("Leaders")
       current_path.should == "/states/in/leaders"
+    end
+
+    it "shows justices on the last day of month" do
+      visit "/states/in/2012/11/30"
+      page.should have_content("Justice")
+    end
+
+    it "shows justices on the last day of different month" do
+      visit "/states/in/2012/12/31"
+      page.should have_content("Justice")
     end
   end
 

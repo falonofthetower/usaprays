@@ -1,0 +1,30 @@
+sk:
+  refinery:
+    plugins:
+      justices:
+        title: Justices
+    justices:
+      admin:
+        justices:
+          actions:
+            create_new: Pridať Justice
+            reorder: Preusporiadať Justices
+            reorder_done: Koniec radenia Justices
+          records:
+            title: Justices
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Justices. Kliknite na "Pridať Justice" pre pridanie prvého justice.
+          justice:
+            view_live_html: Zobraziť náhľad justice<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť justice
+            delete: Zmazať justice
+      justices:
+        show:
+          other: Daľšie Justices
+  activerecord:
+    attributes:
+      'refinery/justices/justice':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse

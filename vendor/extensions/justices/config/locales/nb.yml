@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      justices:
+        title: Justices
+    justices:
+      admin:
+        justices:
+          actions:
+            create_new: Lag en ny Justice
+            reorder: Endre rekkefølgen på Justices
+            reorder_done: Ferdig å endre rekkefølgen Justices
+          records:
+            title: Justices
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Justices enda. Klikk på "Lag en ny Justice" for å legge til din første justice.
+          justice:
+            view_live_html: Vis hvordan denne justice ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne justice
+            delete: Fjern denne justice permanent
+      justices:
+        show:
+          other: Andre Justices
+  activerecord:
+    attributes:
+      'refinery/justices/justice':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse

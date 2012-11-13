@@ -28,6 +28,10 @@ class LegislatorSelector
     rotation_select('state_house', 3)
   end
 
+  def leader_type
+    "Legislator"
+  end
+
   private
 
     def rotation_select(chamber, rate=1)

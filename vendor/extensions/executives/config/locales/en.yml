@@ -1,0 +1,36 @@
+en:
+  refinery:
+    plugins:
+      executives:
+        title: Executives
+    executives:
+      admin:
+        executives:
+          actions:
+            create_new: Add New Executive
+            reorder: Reorder Executives
+            reorder_done: Done Reordering Executives
+          records:
+            title: Executives
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Executives yet. Click "Add New Executive" to add your first executive.
+          executive:
+            view_live_html: View this executive live <br/><em>(opens in a new window)</em>
+            edit: Edit this executive
+            delete: Remove this executive forever
+      executives:
+        show:
+          other: Other Executives
+  activerecord:
+    attributes:
+      'refinery/executives/executive':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse
+        website: Website
+        webform: Webform
+        email: Email
+        twitter: Twitter
+        facebook: Facebook
+        state_code: State Code

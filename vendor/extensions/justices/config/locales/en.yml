@@ -1,0 +1,30 @@
+en:
+  refinery:
+    plugins:
+      justices:
+        title: Justices
+    justices:
+      admin:
+        justices:
+          actions:
+            create_new: Add New Justice
+            reorder: Reorder Justices
+            reorder_done: Done Reordering Justices
+          records:
+            title: Justices
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Justices yet. Click "Add New Justice" to add your first justice.
+          justice:
+            view_live_html: View this justice live <br/><em>(opens in a new window)</em>
+            edit: Edit this justice
+            delete: Remove this justice forever
+      justices:
+        show:
+          other: Other Justices
+  activerecord:
+    attributes:
+      'refinery/justices/justice':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse

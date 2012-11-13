@@ -1,0 +1,36 @@
+nl:
+  refinery:
+    plugins:
+      executives:
+        title: Executives
+    executives:
+      admin:
+        executives:
+          actions:
+            create_new: Maak een nieuwe Executive
+            reorder: Wijzig de volgorde van de Executives
+            reorder_done: Klaar met het wijzingen van de volgorde van de Executives
+          records:
+            title: Executives
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Executives. Druk op 'Maak een nieuwe Executive' om de eerste aan te maken.
+          executive:
+            view_live_html: Bekijk deze executive op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze executive
+            delete: Verwijder deze executive voor eeuwig
+      executives:
+        show:
+          other: Andere Executives
+  activerecord:
+    attributes:
+      'refinery/executives/executive':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse
+        website: Website
+        webform: Webform
+        email: Email
+        twitter: Twitter
+        facebook: Facebook
+        state_code: State Code

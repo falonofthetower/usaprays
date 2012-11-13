@@ -49,3 +49,10 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem 'refinerycms-justices', :path => 'vendor/extensions'
+
+gem 'seed_dumper'
+
+
+gem 'refinerycms-executives', :path => 'vendor/extensions'

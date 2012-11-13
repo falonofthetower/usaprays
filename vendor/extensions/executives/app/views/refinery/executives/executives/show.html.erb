@@ -1,0 +1,81 @@
+<% content_for :body_content_title do %>
+  <%= @executive.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @executive.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Photo</h1>
+    <p>
+      <%= image_fu @executive.photo, nil %>
+    </p>
+  </section>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @executive.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Spouse</h1>
+    <p>
+      <%=raw @executive.spouse %>
+    </p>
+  </section>
+  <section>
+    <h1>Website</h1>
+    <p>
+      <%=raw @executive.website %>
+    </p>
+  </section>
+  <section>
+    <h1>Webform</h1>
+    <p>
+      <%=raw @executive.webform %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @executive.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Twitter</h1>
+    <p>
+      <%=raw @executive.twitter %>
+    </p>
+  </section>
+  <section>
+    <h1>Facebook</h1>
+    <p>
+      <%=raw @executive.facebook %>
+    </p>
+  </section>
+  <section>
+    <h1>State Code</h1>
+    <p>
+      <%=raw @executive.state_code %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="executives">
+      <% @executives.each do |executive| %>
+        <li>
+          <%= link_to executive.name, refinery.executives_executive_path(executive) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

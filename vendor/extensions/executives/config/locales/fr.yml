@@ -1,0 +1,36 @@
+fr:
+  refinery:
+    plugins:
+      executives:
+        title: Executives
+    executives:
+      admin:
+        executives:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Executive
+            reorder: Réordonner les Executives
+            reorder_done: Fin de réordonnancement des Executives
+          records:
+            title: Executives
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Executive. Cliquer sur "Créer un(e) nouve(au/l/lle) Executive" pour créer votre premi(er/ère) executive.'
+          executive:
+            view_live_html: Voir ce(t/tte) executive <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) executive
+            delete: Supprimer définitivement ce(t/tte) executive
+      executives:
+        show:
+          other: Autres Executives
+  activerecord:
+    attributes:
+      'refinery/executives/executive':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse
+        website: Website
+        webform: Webform
+        email: Email
+        twitter: Twitter
+        facebook: Facebook
+        state_code: State Code

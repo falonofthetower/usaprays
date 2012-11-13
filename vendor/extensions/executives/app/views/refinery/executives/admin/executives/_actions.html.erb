@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Executives::Admin::ExecutivesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.executives_admin_executives_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_executives_admin_executive_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Executives::Admin::ExecutivesController.sortable? && ::Refinery::Executives::Executive.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Executives"),
+                 refinery.executives_admin_executives_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Executives"),
+                 refinery.executives_admin_executives_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

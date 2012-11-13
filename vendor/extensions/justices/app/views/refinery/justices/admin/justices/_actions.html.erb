@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Justices::Admin::JusticesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.justices_admin_justices_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_justices_admin_justice_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Justices::Admin::JusticesController.sortable? && ::Refinery::Justices::Justice.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Justices"),
+                 refinery.justices_admin_justices_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Justices"),
+                 refinery.justices_admin_justices_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

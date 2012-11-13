@@ -1,0 +1,37 @@
+es:
+  refinery:
+    plugins:
+      executives:
+        title: Executives
+#        article: masculino/femenino
+    executives:
+      admin:
+        executives:
+          actions:
+            create_new: Crear nuevo executive
+            reorder: Reordenar executives
+            reorder_done: Reordenación de executives completada
+          records:
+            title: Executives
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay executives todavía. Pulsa en "Crear nuevo Executive" para crear tu primer executive.
+          executive:
+            view_live_html: Ver este executive como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este executive
+            delete: Borrar este executive para siempre
+      executives:
+        show:
+          other: Otros executives
+  activerecord:
+    attributes:
+      'refinery/executives/executive':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse
+        website: Website
+        webform: Webform
+        email: Email
+        twitter: Twitter
+        facebook: Facebook
+        state_code: State Code

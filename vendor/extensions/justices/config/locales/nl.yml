@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      justices:
+        title: Justices
+    justices:
+      admin:
+        justices:
+          actions:
+            create_new: Maak een nieuwe Justice
+            reorder: Wijzig de volgorde van de Justices
+            reorder_done: Klaar met het wijzingen van de volgorde van de Justices
+          records:
+            title: Justices
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Justices. Druk op 'Maak een nieuwe Justice' om de eerste aan te maken.
+          justice:
+            view_live_html: Bekijk deze justice op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze justice
+            delete: Verwijder deze justice voor eeuwig
+      justices:
+        show:
+          other: Andere Justices
+  activerecord:
+    attributes:
+      'refinery/justices/justice':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse

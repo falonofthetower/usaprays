@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @justice.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @justice.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Photo</h1>
+    <p>
+      <%= image_fu @justice.photo, nil %>
+    </p>
+  </section>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @justice.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Spouse</h1>
+    <p>
+      <%=raw @justice.spouse %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="justices">
+      <% @justices.each do |justice| %>
+        <li>
+          <%= link_to justice.name, refinery.justices_justice_path(justice) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

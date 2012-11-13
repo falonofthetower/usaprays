@@ -1,0 +1,36 @@
+nb:
+  refinery:
+    plugins:
+      executives:
+        title: Executives
+    executives:
+      admin:
+        executives:
+          actions:
+            create_new: Lag en ny Executive
+            reorder: Endre rekkefølgen på Executives
+            reorder_done: Ferdig å endre rekkefølgen Executives
+          records:
+            title: Executives
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Executives enda. Klikk på "Lag en ny Executive" for å legge til din første executive.
+          executive:
+            view_live_html: Vis hvordan denne executive ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne executive
+            delete: Fjern denne executive permanent
+      executives:
+        show:
+          other: Andre Executives
+  activerecord:
+    attributes:
+      'refinery/executives/executive':
+        name: Name
+        photo: Photo
+        title: Title
+        spouse: Spouse
+        website: Website
+        webform: Webform
+        email: Email
+        twitter: Twitter
+        facebook: Facebook
+        state_code: State Code

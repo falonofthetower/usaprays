@@ -8,3 +8,9 @@
 
 # Added by Refinery CMS Pages extension
 Refinery::Pages::Engine.load_seed
+
+# Added by Refinery CMS Justices extension
+Refinery::Justices::Engine.load_seed
+
+# Added by Refinery CMS Executives extension
+Refinery::Executives::Engine.load_seed

@@ -2,7 +2,7 @@
   <%= @state.name %>
 <% end %>
 
-<h2 class="state-header">Legislators Being Prayed For Today</h2>
+<h2 class="state-header">Leaders Being Prayed For Today</h2>
 
 <h3 class="date"><%= @date.strftime("%A, %B %-d, %Y") %></h3>
 
@@ -49,3 +49,19 @@
     <%= render :partial => 'leaders/profile', locals: {leader: @leaders[5]} %>
   </div>
 </div>
+
+<% if @leaders[6] %>
+<div class="row-fluid">
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[6]} %>
+  </div>
+
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[7]} %>
+  </div>
+
+  <div class="span3">
+    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[8]} %>
+  </div>
+</div>
+<% end %>
