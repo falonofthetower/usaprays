@@ -7,7 +7,7 @@ class Leader < Hashie::Mash
   end
 
   def state
-    UsState.new('in')
+    UsState.new(state_code)
   end
 
   def birthday

@@ -90,4 +90,13 @@ describe "States page", :skip => false do
     end
   end
 
+  context "Cookies between controllers" do
+    it "should remember state via cookies" do
+      visit "/states/ca"
+      visit "/leaders/us-rep-ron-paul"
+      click_on("State Home")
+      current_path.should == "/states/tx"
+    end
+  end
+
 end
