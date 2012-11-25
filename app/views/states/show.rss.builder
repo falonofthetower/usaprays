@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "#{@state.name} USA Prays List"
+    xml.title "#{@state.name} Pray1Tim2 List"
     xml.description "#{@state.name} leaders we are praying for" 
     xml.link "http://usaprays.com/states/#{params[:state_id]}/feed.rss"
     xml.item do
