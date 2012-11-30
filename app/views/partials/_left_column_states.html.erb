@@ -6,13 +6,15 @@
   <%= state_nav_li('State Leaders', state_leaders_path(@state), 'user', active) %>
 
   <% active = params[:action] == "how_to_pray" %>
-  <%= state_nav_li('How to Pray', how_to_pray_path, 'user', active) %>
+  <%= state_nav_li('How to Pray', how_to_pray_path, 'fire', active) %>
 
   <% active = params[:id] == "daily" %>
   <%= state_nav_li('Sign Up for Daily Email', state_subscription_path(@state, 'daily'), 'calendar', active) %>
 
   <% active = params[:id] == "weekly" %>
   <%= state_nav_li('Sign Up for Weekly Email', state_subscription_path(@state, 'weekly'), 'list', active) %>
+
+  <%= state_nav_li('Make a Donation', DonationLink.url(@state.to_param), 'heart', active) %>
 </ul>
 
 <div style="margin-top:1em">
