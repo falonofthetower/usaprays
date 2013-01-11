@@ -108,6 +108,10 @@ Then run guard
 
     bundle exec guard
 
+To get unicorn to auto start with server start.
+
+update-rc.d unicorn_usprays defaults
+
 The first time you run the tests they will be quite slow as they are actually hitting the APIs.  After that, VCR will kick in and replay the http responses so it doen't need to hit the network - making it much faster.
 
 Use Unicorn to run a local dev server
