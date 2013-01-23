@@ -1,7 +1,7 @@
 <div class="well">
 
   <%= image_tag leader.photo_src, class: 'head-shot' %>
-  <h3 class="leader-name"><%= leader.name.strip %><br /><small><%= leader.title.strip %></small></h3>
+  <h3 class="leader-name"><%= leader.name.strip %></h3><small><%= leader.title.strip %></small>
 
 <% unless leader.district_residence.blank? %>
   <p>
