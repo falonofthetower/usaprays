@@ -1,0 +1,45 @@
+vim /home/deployer/apps/usaprays/shared/config/initializers/mail_chimp.rb
+-------------------------------------------------------------------------
+# Uncomment and insert MailChimp API key
+#
+ENV['MC_API_KEY'] = '5d36c7c263a597ecfe93d0f1c096fb20-us6'
+ENV['MC_LIST_ID'] = '9674916723'
+
+to get unicorn to auto start with server start.
+update-rc.d unicorn_usprays defaults
+
+
+vim /home/deployer/apps/usaprays/shared/config/database.yml
+-----------------------------------------------------------
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: usaprays_production
+  host: localhost
+  pool: 5
+  username: usaprays
+  password: khsf38hos98sf3wfs
+
+
+.git/config
+-----------
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[remote "origin"]
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	url = git@github.com:capitolcom/usaprays.git
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+
+ToDo 1/11/2013
+--------------
+
+1. Set up daily crontab to automate:
+	$ bundle exec rails console production
+	  > Rails.cache.clear
+
