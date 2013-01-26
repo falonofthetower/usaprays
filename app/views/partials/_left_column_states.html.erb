@@ -14,7 +14,9 @@
   <% active = params[:id] == "weekly" %>
   <%= state_nav_li('Sign Up for Weekly Email', state_subscription_path(@state, 'weekly'), 'list', active) %>
 
-  <%= state_nav_li('Make a Donation', DonationLink.url(@state.to_param), 'heart', active) %>
+  <%= state_nav_li("Make a Donation to #{UsState.names[@state.to_param]} Director", DonationLink.url(@state.to_param), 'heart', active) %>
+
+  <%= state_nav_li("Make a Donation to National Ministry", DonationLink.url('National'), 'heart', active) %>
 </ul>
 
 <div style="margin-top:1em">
