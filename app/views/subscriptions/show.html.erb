@@ -23,8 +23,8 @@ with some basic public information that will help you more effectively pray.</p>
 <%= f.input :email, input_html: {class: "xlarge"} %>
 <%= f.input :address, input_html: {class: "xlarge"} %>
 <%= f.input :city, input_html: {class: "xlarge"} %>
-<%= f.input :state, input_html: {class: "xlarge"} %>
-<%= f.input :zipcode, input_html: {class: "xlarge"} %>
+<%= f.input :state, input_html: {class: "xlarge", style: "width: 4em"}, collection: UsState.names.keys.collect { |s| s.upcase } %>
+<%= f.input :zipcode, input_html: {class: "xlarge", style: "width: 6em"} %>
 <%= f.input :cycle, as: :hidden %>
 <%= f.input :state_code, as: :hidden %>
 <div class="form-actions">
