@@ -41,27 +41,51 @@
     <%= render :partial => 'leaders/profile', locals: {leader: @leaders[3]} %>
   </div>
 
-  <div class="span3">
-    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[4]} %>
-  </div>
+  <%if @leaders[4] %>
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[4]} %>
+    </div>
+  <% end %>
 
-  <div class="span3">
-    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[5]} %>
-  </div>
+  <%if @leaders[5] %>
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[5]} %>
+    </div>
+  <% end %>
 </div>
 
 <% if @leaders[6] %>
-<div class="row-fluid">
-  <div class="span3">
-    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[6]} %>
+  <div class="row-fluid">
+    <div class="span3">
+      <%= render :partial => 'leaders/profile', locals: {leader: @leaders[6]} %>
+    </div>
+    <%if @leaders[7] %>
+      <div class="span3">
+        <%= render :partial => 'leaders/profile', locals: {leader: @leaders[7]} %>
+      </div>
+    <% end %>
+    <%if @leaders[8] %>
+      <div class="span3">
+        <%= render :partial => 'leaders/profile', locals: {leader: @leaders[8]} %>
+      </div>
+    <% end %>
   </div>
+<% end %>
 
-  <div class="span3">
-    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[7]} %>
-  </div>
-
-  <div class="span3">
-    <%= render :partial => 'leaders/profile', locals: {leader: @leaders[8]} %>
-  </div>
-</div>
+<% if @leaders[9] %>
+    <div class="row-fluid">
+      <div class="span3">
+        <%= render :partial => 'leaders/profile', locals: {leader: @leaders[9]} %>
+      </div>
+      <%if @leaders[10] %>
+          <div class="span3">
+            <%= render :partial => 'leaders/profile', locals: {leader: @leaders[10]} %>
+          </div>
+      <% end %>
+      <%if @leaders[11] %>
+          <div class="span3">
+            <%= render :partial => 'leaders/profile', locals: {leader: @leaders[11]} %>
+          </div>
+      <% end %>
+    </div>
 <% end %>

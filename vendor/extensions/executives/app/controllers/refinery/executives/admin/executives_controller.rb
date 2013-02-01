@@ -4,7 +4,7 @@ module Refinery
       class ExecutivesController < ::Refinery::AdminController
 
         crudify :'refinery/executives/executive',
-                :title_attribute => 'name', :xhr_paging => true
+                :title_attribute => 'name', :xhr_paging => true, :per_page => 250
 
       end
     end

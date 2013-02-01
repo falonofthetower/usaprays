@@ -1,3 +1,4 @@
+<% if leader && !leader.name.blank? %>
 <div class="well">
 
   <%= image_tag leader.photo_src, class: 'head-shot' %>
@@ -24,3 +25,4 @@
 <%= glyph_link_to('390_facebook', leader.facebook, "Facebook") %>
 
 </div>
+<% end %>
