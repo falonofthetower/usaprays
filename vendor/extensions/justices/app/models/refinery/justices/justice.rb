@@ -14,6 +14,7 @@ module Refinery
       def photo_src
         if photo
           self.photo.url if self.photo
+          #'Pray1Tim2.org'+self.photo.url if self.photo # this causes /assets/Pray1Tim2.org/system/images...
         else
           "placeholder.jpg"
         end
