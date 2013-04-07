@@ -21,6 +21,8 @@ class StatesController < ApplicationController
     @state = UsState.new(params[:id])
     @date = build_date
     @leaders = LegislatorSelector.for_day(@state, @date)
+    @what_to_pray_for = ['Salvation', 'Wisdom', 'Courage and Perseverance', 'Humility',
+                         'A Teachable Spirit', 'Moral Integrity', 'Self-Control'][@date.wday]
     render layout: false
   end
 
