@@ -21,6 +21,11 @@ class UsState < Struct.new(:code)
     regions %w[ak az ca co hi id mt nm nv or ut wa wy]
   end
 
+  def self.cc_states
+    # States that have a Capitol Commission State Director (accepts donations)
+    %w[ ar ca co de ga il in ks md mi mn mo nc oh pa sc tn tx va wv wy ]
+  end
+
   def self.regions(region_codes)
     region_codes.collect {|code| UsState.new(code)}
   end
