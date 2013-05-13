@@ -76,10 +76,22 @@ GEM
     dragonfly (0.9.12)
       rack
     erubis (2.7.0)
+    excon (0.21.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     fakeweb (1.3.0)
     ffi (1.0.11)
+    fog (1.9.0)
+      builder
+      excon (~> 0.14)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.0.4)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5.0)
+      ruby-hmac
+    formatador (0.2.4)
     friendly_id (4.0.9)
     gibbon (0.3.5)
       httparty (> 0.6.0)
@@ -222,6 +234,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.8.0)
+    ruby-hmac (0.4.0)
     rubyzip (0.9.9)
     sass (3.1.20)
     sass-rails (3.2.5)
@@ -277,6 +290,7 @@ DEPENDENCIES
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.1)
   fakeweb
+  fog
   gibbon
   guard-rspec
   guard-spork

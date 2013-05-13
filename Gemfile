@@ -31,6 +31,7 @@ gem "simple_form"
 
 # Content Managment
 gem 'refinerycms'
+gem 'fog' # Support for using S3 storage
 
 # Used by LeaderFinder
 gem 'httparty'
