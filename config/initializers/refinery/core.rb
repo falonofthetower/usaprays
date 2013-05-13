@@ -48,4 +48,13 @@ Refinery::Core.configure do |config|
 
   # Register extra stylesheet for backend (optional options)
   # config.register_stylesheet "custom", :media => 'screen'
+
+  Refinery::Core.configure do |config|
+    config.s3_backend = true
+    config.s3_access_key_id = 'AKIAIJJ2DUWDFU3P4GKA'
+    config.s3_secret_access_key = 'zIPceohRVHm4qTQzyKNTBfN6PHWfDskgn3fDplFL'
+    config.s3_bucket_name = 'pray1tim2_production'
+    #config.s3_region = 'fill_in_your_buckets_region_here' # this one's not always required, default is 'us-east-1'
+  end
+
 end

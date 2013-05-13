@@ -13,7 +13,8 @@ module Refinery
 
       def photo_src
         if photo
-          'http://pray1tim2.org' + self.photo.url if self.photo
+          # self.photo.url if self.photo
+          'http://' + Psp::Application.config.host_name + self.photo.url if self.photo
         else
           "placeholder.jpg"
         end

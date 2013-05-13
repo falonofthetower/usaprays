@@ -1,4 +1,7 @@
 Psp::Application.configure do
+
+  config.host_name = 'pray1tim2.org'
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

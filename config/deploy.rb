@@ -1,6 +1,7 @@
 require "bundler/capistrano"
 
-server "208.82.101.23", :web, :app, :db, primary: true
+#server "208.82.101.23", :web, :app, :db, primary: true
+server "ec2-54-225-56-222.compute-1.amazonaws.com", :web, :app, :db, primary: true
 
 set :application, "usaprays"
 set :user, "deployer"
@@ -10,7 +11,7 @@ set :use_sudo, false
 
 set :scm, 'git'
 set :repository,  "git@github.com:capitolcom/usaprays.git"
-set :branch, 'master'
+set :branch, 'move_to_aws'
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -45,8 +46,8 @@ namespace :deploy do
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
-    unless `git rev-parse HEAD` == `git rev-parse origin/master`
-      puts "WARNING: HEAD is not the same as origin/master"
+    unless `git rev-parse HEAD` == `git rev-parse origin/#{branch}`
+      puts "WARNING: HEAD is not the same as upstream origin/#{branch}"
       puts "Run `git push` to sync changes."
       exit
     end
