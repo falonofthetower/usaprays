@@ -37,7 +37,7 @@ Install Ruby via this script: https://gist.github.com/3949650
                 sudo apt-get -y install curl
                 sudo apt-get -y install build-essential # Needed to install the make command
                 sudo apt-get -y install zlib1g-dev libssl-dev libreadline-dev
-                sudo apt-get -y install libxml2-dev libxslt-dev # needed by nokogiri/capybara
+                sudo apt-get -y install libxml2-dev libxslt-dev
 
                 # Use ruby-build to install Ruby
                 clone_dir=/tmp/ruby-build-$$
@@ -109,7 +109,7 @@ Back on production server, remove default nginx site and start
 
 Set up a clean Ubuntu 12.04 dev machine
 
-Install curl
+Install curl (if not already installed)
 
     apt-get -y install curl
 
@@ -117,9 +117,9 @@ Install Ruby via this script: https://gist.github.com/3949650
 
     curl -L https://gist.github.com/raw/3949650/682b20dbb724f05b4d3d965a42dc359ebf623fb8/install-ruby | bash
 
-Install postgres and nodejs
+Install postgres, imagemagick and nodejs
 
-    aptitude -y install postgresql libpq-dev nodejs
+    aptitude -y install postgresql imagemagick libpq-dev nodejs
 
 Set up a postgres user
 
@@ -146,7 +146,7 @@ Then run guard
 
 To get unicorn to auto start with server start.
 
-    update-rc.d unicorn_usprays defaults
+    sudo update-rc.d unicorn_usaprays defaults
 
 The first time you run the tests they will be quite slow as they are actually hitting the APIs.  After that, VCR will kick in and replay the http responses so it doen't need to hit the network - making it much faster.
 
