@@ -12,10 +12,10 @@ module Refinery
       belongs_to :photo, :class_name => '::Refinery::Image'
 
       def photo_src
-        if photo
-          logger.info "[[[ In photo_src for Justices ]]]"
+        if self.photo.url
+          logger.info "[[[ In photo_src for Justices - #{self.photo.url} ]]]"
           #'http://' + Psp::Application.config.host_name + self.photo.url if self.photo
-          self.photo.url if self.photo
+          self.photo.url
         else
           "placeholder.jpg"
         end
