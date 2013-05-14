@@ -33,6 +33,7 @@ class Leader < Hashie::Mash
   end
 
   def photo_src
+    logger.info "[[[ In photo_src for Leaders ]]]"
     self['photo_src'] || "placeholder.jpg"
   end
 
