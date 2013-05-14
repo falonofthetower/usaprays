@@ -14,8 +14,8 @@ module Refinery
       def photo_src
         if photo
           # self.photo.url if self.photo
-          #'http://' + Psp::Application.config.host_name + self.photo.url if self.photo
-          self.photo.url if self.photo
+          'http://' + Psp::Application.config.host_name + self.photo.url if self.photo
+          #self.photo.url if self.photo
         else
           "placeholder.jpg"
         end
