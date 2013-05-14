@@ -1,6 +1,6 @@
 Psp::Application.configure do
 
-  config.host_name = 'pray1tim2.org'
+  config.host_name = 'localhost'
 
   # Settings specified here will take precedence over those in config/application.rb
 
