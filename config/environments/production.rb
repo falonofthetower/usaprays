@@ -1,7 +1,7 @@
 Psp::Application.configure do
 
   #config.host_name = 'pray1tim2.org'
-  config.host_name = 'http://ec2-54-225-56-222.compute-1.amazonaws.com'
+  config.host_name = 'ec2-54-225-56-222.compute-1.amazonaws.com'
 
   # Uncomment and set this to match your production URL. Used for emailing links to the CMS. (default: localhost:3000)
   # config.cms.site_domain = "www.example.com"
