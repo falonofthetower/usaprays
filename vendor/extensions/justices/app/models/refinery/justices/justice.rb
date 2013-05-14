@@ -13,8 +13,7 @@ module Refinery
 
       def photo_src
         if self.photo.url
-          logger.info "[[[ In photo_src for Justices - #{self.photo.url} ]]]"
-          #'http://' + Psp::Application.config.host_name + self.photo.url if self.photo
+          #'http://' + Psp::Application.config.host_name + self.photo.url
           self.photo.url
         else
           "placeholder.jpg"

@@ -4,8 +4,6 @@
   <%= image_tag leader.photo_src, class: 'head-shot' %>
   <h3 class="leader-name"><%= leader.name.strip %></h3><small><%= leader.title.strip %></small>
 
-[[[ photo_src = <%= leader.photo_src %> ]]]
-
 <% unless leader.district_residence.blank? %>
   <p>
   <h6>District</h6>
