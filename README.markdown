@@ -157,3 +157,9 @@ Use Unicorn to run a local dev server
 
     unicorn_rails
 
+On Server, edit crontab to add daily task for backup
+
+    sudo crontab -e
+        Add this line
+    0 3 * * * /bin/bash -l -c 'cd /home/deployer/apps/usaprays/current && RAILS_ENV=production bundle exec rake backup --silent'
+    0 5 * * * /bin/bash -l -c 'cd /home/deployer/apps/usaprays/current && RAILS_ENV=production bundle exec rake clear_cache --silent'

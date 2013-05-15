@@ -14,7 +14,7 @@ task :backup => [:environment] do
 
   #Zip up the Refinery images directories, store in /tmp/ directory
   img_backup_file = "/tmp/usaprays_production_#{datestamp}_images.gz"
-  sh "tar cvzf #{img_backup_file} /home/deployer/apps/usaprays/shared/system/refinery/"
+  sh "tar -czf #{img_backup_file} /home/deployer/apps/usaprays/shared/system/refinery"
   send_to_amazon img_backup_file, "pray1tim2-backups"
   File.delete img_backup_file  #remove the /tmp/ file on completion
 
