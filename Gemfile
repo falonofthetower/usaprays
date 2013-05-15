@@ -23,6 +23,8 @@ group :test, :development do
   gem 'fakeweb'
 end
 
+gem 'aws-s3'
+
 gem 'jquery-rails'
 
 gem 'bootstrap-sass', "~> 2.0.0"

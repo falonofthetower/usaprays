@@ -109,9 +109,12 @@ Back on production server, remove default nginx site and start
 
 Set up a clean Ubuntu 12.04 dev machine
 
+Keep the clock in sync
+    sudo apt-get -y install ntp
+
 Install curl (if not already installed)
 
-    apt-get -y install curl
+    sudo apt-get -y install curl
 
 Install Ruby via this script: https://gist.github.com/3949650
 
@@ -119,7 +122,7 @@ Install Ruby via this script: https://gist.github.com/3949650
 
 Install postgres, imagemagick and nodejs
 
-    aptitude -y install postgresql imagemagick libpq-dev nodejs
+    sudo aptitude -y install postgresql imagemagick libpq-dev nodejs
 
 Set up a postgres user
 
