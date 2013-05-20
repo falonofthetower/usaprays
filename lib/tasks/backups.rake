@@ -24,7 +24,7 @@ task :backup => [:environment] do
 
   #Discard all files in the s3 bucket for backups that are older than x days
   AWS::S3::Bucket.find(bucket).each do |bf|
-    bf.delete if bf.about['last-modified'] < Time.now - 120.days
+    bf.delete if Time.parse(bf.about['last-modified']) < (Time.now - 120.days)
   end
 
 end
