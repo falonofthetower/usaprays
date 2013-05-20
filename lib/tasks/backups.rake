@@ -23,9 +23,8 @@ task :backup => [:environment] do
   File.delete img_backup_file  #remove the /tmp/ file on completion
 
   #Discard all files in the s3 bucket for backups that are older than x days
-  datestamp -= 120.days
   AWS::S3::Bucket.find(bucket).each do |bf|
-    bf.delete if bf.about[:last-modified] < datestamp
+    bf.delete if bf.about[:last-modified] < Time.now - 120.days
   end
 
 end
