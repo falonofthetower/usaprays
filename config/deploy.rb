@@ -11,6 +11,7 @@ set :use_sudo, false
 
 set :scm, 'git'
 set :repository,  "git@github.com:capitolcom/usaprays.git"
+#set :branch, 'master'
 set :branch, 'move_to_aws'
 
 default_run_options[:pty] = true
