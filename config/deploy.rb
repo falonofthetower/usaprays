@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
 #server "208.82.101.23", :web, :app, :db, primary: true
-server "ec2-54-225-56-222.compute-1.amazonaws.com", :web, :app, :db, primary: true
+server "ec2-107-20-152-41.compute-1.amazonaws.com", :web, :app, :db, primary: true
 
 set :application, "usaprays"
 set :user, "deployer"
