@@ -1,7 +1,8 @@
 require "bundler/capistrano"
 
 #server "208.82.101.23", :web, :app, :db, primary: true
-server "ec2-107-20-152-41.compute-1.amazonaws.com", :web, :app, :db, primary: true
+#server "ec2-107-20-152-41.compute-1.amazonaws.com", :web, :app, :db, primary: true
+server "107.20.152.41", :web, :app, :db, primary: true
 
 set :application, "usaprays"
 set :user, "deployer"
@@ -11,8 +12,8 @@ set :use_sudo, false
 
 set :scm, 'git'
 set :repository,  "git@github.com:capitolcom/usaprays.git"
-#set :branch, 'master'
-set :branch, 'move_to_aws'
+set :branch, 'master'
+#set :branch, 'move_to_aws'
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
