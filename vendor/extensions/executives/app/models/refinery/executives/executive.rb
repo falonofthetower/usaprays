@@ -13,7 +13,7 @@ module Refinery
 
       def photo_src
         if photo.url
-          logger.info "[[LBH In photo_src for Executives - #{photo.url} HBL]]"
+          logger.info "[[[lbh In photo_src for Executives - #{photo.url} ]]]"
           #'http://' + Psp::Application.config.host_name + self.photo.url if self.photo
           photo.url
         else
