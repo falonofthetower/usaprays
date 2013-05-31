@@ -1,7 +1,4 @@
 Psp::Application.configure do
-
-  config.host_name = 'localhost'
-
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
