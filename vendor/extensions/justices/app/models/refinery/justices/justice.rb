@@ -11,13 +11,14 @@ module Refinery
 
       belongs_to :photo, :class_name => '::Refinery::Image'
 
-      if photo && photo.image_uid
-        # Ex: http://pray1tim2.org/system/refinery/images/2013/01/27/08_37_46_241_220px_File_Official_roberts_CJ_cropped.jpg
-        'http://pray1tim2.org/system/refinery/images/' + photo.image_uid
-      else
-        'http://pray1tim2.org/images/placeholder.jpg'
+      def photo_src
+        if photo && photo.image_uid
+          # Ex: http://pray1tim2.org/system/refinery/images/2013/01/27/08_37_46_241_220px_File_Official_roberts_CJ_cropped.jpg
+          'http://pray1tim2.org/system/refinery/images/' + photo.image_uid
+        else
+          'http://pray1tim2.org/images/placeholder.jpg'
+        end
       end
-    end
 
       def district_residence; ""; end
       def website; ""; end

@@ -2,7 +2,7 @@ require "bundler/capistrano"
 
 #server "208.82.101.23", :web, :app, :db, primary: true
 #server "ec2-107-20-152-41.compute-1.amazonaws.com", :web, :app, :db, primary: true
-server "ec2-54-226-140-8.compute-1.amazonaws.com", :web, :app, :db, primary: true
+server "ec2-54-226-96-55.compute-1.amazonaws.com", :web, :app, :db, primary: true
 #server "107.20.152.41", :web, :app, :db, primary: true
 
 set :application, "usaprays"
@@ -23,11 +23,17 @@ ssh_options[:forward_agent] = true
 after "deploy:restart", "deploy:cleanup"
 
 namespace :deploy do
-  %w[start stop restart].each do |command|
+  %w[start stop].each do |command|
     desc "#{command} unicorn server"
     task command, roles: :app, except: {no_release: true} do
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
+  end
+
+  desc 'Restart Unicorn (Zero down time, upgrade) USR2 wait for new processes to start then quit old unicorn'
+  task :restart do
+    puts "Restarting unicorn for zero down time."
+    run "/etc/init.d/unicorn_#{application} upgrade"
   end
 
   task :setup_config, roles: :app do
