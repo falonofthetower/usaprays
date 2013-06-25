@@ -10,7 +10,7 @@ Psp::Application.routes.draw do
   end
 
   match "how_to_pray" => "static#how_to_pray"
-
+  match "how_to_pray/:day" => "static#how_to_pray"
 
   match "/states/:id/email", to: "states#email", as: "state_email"
 

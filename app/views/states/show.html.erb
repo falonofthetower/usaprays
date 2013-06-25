@@ -14,8 +14,8 @@
   <div class="span6">
     <div class="hidden-phone">
       <%= render :partial => 'partials/right_column' %>
-      <h4 style="font-size:14px;text-align:center;color: #555555;padding-top: 15em">Please pray for your leaders for:</h4>
-      <h4 style="font-size:14px;text-align:center;color: #222222 !important"><%= @what_to_pray_for %></h4>
+      <p style="font-size:14px;color:#555555;padding-top:15em;" title="<%= @what_to_pray_for_message %>">Please pray today for
+      <a href='http://<%= request.env["HTTP_HOST"]%>/how_to_pray/<%= @what_to_pray_for_day %>&#35;prayfor<%= @what_to_pray_for_day %>'><%= @what_to_pray_for_text %></a></p>
     </div>
   </div>
 

@@ -2,7 +2,8 @@ require "bundler/capistrano"
 
 #server "208.82.101.23", :web, :app, :db, primary: true
 #server "ec2-107-20-152-41.compute-1.amazonaws.com", :web, :app, :db, primary: true
-server "ec2-54-226-96-55.compute-1.amazonaws.com", :web, :app, :db, primary: true
+server "ec2-54-227-35-113.compute-1.amazonaws.com", :web, :app, :db, primary: true #Staging 6/25/2013
+#server "ec2-54-226-96-55.compute-1.amazonaws.com", :web, :app, :db, primary: true
 #server "107.20.152.41", :web, :app, :db, primary: true
 
 set :application, "usaprays"

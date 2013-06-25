@@ -9,8 +9,8 @@
     </td>
     <td width="200" valign="top" style="font-size: larger;font-weight: bold;color: #747474 !important;" colspan="2">
       <%= render partial: "partials/right_column.html.erb" %>
-      <br /><h4 style="font-size:15px;text-align:center;color: #555555">Please pray for your leaders for:</h4>
-      <h4 style="font-size:15px;text-align:center;color: #222222 !important"><%= @what_to_pray_for %></h4>
+      <br /><p style="font-size: 15px;color: #555555;" title="<%= @what_to_pray_for_message %>">Please pray today for
+      <a href='http://<%= request.env["HTTP_HOST"]%>/how_to_pray/<%= @what_to_pray_for_day %>&#35;prayfor<%= @what_to_pray_for_day %>'><%= @what_to_pray_for_text %></a></p>
     </td>
   </tr>
 
