@@ -25,6 +25,8 @@ end
 
 gem 'aws-s3'
 
+gem 'oauth'
+
 gem 'jquery-rails'
 
 gem 'bootstrap-sass', "~> 2.0.0"

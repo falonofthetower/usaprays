@@ -29,17 +29,26 @@ class StatesController < ApplicationController
   end
 
   def show
-    cookies[:state_code] = params[:id]
-    @state = UsState.new(params[:id])
-    @date = build_date
-    @leaders = LeaderSelector.for_day(@state, @date)
-    d = (Date.new(2000,1,1)-@date).to_i % 9
-    @what_to_pray_for_text = WHAT_TO_PRAY_FOR[d]
-    @what_to_pray_for_message = WHAT_TO_PRAY_FOR_MESSAGE[d]
-    @what_to_pray_for_day = (d+1).to_s
-    respond_to do |format|
-      format.html
-      format.rss { render :layout => false } #show.rss.builder
+    st = params[:id]
+    unless st.nil?
+      st.downcase!
+      if UsState.names.has_key?(st)
+        cookies[:state_code] = st
+        @state = UsState.new(st)
+        @date = build_date
+        @leaders = LeaderSelector.for_day(@state, @date)
+        d = (Date.new(2000,1,1)-@date).to_i % 9
+        @what_to_pray_for_text = WHAT_TO_PRAY_FOR[d]
+        @what_to_pray_for_message = WHAT_TO_PRAY_FOR_MESSAGE[d]
+        @what_to_pray_for_day = (d+1).to_s
+        respond_to do |format|
+          format.html
+          format.rss { render :layout => false } #show.rss.builder
+        end
+      else
+        #redirect_to "#{Rails.root}/public/404"
+        redirect_to "/public/404"
+      end
     end
   end
 
