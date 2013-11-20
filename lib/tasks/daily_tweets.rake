@@ -1,16 +1,34 @@
 require 'aws/s3'
 require 'csv'
+require 'oauth'
+
+TITLE_ABBV = [
+    # Legislators from http://publicservantsprayer.org/
+    ['US Representative', '?'],
+    ['Representative', '??'],
+    ['US Senator', '???'],
+    ['Senator', '????'],
+    ['Assemblymember', '?????'],
+    ['Delegate', '??????'],
+    # Executives from Refinery
+    ['Governor', 'Gov'],
+    ['Lt. Governor', 'LtGov'],
+    ['Lt Governor', 'LtGov'],
+    ['Secretary of State', 'SOS'],
+    ['Attorney General', 'AG'],
+    ['Secretary of the Commonwealth', 'SOC'],
+    ['Senate President', 'SP'],
+    ['Speaker of the House of Representatives', 'Spkr'],
+    ['President Pro Tempore of Senate', 'Sen'],
+    ['President of the United States', 'Pres'],
+    ['Vice President of the United States', 'VP'],
+    # Justices from Refinery
+    ['Associate Justice', 'AJ'],
+    ['Chief Justice of the United States', 'CJ']
+]
 
 desc "Tweet to all the states"
 task :daily_tweets => [:environment] do
-
-  # This uses twitter @testdudette which uses a8144@hotmail.com, password = pw123pw
-  #CONSUMER_KEY = "i0xhsUkBDewLZGjS6yKIuQ"
-  #CONSUMER_SECRET = "xgEze98O6FGNdyPbby2SatrWVYFpdwXQAHO0F9VB0"
-  #ACCESS_TOKEN = "2153294598-UVVa97lBxLUbZm2aVGYEG2vigUY3QQ2ktuDWyaf"
-  #ACCESS_TOKEN_SECRET = "zkvPwssHuoZ9XwGwyRKtiXwumzJ7g3Q80N8T50DWrBiTv"
-
-  require 'oauth'
 
   def prepare_access_token(consumer_key, consumer_secret, oauth_token, oauth_token_secret)
     consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
@@ -34,42 +52,37 @@ task :daily_tweets => [:environment] do
     end
     st=row[0].downcase
     @state = UsState.new(st)
-    @date = Date.today()
-    @leaders = LeaderSelector.for_day(@state, @date)
+    @leaders = LeaderSelector.for_day(@state, Date.today())
 
     tweet = 'http://pray1tim2.org/s/'+st+' Please pray for:'
     @leaders.each do |l|
-      title = l.title
-
-      tweet += ' '+title+' '+last_name(l.name)  #{l.name}) >> #{l.title}" }
+      title = l.title || ''
+      unless title.blank?
+        TITLE_ABBV.each do | title__abbv |
+          if title.index(title__abbv[0])
+            title = title__abbv[1]
+            next
+          end
+        end
+      end
+      tweet += ' ' + title unless title.blank?
+      tweet += ' ' + last_name(l.name)
     end
+
+    puts tweet
 
     # Use the access token to post my status, Note that POSTing requires read/write access to the app and user
-    update_hash = {'status' => tweet}
+    #update_hash = {'status' => tweet}
+    #access_token = prepare_access_token(row[1], row[2], row[3], row[4])
+    #response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
 
-    access_token = prepare_access_token(row[1], row[2], row[3], row[4])
-    response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
-
-    unless response == '200'
-      msg = Time.now.to_s + " Response for #{st} is #{response.inspect}"
-      `echo #{msg} >> twitter_states_credentials.msg`
-    end
+    #unless response == '200'
+    #  msg = Time.now.to_s + " Response for #{st} is #{response.inspect}"
+    #  `echo #{msg} >> twitter_states_credentials.msg`
+    #end
 
   end
 
 end
 
-=begin
 
-President of the United States = Pres
-Vice President of the United States = VP
-Governor of \a+ = Gov
-Lt. Governor = LtGov
-XX Secretary of State = SOS
-
-
-Chief Justice of Supreme Court = CJus
-Justice of Suprement Court = Jus
-
-
-=end
