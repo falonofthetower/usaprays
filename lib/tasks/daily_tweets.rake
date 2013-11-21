@@ -4,12 +4,12 @@ require 'oauth'
 
 TITLE_ABBV = [
     # Legislators from http://publicservantsprayer.org/
-    ['US Representative', '?'],
-    ['Representative', '??'],
-    ['US Senator', '???'],
-    ['Senator', '????'],
-    ['Assemblymember', '?????'],
-    ['Delegate', '??????'],
+    ['US Representative', 'US Rep'],
+    ['Representative', 'Rep'],
+    ['US Senator', 'US Sen'],
+    ['Senator', 'Sen'],
+    ['Assemblymember', 'AM'],
+    ['Delegate', 'Del'],
     # Executives from Refinery
     ['Governor', 'Gov'],
     ['Lt. Governor', 'LtGov'],
@@ -72,17 +72,15 @@ task :daily_tweets => [:environment] do
     puts tweet
 
     # Use the access token to post my status, Note that POSTing requires read/write access to the app and user
-    #update_hash = {'status' => tweet}
-    #access_token = prepare_access_token(row[1], row[2], row[3], row[4])
-    #response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
+    update_hash = {'status' => tweet}
+    access_token = prepare_access_token(row[1], row[2], row[3], row[4])
+    response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
 
-    #unless response == '200'
-    #  msg = Time.now.to_s + " Response for #{st} is #{response.inspect}"
-    #  `echo #{msg} >> twitter_states_credentials.msg`
-    #end
+    unless response == '200'
+      msg = Time.now.to_s + " Response for #{st} is #{response.inspect}"
+      `echo #{msg} >> twitter_states_messages.msg`
+    end
 
   end
 
 end
-
-
