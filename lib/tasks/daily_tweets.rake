@@ -69,8 +69,6 @@ task :daily_tweets => [:environment] do
       tweet += ' ' + last_name(l.name)
     end
 
-    puts tweet
-
     # Use the access token to post my status, Note that POSTing requires read/write access to the app and user
     update_hash = {'status' => tweet}
     access_token = prepare_access_token(row[1], row[2], row[3], row[4])
