@@ -44,6 +44,8 @@ task :daily_tweets => [:environment] do
     $1
   end
 
+  start=Time.now
+  Rails.logger.info start.to_s + " Processing daily_tweets.."
   past_first_row = false
   CSV.foreach("twitter_states_credentials.csv") do |row|
     unless past_first_row
@@ -80,5 +82,8 @@ task :daily_tweets => [:environment] do
     end
 
   end
+
+  finish = Time.now
+  Rails.logger.info finish.to_s + "daily_tweets finished - #{(finish-start).round.to_s} seconds."
 
 end
