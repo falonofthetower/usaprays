@@ -48,6 +48,7 @@ task :daily_tweets => [:environment] do
   Rails.logger.info start.to_s + " Processing daily_tweets.."
   past_first_row = false
   CSV.foreach("twitter_states_credentials.csv") do |row|
+    Rails.logger.info "Tweeting: #{row.inspect}"
     unless past_first_row
       past_first_row = true
       next
