@@ -2,6 +2,20 @@ require 'aws/s3'
 require 'csv'
 require 'oauth'
 
+def prepare_access_token(consumer_key, consumer_secret, oauth_token, oauth_token_secret)
+  consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
+                                 { :site => "https://api.twitter.com", :scheme => :header })
+  token_hash = { :oauth_token => oauth_token, :oauth_token_secret => oauth_token_secret }
+  OAuth::AccessToken.from_hash(consumer, token_hash )
+end
+
+def last_name(name)
+  # regex to find the last name of a person.
+  # Comma followed by suffix (, Jr.) is ignored if present.
+  name =~ /(\w*)\s*(,.*)*\z/
+  $1
+end
+
 TITLE_ABBV = [
     # Legislators from http://publicservantsprayer.org/
     ['US Representative', 'US Rep'],
@@ -20,8 +34,8 @@ TITLE_ABBV = [
     ['Senate President', 'SP'],
     ['Speaker of the House of Representatives', 'Spkr'],
     ['President Pro Tempore of Senate', 'Sen'],
+    ['Vice President of the United States', 'VP'], # Order is important here...
     ['President of the United States', 'Pres'],
-    ['Vice President of the United States', 'VP'],
     # Justices from Refinery
     ['Associate Justice', 'AJ'],
     ['Chief Justice of the United States', 'CJ']
@@ -30,25 +44,11 @@ TITLE_ABBV = [
 desc "Tweet to all the states"
 task :daily_tweets => [:environment] do
 
-  def prepare_access_token(consumer_key, consumer_secret, oauth_token, oauth_token_secret)
-    consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
-                                   { :site => "https://api.twitter.com", :scheme => :header })
-    token_hash = { :oauth_token => oauth_token, :oauth_token_secret => oauth_token_secret }
-    OAuth::AccessToken.from_hash(consumer, token_hash )
-  end
-
-  def last_name(name)
-    # regex to find the last name of a person.
-    # Comma followed by suffix (, Jr.) is ignored if present.
-    name =~ /(\w*)\s*(,.*)*\z/
-    $1
-  end
-
   start=Time.now
-  Rails.logger.info start.to_s + " Processing daily_tweets.."
+  uniq = start.to_i.to_s
+  Rails.logger.info ">>>>> #{start.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) Processing daily_tweets..."
   past_first_row = false
   CSV.foreach("twitter_states_credentials.csv") do |row|
-    Rails.logger.info "Tweeting: #{row.inspect}"
     unless past_first_row
       past_first_row = true
       next
@@ -72,19 +72,22 @@ task :daily_tweets => [:environment] do
       tweet += ' ' + last_name(l.name)
     end
 
+    Rails.logger.info ">>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Tweeting: #{row.inspect} ---> #{tweet}"
     # Use the access token to post my status, Note that POSTing requires read/write access to the app and user
     update_hash = {'status' => tweet}
     access_token = prepare_access_token(row[1], row[2], row[3], row[4])
+
     response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
 
-    unless response == '200'
-      msg = Time.now.to_s + " Response for #{st} is #{response.inspect}"
-      `echo #{msg} >> twitter_states_messages.msg`
+    unless response.to_s =~ /.*HTTPOK/
+      msg = ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
+      msg += ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" unless response.body.blank?
+      File.open('twitter_states_messages.msg','a') { |f| f.write(msg) }
     end
 
   end
 
   finish = Time.now
-  Rails.logger.info finish.to_s + "daily_tweets finished - #{(finish-start).round.to_s} seconds."
+  Rails.logger.info ">>>>> #{finish.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) daily_tweets finished - #{(finish-start).round.to_s} seconds."
 
 end
