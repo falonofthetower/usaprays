@@ -166,3 +166,6 @@ On Server, edit crontab to add daily tasks for backing up and clearing the cache
     0 6 * * * /bin/bash -l -c 'cd /home/deployer/apps/usaprays/current && sudo RAILS_ENV=production bundle exec rake daily_tweets --silent'
 
 2013-11-20 Loren: After a deploy, I had to restart the server. I think the /etc/init.d/unicorn_usaprays script may be wrong for the upgrade command.
+
+On dev machine you can:
+    bundle exec rails console
