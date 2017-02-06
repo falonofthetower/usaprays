@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 
 gem 'rails', '3.2.11'
 
@@ -57,3 +58,7 @@ gem 'capistrano'
 
 gem 'refinerycms-justices', :path => 'vendor/extensions'
 gem 'refinerycms-executives', :path => 'vendor/extensions'
+gem 'rake', '< 11.0'
+gem 'pry-rails', :group => :development
+
+gem 'rails_12factor', group: :production

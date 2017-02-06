@@ -50,6 +50,7 @@ class MailChimp
 
     def id_of_segment(name)
       name_ids = {}
+      require 'pry'; binding.pry;
       segments.each do |segment|
         name_ids[segment['name']] = segment['id']
       end

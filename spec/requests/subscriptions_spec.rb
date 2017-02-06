@@ -13,6 +13,7 @@ describe "Subscription pages" do
 
   it "allows subscription to state daily email list" do
     VCR.use_cassette('subscription/subscription_daily') do
+      fill_in 'Name', with: 'Joe Smith' 
       fill_in 'Email', with: 'joe@smith.com' 
       click_on 'Subscribe'
       page.should have_content('Success')

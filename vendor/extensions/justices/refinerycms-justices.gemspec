@@ -3,6 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-justices'
+  s.authors           = ['Unknown']
   s.version           = '1.0'
   s.description       = 'Ruby on Rails Justices extension for Refinery CMS'
   s.date              = '2012-11-13'
