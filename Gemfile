@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.1.10'
 
 gem 'rails', '3.2.11'
 
@@ -60,3 +60,5 @@ gem 'refinerycms-justices', :path => 'vendor/extensions'
 gem 'refinerycms-executives', :path => 'vendor/extensions'
 
 gem 'rails_12factor', group: :production
+
+gem 'kgio', '~> 2.10'
