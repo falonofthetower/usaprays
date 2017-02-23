@@ -62,3 +62,4 @@ gem 'refinerycms-executives', :path => 'vendor/extensions'
 gem 'rails_12factor', group: :production
 
 gem 'kgio', '~> 2.10'
+gem 'figaro'
