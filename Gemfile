@@ -57,3 +57,5 @@ gem 'capistrano'
 
 gem 'refinerycms-justices', :path => 'vendor/extensions'
 gem 'refinerycms-executives', :path => 'vendor/extensions'
+
+gem 'rails_12factor', group: :production

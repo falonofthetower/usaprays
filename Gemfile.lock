@@ -99,8 +99,6 @@ GEM
     friendly_id (4.0.9)
     gibbon (0.3.5)
       httparty (> 0.6.0)
-      httparty (> 0.6.0)
-      json (> 1.4.0)
       json (> 1.4.0)
       rdoc
     globalize3 (0.2.0)
@@ -171,6 +169,11 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
@@ -307,6 +310,7 @@ DEPENDENCIES
   oauth
   pg
   rails (= 3.2.11)
+  rails_12factor
   refinerycms
   refinerycms-executives!
   refinerycms-justices!
@@ -317,3 +321,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   vcr
+
+BUNDLED WITH
+   1.14.3
