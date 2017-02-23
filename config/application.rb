@@ -66,6 +66,6 @@ module Psp
     config.assets.precompile += ["*.js", "cms/*.css", "cms/*.js", "bcms/*.js"]
 
     # Let Heroku precompile assets
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
   end
 end
