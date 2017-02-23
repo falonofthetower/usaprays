@@ -64,5 +64,8 @@ module Psp
 
     # Work around this bug: https://github.com/browsermedia/browsercms/issues/553
     config.assets.precompile += ["*.js", "cms/*.css", "cms/*.js", "bcms/*.js"]
+
+    # Let Heroku precompile assets
+    config.assets.initialize_on_precompile = false
   end
 end
