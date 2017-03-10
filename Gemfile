@@ -20,7 +20,7 @@ group :test, :development do
   gem 'capybara', '1.1.2'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'vcr'
+  gem 'vcr', '~> 2.4.0'
   gem 'fakeweb'
 end
 
@@ -63,3 +63,6 @@ gem 'rails_12factor', group: :production
 
 gem 'kgio', '~> 2.10'
 gem 'figaro'
+gem 'koala'
+
+gem 'pry-rails', :group => :development

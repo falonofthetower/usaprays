@@ -47,6 +47,19 @@ describe "States page", :skip => false do
       name.should_not == find(".leader-name").text
     end
 
+    it "shows a different topic for each day" do
+      visit jan_1_url
+      message = find(".message").text
+      visit jan_2_url
+      message.should_not == find(".message").text
+    end
+
+    it "It has the SALVATION message the first day" do
+      visit jan_1_url
+      message = find(".message").text
+      message.should include("SALVATION")
+    end
+
     it "shows specific state" do
       visit jan_1_url
       page.should have_content("Indiana")
