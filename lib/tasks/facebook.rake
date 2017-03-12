@@ -19,7 +19,12 @@ namespace :facebook do
         picture = ENV["FACEBOOK_PICTURE"]
         description = "You are invited to join us as we pray daily for these elected officals. Pray1Tim2 is a ministry of Capitol Commission."
         Rails.logger.info "Pushing Facebook Post for #{state}"
-        @page_graph.put_wall_post(post, link: link, picture: picture, description: description, scheduled_publish_time: DateTime.now.change({hour: 9, min: 0, sec: 0}).to_i , published: false)
+        begin
+
+          @page_graph.put_wall_post(post, link: link, picture: picture, description: description, scheduled_publish_time: DateTime.now.change({hour: 19, min: 0, sec: 0}).to_i , published: false)
+        rescue Exception => e
+          Rails.logger.info e
+        end
         task.last = DateTime.now
         task.save
       end
