@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113122648) do
+ActiveRecord::Schema.define(:version => 20170412190634) do
 
   create_table "refinery_executives", :force => true do |t|
     t.string   "name"
@@ -174,5 +174,12 @@ ActiveRecord::Schema.define(:version => 20121113122648) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "index_seo_meta_on_seo_meta_id_and_seo_meta_type"
+
+  create_table "slugs", :force => true do |t|
+    t.string   "path"
+    t.string   "know_who_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

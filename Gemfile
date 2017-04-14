@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.1.5'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 
 # Postgresql
 gem 'pg'
@@ -48,7 +48,7 @@ gem 'hashie'
 gem "gibbon"
 
 # Use unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'
@@ -62,3 +62,5 @@ gem 'rake', '< 11.0'
 gem 'pry-rails', :group => :development
 
 gem 'rails_12factor', group: :production
+gem 'savon'
+gem 'figaro'

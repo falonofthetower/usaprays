@@ -11,7 +11,8 @@ describe Leader do
   end
 
   it "returns its own state" do
-    ron = LeaderFinder.find('us-rep-ron-paul')
+    LeaderFinder.us_house('tx')
+    ron = LeaderFinder.find('us-rep-tx-louie-gohmert')
     ron.state.should == UsState.new('tx')
   end
 end
