@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.knowwho.info/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.knowwho.info/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.knowwho.info/">
+      <s:element name="GetDistricts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDistrictsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDistrictsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeople">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeopleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeopleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommittees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommitteesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommitteesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByDistrict">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByDistrictResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByDistrictResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByChamber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByChamberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByChamberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByCommittee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByCommitteeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByCommitteeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByAddressResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDistrictsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDistricts" />
+  </wsdl:message>
+  <wsdl:message name="GetDistrictsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDistrictsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPeopleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPeople" />
+  </wsdl:message>
+  <wsdl:message name="GetPeopleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPeopleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommitteesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommittees" />
+  </wsdl:message>
+  <wsdl:message name="GetCommitteesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommitteesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByDistrictSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByDistrict" />
+  </wsdl:message>
+  <wsdl:message name="SearchByDistrictSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByDistrictResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByChamberSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByChamber" />
+  </wsdl:message>
+  <wsdl:message name="SearchByChamberSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByChamberResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByID" />
+  </wsdl:message>
+  <wsdl:message name="SearchByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByCommitteeSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByCommittee" />
+  </wsdl:message>
+  <wsdl:message name="SearchByCommitteeSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByCommitteeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByAddress" />
+  </wsdl:message>
+  <wsdl:message name="SearchByAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetService" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ElectedOfficialsDirectoryServiceSoap">
+    <wsdl:operation name="GetDistricts">
+      <wsdl:input message="tns:GetDistrictsSoapIn" />
+      <wsdl:output message="tns:GetDistrictsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeople">
+      <wsdl:input message="tns:GetPeopleSoapIn" />
+      <wsdl:output message="tns:GetPeopleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommittees">
+      <wsdl:input message="tns:GetCommitteesSoapIn" />
+      <wsdl:output message="tns:GetCommitteesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByDistrict">
+      <wsdl:input message="tns:SearchByDistrictSoapIn" />
+      <wsdl:output message="tns:SearchByDistrictSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByChamber">
+      <wsdl:input message="tns:SearchByChamberSoapIn" />
+      <wsdl:output message="tns:SearchByChamberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByID">
+      <wsdl:input message="tns:SearchByIDSoapIn" />
+      <wsdl:output message="tns:SearchByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByCommittee">
+      <wsdl:input message="tns:SearchByCommitteeSoapIn" />
+      <wsdl:output message="tns:SearchByCommitteeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByAddress">
+      <wsdl:input message="tns:SearchByAddressSoapIn" />
+      <wsdl:output message="tns:SearchByAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetService">
+      <wsdl:input message="tns:GetServiceSoapIn" />
+      <wsdl:output message="tns:GetServiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ElectedOfficialsDirectoryServiceSoap" type="tns:ElectedOfficialsDirectoryServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDistricts">
+      <soap:operation soapAction="http://www.knowwho.info/GetDistricts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeople">
+      <soap:operation soapAction="http://www.knowwho.info/GetPeople" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommittees">
+      <soap:operation soapAction="http://www.knowwho.info/GetCommittees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByDistrict">
+      <soap:operation soapAction="http://www.knowwho.info/SearchByDistrict" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByChamber">
+      <soap:operation soapAction="http://www.knowwho.info/SearchByChamber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByID">
+      <soap:operation soapAction="http://www.knowwho.info/SearchByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByCommittee">
+      <soap:operation soapAction="http://www.knowwho.info/SearchByCommittee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByAddress">
+      <soap:operation soapAction="http://www.knowwho.info/SearchByAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetService">
+      <soap:operation soapAction="http://www.knowwho.info/GetService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ElectedOfficialsDirectoryServiceSoap12" type="tns:ElectedOfficialsDirectoryServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDistricts">
+      <soap12:operation soapAction="http://www.knowwho.info/GetDistricts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeople">
+      <soap12:operation soapAction="http://www.knowwho.info/GetPeople" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommittees">
+      <soap12:operation soapAction="http://www.knowwho.info/GetCommittees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByDistrict">
+      <soap12:operation soapAction="http://www.knowwho.info/SearchByDistrict" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByChamber">
+      <soap12:operation soapAction="http://www.knowwho.info/SearchByChamber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByID">
+      <soap12:operation soapAction="http://www.knowwho.info/SearchByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByCommittee">
+      <soap12:operation soapAction="http://www.knowwho.info/SearchByCommittee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByAddress">
+      <soap12:operation soapAction="http://www.knowwho.info/SearchByAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetService">
+      <soap12:operation soapAction="http://www.knowwho.info/GetService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ElectedOfficialsDirectoryService">
+    <wsdl:port name="ElectedOfficialsDirectoryServiceSoap" binding="tns:ElectedOfficialsDirectoryServiceSoap">
+      <soap:address location="http://knowwho.info/Services/ElectedOfficialsDirectoryService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ElectedOfficialsDirectoryServiceSoap12" binding="tns:ElectedOfficialsDirectoryServiceSoap12">
+      <soap12:address location="http://knowwho.info/Services/ElectedOfficialsDirectoryService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
