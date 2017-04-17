@@ -103,12 +103,18 @@ class LeaderFinder
         results = client.call(:search_by_chamber, message: { 'InputString' => json(endpoint, page_counter) })
         json_result = JSON.parse results.to_json
         hash = JSON.parse json_result["search_by_chamber_response"]["search_by_chamber_result"]
-        result_set += hash["KnowWho"][chamber]
-        total_pages = hash["KnowWho"]["Customer"]["TotalPages"]
-        finished = (total_pages.to_i == page_counter)
-        page_counter += 1
-        puts page_counter
-        puts result_set.size
+        if hash["KnowWho"]["Customer"]["ReturnCode"] == "OK"
+          result_set += hash["KnowWho"][chamber]
+          total_pages = hash["KnowWho"]["Customer"]["TotalPages"]
+          finished = (total_pages.to_i == page_counter)
+          page_counter += 1
+          puts page_counter
+          puts result_set.size
+        else
+          Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
+          result_set = []
+          finished = true
+        end
       end
       result_set
     end
