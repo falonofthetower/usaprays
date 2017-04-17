@@ -84,7 +84,7 @@ GEM
     dragonfly (0.9.12)
       rack
     erubis (2.7.0)
-    excon (0.21.0)
+    excon (0.50.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     fakeweb (1.3.0)
@@ -325,6 +325,7 @@ DEPENDENCIES
   capistrano
   capybara (= 1.1.2)
   coffee-rails (~> 3.2.1)
+  excon (~> 0.50.0)
   fakeweb
   figaro
   fog
@@ -345,7 +346,7 @@ DEPENDENCIES
   refinerycms-justices!
   rspec-rails (= 2.8.1)
   sass-rails (~> 3.2.3)
-  savon
+  savon (~> 2.11.1)
   simple_form
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)

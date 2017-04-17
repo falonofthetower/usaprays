@@ -62,5 +62,6 @@ gem 'rake', '< 11.0'
 gem 'pry-rails', :group => :development
 
 gem 'rails_12factor', group: :production
-gem 'savon'
+gem 'savon', '~> 2.11.1'
 gem 'figaro'
+gem 'excon', '~> 0.50.0'
