@@ -112,10 +112,11 @@ class LeaderFinder
           page_counter += 1
           puts page_counter
           puts result_set.size
+          sleep 5
         else
           Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
           Rails.logger.error results
-          result_set = []
+          # result_set = []
           finished = true
         end
       end
