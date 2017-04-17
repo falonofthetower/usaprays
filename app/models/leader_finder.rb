@@ -51,7 +51,6 @@ class LeaderFinder
   private
 
   def self.get(params, options={})
-    require 'pry'; binding.pry;
     result = client.call(:search_by_id, message: { 'InputString' => json(params) })
     json_result = JSON.parse result.to_json
     hash = JSON.parse json_result["search_by_id_response"]["search_by_id_result"]
@@ -101,7 +100,6 @@ class LeaderFinder
       page_counter = 1
       result_set = []
       until finished
-        require 'pry'; binding.pry;
         results = client.call(:search_by_chamber, message: { 'InputString' => json(endpoint, page_counter) })
         json_result = JSON.parse results.to_json
         hash = JSON.parse json_result["search_by_chamber_response"]["search_by_chamber_result"]
