@@ -78,14 +78,8 @@ class LeaderFinder
 
   def self.get_leaders(params)
     result_set = cached_get(params)
-    formatted_result = []
-    result_set.each do |leader|
-      formatted_result << LeaderFormatter.new(leader).to_hash
-    end
-
-    # results = cached_get(endpoint)
     leaders = []
-    formatted_result.each do |data|
+    result_set.each do |data|
       leader = Leader.new
       leader.setup(data)
       leaders << Leader.new(leader)
@@ -124,7 +118,50 @@ class LeaderFinder
           finished = true
         end
       end
-      result_set
+      formatted_result = []
+      result_set.each do |leader|
+        formatted_result << LeaderFormatter.new(leader).to_hash
+      end
+      formatted_result
+    end
+  end
+
+  def self.cached_get(endpoint)
+    # Rails.cache.delete(endpoint)
+    Rails.cache.fetch(endpoint) do
+      chamber = !endpoint.scan(/US/).empty? ? "USGovernment" : "StateGovernment"
+      finished = false
+      page_counter = 1
+      result_set = []
+      until finished
+        results = client.call(:search_by_chamber, message: { 'InputString' => json(endpoint, page_counter) })
+        count = Count.first
+        count.count += 1
+        count.save
+        Rails.logger.info "***Requests @#{$requests}***"
+        json_result = JSON.parse results.to_json
+        hash = JSON.parse json_result["search_by_chamber_response"]["search_by_chamber_result"]
+        Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
+        Rails.logger.error results
+        if hash["KnowWho"]["Customer"]["ReturnCode"] == "OK"
+          result_set += hash["KnowWho"][chamber]
+          total_pages = hash["KnowWho"]["Customer"]["TotalPages"]
+          finished = (total_pages.to_i == page_counter)
+          page_counter += 1
+          puts page_counter
+          puts result_set.size
+        else
+          Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
+          Rails.logger.error results
+          # result_set = []
+          finished = true
+        end
+      end
+      formatted_result = []
+      result_set.each do |leader|
+        formatted_result << LeaderFormatter.new(leader).to_hash
+      end
+      formatted_result
     end
   end
 end
