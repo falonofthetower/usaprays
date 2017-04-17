@@ -112,6 +112,7 @@ class LeaderFinder
           puts result_set.size
         else
           Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
+          Rails.logger.error results
           result_set = []
           finished = true
         end
