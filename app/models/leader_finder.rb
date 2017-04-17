@@ -1,10 +1,9 @@
 class LeaderFinder
 
+  @@requests = 0
   def self.find(slug)
-    # know_who_id = Slug.find_by_path(slug).know_who_id
-    # chamber = level(slug)
-    chamber = "US"
-    know_who_id = "248425"
+    know_who_id = Slug.find_by_path(slug).know_who_id
+    chamber = level(slug)
 
     result = get '{ "PersonIDs": "' + know_who_id + '" }', { chamber: "#{chamber}Government" }
     leader = Leader.new
@@ -52,6 +51,7 @@ class LeaderFinder
 
   def self.get(params, options={})
     result = client.call(:search_by_id, message: { 'InputString' => json(params) })
+    @@requests += 1
     json_result = JSON.parse result.to_json
     hash = JSON.parse json_result["search_by_id_response"]["search_by_id_result"]
     array = hash["KnowWho"][options[:chamber]]
@@ -101,6 +101,7 @@ class LeaderFinder
       result_set = []
       until finished
         results = client.call(:search_by_chamber, message: { 'InputString' => json(endpoint, page_counter) })
+        @@requests += 1
         json_result = JSON.parse results.to_json
         hash = JSON.parse json_result["search_by_chamber_response"]["search_by_chamber_result"]
         Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
@@ -112,7 +113,6 @@ class LeaderFinder
           page_counter += 1
           puts page_counter
           puts result_set.size
-          sleep 5
         else
           Rails.logger.error hash["KnowWho"]["Customer"]["ReturnCode"]
           Rails.logger.error results
