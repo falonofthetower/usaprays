@@ -1,19 +1,10 @@
 class LeaderFinder
 
   def self.find(slug)
-    know_who_id = Slugifier.deconstruct(slug)[:know_who_id]
-    if know_who_id.nil?
-      require 'pry'; binding.pry;
-    end
-    # begin
-    #   know_who_id = slug_map.know_who_id
-    # rescue NoMethodError
-    #   Slugifier.deconstruct(slug)
-    #   slug_map = Slug.find_by_path(slug)
-    #   know_who_id = slug_map.know_who_id
-    # end
-
-    chamber = level(slug)
+    # know_who_id = Slug.find_by_path(slug).know_who_id
+    # chamber = level(slug)
+    chamber = "US"
+    know_who_id = "248425"
 
     result = get '{ "PersonIDs": "' + know_who_id + '" }', { chamber: "#{chamber}Government" }
     leader = Leader.new
@@ -60,6 +51,7 @@ class LeaderFinder
   private
 
   def self.get(params, options={})
+    require 'pry'; binding.pry;
     result = client.call(:search_by_id, message: { 'InputString' => json(params) })
     json_result = JSON.parse result.to_json
     hash = JSON.parse json_result["search_by_id_response"]["search_by_id_result"]
@@ -71,7 +63,13 @@ class LeaderFinder
   end
 
   def self.client
-    Savon.client(wsdl: 'http://knowwho.info/Services/ElectedOfficialsDirectoryService.asmx?WSDL')
+    proxy = ENV["QUOTAGUARDSTATIC_URL"] if ENV["QUOTAGUARDSTATIC_URL"]
+    wsdl ='http://knowwho.info/Services/ElectedOfficialsDirectoryService.asmx?WSDL'
+
+    Savon.client do |savon|
+      savon.wsdl wsdl
+      savon.proxy proxy if proxy
+    end
   end
 
   def self.json(params, page_number=1)
@@ -103,6 +101,7 @@ class LeaderFinder
       page_counter = 1
       result_set = []
       until finished
+        require 'pry'; binding.pry;
         results = client.call(:search_by_chamber, message: { 'InputString' => json(endpoint, page_counter) })
         json_result = JSON.parse results.to_json
         hash = JSON.parse json_result["search_by_chamber_response"]["search_by_chamber_result"]
