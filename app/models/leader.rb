@@ -21,7 +21,7 @@ class Leader < Hashie::Mash
   end
 
   def name
-    self['name'] || ""
+    CGI.unescapeHTML self['name'] || ""
   end
 
   def title 
