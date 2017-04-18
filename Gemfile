@@ -65,4 +65,5 @@ gem 'rails_12factor', group: :production
 gem 'savon', '~> 2.11.1'
 gem 'figaro'
 gem 'excon', '~> 0.50.0'
+gem 'iron_cache_rails'
 # gem 'dalli'

@@ -17,7 +17,7 @@ class Leader < Hashie::Mash
   end
 
   def district_residence
-    [district, residence].reject{|i|i.blank?}.join(" - ")
+    [district.upcase, residence].reject{|i|i.blank?}.join(" - ")
   end
 
   def name

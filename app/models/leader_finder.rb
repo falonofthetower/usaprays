@@ -50,9 +50,9 @@ class LeaderFinder
 
   def self.get(params, options={})
     result = client.call(:search_by_id, message: { 'InputString' => json(params) })
-    count = Count.first
-    count.count += 1
-    count.save
+    # count = Count.first
+    # count.count += 1
+    # count.save
     json_result = JSON.parse result.to_json
     hash = JSON.parse json_result["search_by_id_response"]["search_by_id_result"]
     array = hash["KnowWho"][options[:chamber]]
@@ -135,9 +135,9 @@ class LeaderFinder
       result_set = []
       until finished
         results = client.call(:search_by_chamber, message: { 'InputString' => json(endpoint, page_counter) })
-        count = Count.first
-        count.count += 1
-        count.save
+        # count = Count.first
+        # count.count += 1
+        # count.save
         Rails.logger.info "***Requests @#{$requests}***"
         json_result = JSON.parse results.to_json
         hash = JSON.parse json_result["search_by_chamber_response"]["search_by_chamber_result"]
