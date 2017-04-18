@@ -1,6 +1,6 @@
 class Slugifier
   def self.construct(title, first_name, last_name, state_code)
-    [construct_chamber(title), state_code, first_name.downcase, last_name.downcase].join('-')
+    [construct_chamber(title), state_code, first_name.downcase.tr('.', ''), last_name.downcase.tr('.', '')].join('-')
   end
 
   def self.construct_chamber(title)
