@@ -215,6 +215,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.2.2)
     refinerycms (2.0.8)
       bundler (~> 1.0)
       refinerycms-authentication (= 2.0.8)
@@ -353,6 +354,7 @@ DEPENDENCIES
   rails
   rails_12factor
   rake (< 11.0)
+  redis
   refinerycms
   refinerycms-executives!
   refinerycms-justices!
