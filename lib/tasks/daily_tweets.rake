@@ -17,7 +17,7 @@ def last_name(name)
 end
 
 TITLE_ABBV = [
-    # Legislators from http://publicservantsprayer.org/
+    # Legislators from http://knowwho
     ['US Representative', 'US Rep'],
     ['Representative', 'Rep'],
     ['US Senator', 'US Sen'],
