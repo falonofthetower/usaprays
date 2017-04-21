@@ -20,5 +20,5 @@
 </ul>
 
 <div style="margin-top:1em">
-  <%= image_tag "http://publicservantsprayer.org/assets/capitols/#{@state.code}-400.png" %>
+  <%= image_tag "#{ENV["base_url"]}/images/#{@state.code.upcase}.jpg" %>
 </div>
