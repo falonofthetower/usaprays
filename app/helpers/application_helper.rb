@@ -1,7 +1,7 @@
 module ApplicationHelper
   def glyph_link_to(glyph, link, title="")
     return "" if link.blank?
-    glyph_path = "http://www.usaprays.org/assets/glyph/glyphicons_#{glyph}.png" 
+    glyph_path = "http://www.pray1tim2.org/assets/glyph/glyphicons_#{glyph}.png" 
     link_to(image_tag(glyph_path), link, title: title)
   end
 
