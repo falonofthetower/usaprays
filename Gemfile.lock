@@ -131,12 +131,6 @@ GEM
       rack
       socksify
     i18n (0.8.0)
-    iron_cache (1.4.2)
-      iron_core (>= 0.5.1)
-    iron_cache_rails (0.1.5)
-      iron_cache (>= 1)
-    iron_core (1.0.12)
-      rest (>= 3.0.8)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -156,7 +150,6 @@ GEM
     mime-types (1.25.1)
     multi_json (1.12.1)
     multi_xml (0.5.1)
-    net-http-persistent (2.9.4)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -164,7 +157,6 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    netrc (0.11.0)
     nokogiri (1.5.5)
     nori (2.6.0)
     oauth (0.4.7)
@@ -256,9 +248,6 @@ GEM
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
       refinerycms-core (= 2.0.8)
-    rest (3.0.8)
-      net-http-persistent (>= 2.9.1, < 3)
-      netrc
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -350,7 +339,6 @@ DEPENDENCIES
   guard-spork
   hashie
   httparty
-  iron_cache_rails
   jquery-rails
   oauth
   pg
