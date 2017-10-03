@@ -1,40 +1,42 @@
-class Leader < Hashie::Mash
+class Leader < ActiveRecord::Base
+  attr_accessible :uid, :legalname, :firstname, :lastname, :prefix, :photofile,  :statecode, :district, :spouse, :website, :twitter, :email, :facebook, :webform, :chamber, :legtype, :birthyear, :birthmonth, :birthdate, :residence, :district
 
-  def setup(data)
-    data.each do |key, value|
-      self[key] = value
-    end
+  def before_save
+    slug_map = (Slug.find_by_know_who_id self.uid or Slug.new)
+    slug_map.path = slug
+    slug_map.know_who_id = know_who_id
+    slug_map.save
+  end
+
+  def slug
+    Slugifier.construct(title, chamber, firstname, lastname, statecode)
   end
 
   def state
-    UsState.new(state_code)
+    UsState.new(statecode)
   end
 
   def birthday
-    if born_on
-      born_on.strftime("#B %e")
-    end
+    "#{birthmonth}-#{birthday}-#{birthyear}"
   end
 
   def district_residence
-    [district.upcase, residence].reject{|i|i.blank?}.join(" - ")
+    [district, residence].reject{|i|i.blank?}.join(" - ")
   end
 
   def name
-    CGI.unescapeHTML self['name'] || ""
+    CGI.unescapeHTML self.legalname || ""
   end
 
-  def title 
-    self['title'] || ""
-  end
-
-  def email 
-    self['email'] || ""
+  def title
+    self.prefix || ""
   end
 
   def photo_src
-    self['photo_src'] || "placeholder.jpg"
+    if legtype == "SL"
+      "photos/#{legtype}/#{statecode}/#{chamber}/#{photofile}"
+    elsif legtype == "FL"
+      "photos/#{legtype}/#{chamber}/#{photofile}"
+    end
   end
-
 end
-

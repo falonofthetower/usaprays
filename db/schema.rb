@@ -11,10 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170417173344) do
+ActiveRecord::Schema.define(:version => 20170417173345) do
 
   create_table "counts", :force => true do |t|
     t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "leaders", :force => true do |t|
+    t.string   "uid"
+    t.string   "legalname"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "prefix"
+    t.string   "photofile"
+    t.string   "statecode"
+    t.string   "district"
+    t.string   "spouse"
+    t.string   "website"
+    t.string   "twitter"
+    t.string   "email"
+    t.string   "facebook"
+    t.string   "webform"
+    t.string   "chamber"
+    t.string   "legtype"
+    t.string   "residence"
+    t.string   "birthyear"
+    t.string   "birthmonth"
+    t.string   "birthdate"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

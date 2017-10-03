@@ -1,6 +1,12 @@
 class Slugifier
-  def self.construct(title, first_name, last_name, state_code)
-    [construct_chamber(title), state_code, first_name.downcase.tr('.', ''), last_name.downcase.tr('.', '')].join('-')
+  def self.construct(title, chamber, first_name, last_name, state_code)
+    if last_name == "Vacant"
+      "vacant"
+    else
+      [title.downcase.tr('.', ''), chamber.downcase, state_code.downcase, first_name.downcase.tr('.', ''), last_name.downcase.tr('.', '')].join('-')
+
+      # [construct_chamber(title), state_code, first_name.downcase.tr('.', ''), last_name.downcase.tr('.', '')].join('-')
+    end
   end
 
   def self.construct_chamber(title)
@@ -39,6 +45,7 @@ class Slugifier
   end
 
   def self.know_who_id(string)
+    require 'pry'; binding.pry;
     slugged = Slug.find_by_path(string)
     if slugged.nil?
       LeaderFinder.send(snake_case(chamber(string)), state(string))

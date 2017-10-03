@@ -7,6 +7,7 @@ class LeaderFormatter
   end
 
   def save
+    require 'pry'; binding.pry;
     slug_map = (Slug.find_by_know_who_id know_who_id or Slug.new)
     slug_map.path = slug
     slug_map.know_who_id = know_who_id
@@ -41,30 +42,23 @@ class LeaderFormatter
   end
 
   def know_who_id
-    @leader["PersonInformation"]["PersonID"]
+    @leader["UID"]
   end
 
   def name
-    "#{first_name} #{last_name}"
+    @leader["LEGALNAME"]
   end
 
   def first_name
-    @leader["PersonInformation"]["FirstName"] || ""
+    @leader["FIRSTNAME"]
   end
 
   def last_name
-    @leader["PersonInformation"]["LastName"] || ""
+    @leader["LASTNAME"]
   end
 
   def title
-    case @leader["PositionInformation"]["Title"]
-    when "State Senator"
-      "#{@leader["PositionInformation"]["State"]} Senator"
-    when "State Representative"
-      "#{@leader["PositionInformation"]["State"]} Representative"
-    else
-      @leader["PositionInformation"]["Title"]
-    end
+    @leader["PREFIX"]
   end
 
   def href
@@ -72,19 +66,19 @@ class LeaderFormatter
   end
 
   def photo_src
-    @leader["PersonInformation"]["PhotoUrl"]
+    @leader["PHOTOFILE"]
   end
 
   def prefix_name
-    "#{title} #{first_name} #{last_name}"
+    "#{title} #{name}"
   end
 
   def state_code
-    @leader["PositionInformation"]["StateCode"].downcase
+    @leader["STATECODE"]
   end
 
   def district_code
-    @leader["PositionInformation"]["DistrictCode"][2..-1]
+    @leader["DISTRICT"]
   end
 
   def district
@@ -92,30 +86,26 @@ class LeaderFormatter
   end
 
   def spouse
-    begin
-      @leader["Biography"].gsub(/[\r]/, " XMEN").match(/Spouse Name:(.*)[ XMEN]/)[0].to_s.split("XMEN").first[13..-1]
-    rescue NoMethodError
-      nil
-    end
+    @leader["SPOUSE"]
   end
 
   def website
-    @leader["WebSocialMedia"]["Website"]
+    @leader["WEBSITE"]
   end
 
   def email
-    @leader["WebSocialMedia"]["Email"]
+    @leader["EMAIL"]
   end
 
   def twitter
-    @leader["WebSocialMedia"]["Twitter"]
+    @leader["FACEBOOK"]
   end
 
   def facebook
-    @leader["WebSocialMedia"]["Facebook"]
+    @leader["FACEBOOK"]
   end
 
   def webform
-    @leader["WebSocialMedia"]["Webform"]
+    @leader["WEBFORM"]
   end
 end

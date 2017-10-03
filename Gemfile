@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.2.3'
 
 gem 'rails'
 
@@ -22,6 +22,7 @@ group :test, :development do
   gem 'guard-spork'
   gem 'vcr'
   gem 'fakeweb'
+  gem 'test-unit'
 end
 
 gem 'aws-s3'
@@ -67,4 +68,5 @@ gem 'figaro'
 gem 'excon', '~> 0.50.0'
 gem 'iron_cache_rails'
 gem 'redis'
+gem 'timecop'
 # gem 'dalli'
