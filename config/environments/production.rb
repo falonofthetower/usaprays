@@ -10,7 +10,7 @@ Psp::Application.configure do
 
   # Code is not reloaded between requests
   config.cache_classes = true
-  config.cache_store = :iron_cache, { project_id: ENV["iron_cache_id"], token: ENV["iron_cache_token"]}
+  # config.cache_store = :iron_cache, { project_id: ENV["iron_cache_id"], token: ENV["iron_cache_token"]}
   # config.cache_store = :dalli_store,
   #                       (ENV["MEMCACHIER_SERVERS"] || "").split(","),
   #                                           {:username => ENV["MEMCACHIER_USERNAME"],
