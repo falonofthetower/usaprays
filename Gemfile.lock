@@ -262,7 +262,7 @@ GEM
       railties (>= 3.0)
       rspec (~> 2.8.0)
     ruby-hmac (0.4.0)
-    rubyzip (0.9.9)
+    rubyzip (1.2.1)
     sass (3.1.20)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -351,6 +351,7 @@ DEPENDENCIES
   refinerycms-executives!
   refinerycms-justices!
   rspec-rails (= 2.8.1)
+  rubyzip
   sass-rails (~> 3.2.3)
   savon (~> 2.11.1)
   simple_form
@@ -364,4 +365,4 @@ RUBY VERSION
    ruby 2.2.3p173
 
 BUNDLED WITH
-   1.15.4
+   1.16.0.pre.2
