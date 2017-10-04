@@ -11,6 +11,7 @@ namespace :knowwho do
     file_names = []
     destination = "#{Rails.root.to_s}/tmp/"
     Net::FTP.open(ENV['KWHOST'], ENV['KWUSERNAME'], ENV['KWPASSWORD']) do |ftp|
+      ftp.passive = true
       ftp.nlst('*csv*.zip').each do |file_name|
         ftp.getbinaryfile(file_name, "#{destination}#{file_name}")
         file_names << "#{destination}#{file_name}"
