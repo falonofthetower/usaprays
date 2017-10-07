@@ -16,4 +16,8 @@ module ApplicationHelper
     end
     content_tag('li', link, class: li_class)
   end
+
+  def asset_url asset
+    "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
+  end
 end
