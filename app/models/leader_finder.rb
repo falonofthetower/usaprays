@@ -26,27 +26,27 @@ class LeaderFinder
   end
 
   def self.us_senate(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ?", ["S"], state_code.upcase, "FL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "FL"])
   end
 
   def self.us_house(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ?", ["H"], state_code.upcase, "FL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "FL"])
   end
 
   def self.state_senate(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ?", ["S"], state_code.upcase, "SL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "SL"])
   end
 
   def self.state_house(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ?", ["H"], state_code.upcase, "SL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "SL"])
   end
 
   def self.state_congress(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ?", ["H","S"], state_code.upcase, "SL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "SL"])
   end
 
   def self.us_congress(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ?", ["H","S"], state_code.upcase, "FL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "FL"])
   end
 
   private
