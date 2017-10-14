@@ -16,13 +16,14 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '2.8.1'
+  gem 'rspec-rails', '~> 2.99'
   gem 'capybara', '1.1.2'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'vcr'
   gem 'fakeweb'
   gem 'test-unit'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 gem 'aws-s3'

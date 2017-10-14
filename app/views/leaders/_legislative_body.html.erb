@@ -4,7 +4,7 @@
       <li class="span2">
       <%= link_to leader_path(leader.slug), class: "thumbnail" do %>
         <%= image_tag leader.photo_src, class: "thumbnail-leader" %>
-        <h4 class="thumbnail-leader"><%= leader.name %></h4>
+        <h4 class="thumbnail-leader"><%= leader.shortname %></h4>
       <% end %>
       </li>
     <% end %>

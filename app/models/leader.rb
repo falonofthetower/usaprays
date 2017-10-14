@@ -1,5 +1,5 @@
 class Leader < ActiveRecord::Base
-  attr_accessible :uid, :legalname, :firstname, :lastname, :prefix, :photofile,  :statecode, :district, :spouse, :website, :twitter, :email, :facebook, :webform, :chamber, :legtype, :birthyear, :birthmonth, :birthdate, :residence, :district
+  attr_accessible :uid, :legalname, :firstname, :lastname, :prefix, :photofile,  :statecode, :district, :spouse, :website, :twitter, :email, :facebook, :webform, :chamber, :legtype, :birthyear, :birthmonth, :birthdate, :residence, :district, :midname
 
   def before_save
     slug_map = (Slug.find_by_know_who_id self.uid or Slug.new)
@@ -17,11 +17,21 @@ class Leader < ActiveRecord::Base
   end
 
   def birthday
-    "#{birthmonth}-#{birthday}-#{birthyear}"
+    "#{birthmonth}-#{birthdate}-#{birthyear}"
   end
 
   def district_residence
     [district, residence].reject{|i|i.blank?}.join(" - ")
+  end
+
+  def shortname
+    if legalname.length <= 21
+      legalname
+    elsif lastname.length <= 21
+      "#{firstname.first}. #{lastname}"
+    else
+      "#{firstname} #{lastname.first}."
+    end
   end
 
   def name
