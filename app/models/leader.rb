@@ -25,7 +25,7 @@ class Leader < ActiveRecord::Base
   end
 
   def shortname
-    if legalname.length <= 21
+    if legalname.length <= 20
       legalname
     elsif lastname.length <= 21
       "#{firstname.first}. #{lastname}"
