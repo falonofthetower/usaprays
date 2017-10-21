@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170417173345) do
+ActiveRecord::Schema.define(:version => 20171014184106) do
 
   create_table "counts", :force => true do |t|
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "import_records", :force => true do |t|
+    t.datetime "timestamp"
+    t.integer  "leader_count"
+    t.string   "upload_dates"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "leaders", :force => true do |t|
@@ -40,8 +48,9 @@ ActiveRecord::Schema.define(:version => 20170417173345) do
     t.string   "birthyear"
     t.string   "birthmonth"
     t.string   "birthdate"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.datetime "import_timestamp"
   end
 
   create_table "refinery_executives", :force => true do |t|

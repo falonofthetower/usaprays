@@ -35,10 +35,10 @@ Psp::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.cache_store = :memory_store
-  config.after_initialize do
-    # Set Time.now to September 1, 2008 10:05:00 AM (at this instant), but allow it to move forward
-    t = Time.local(2017, 9, 5, 10, 5, 0)
-    Timecop.travel(t)
-  end
+  # config.after_initialize do
+  #   # Set Time.now to September 1, 2008 10:05:00 AM (at this instant), but allow it to move forward
+  #   t = Time.local(2017, 9, 5, 10, 5, 0)
+  #   Timecop.travel(t)
+  # end
 end
 

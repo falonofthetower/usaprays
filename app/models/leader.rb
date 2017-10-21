@@ -1,5 +1,5 @@
 class Leader < ActiveRecord::Base
-  attr_accessible :uid, :legalname, :firstname, :lastname, :prefix, :photofile,  :statecode, :district, :spouse, :website, :twitter, :email, :facebook, :webform, :chamber, :legtype, :birthyear, :birthmonth, :birthdate, :residence, :district, :midname
+  attr_accessible :uid, :legalname, :firstname, :lastname, :prefix, :photofile,  :statecode, :district, :spouse, :website, :twitter, :email, :facebook, :webform, :chamber, :legtype, :birthyear, :birthmonth, :birthdate, :residence, :district, :midname, :import_timestamp
 
   def before_save
     slug_map = (Slug.find_by_know_who_id self.uid or Slug.new)
@@ -25,9 +25,9 @@ class Leader < ActiveRecord::Base
   end
 
   def shortname
-    if legalname.length <= 20
+    if legalname.length <= 19
       legalname
-    elsif lastname.length <= 21
+    elsif lastname.length <= 19
       "#{firstname.first}. #{lastname}"
     else
       "#{firstname} #{lastname.first}."
@@ -43,10 +43,15 @@ class Leader < ActiveRecord::Base
   end
 
   def photo_src
-    if legtype == "SL"
-      "photos/#{legtype}/#{statecode}/#{chamber}/#{photofile}"
-    elsif legtype == "FL"
-      "photos/#{legtype}/#{chamber}/#{photofile}"
-    end
+    path =
+      case legtype
+      when "SL"
+        "photos/#{legtype}/#{statecode}/#{chamber}/#{photofile}"
+      when "FL"
+        "photos/#{legtype}/#{chamber}/#{photofile}"
+      end
+
+    return path if path.end_with?("jpg")
+    return "placeholder.jpg"
   end
 end

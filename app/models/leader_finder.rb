@@ -26,30 +26,34 @@ class LeaderFinder
   end
 
   def self.us_senate(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "FL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "FL", last_good_import.timestamp])
   end
 
   def self.us_house(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "FL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "FL", last_good_import.timestamp])
   end
 
   def self.state_senate(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "SL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "SL", last_good_import.timestamp])
   end
 
   def self.state_house(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "SL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "SL", last_good_import.timestamp])
   end
 
   def self.state_congress(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "SL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "SL", last_good_import.timestamp])
   end
 
   def self.us_congress(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "FL"])
+    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "FL", last_good_import.timestamp])
   end
 
   private
+
+  def self.last_good_import
+    ImportRecord.last
+  end
 
   def self.get(params, options={})
     result = client.call(:search_by_id, message: { 'InputString' => json(params) })
