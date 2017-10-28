@@ -57,7 +57,7 @@ task :daily_tweets => [:environment] do
     @state = UsState.new(st)
     @leaders = LeaderSelector.for_day(@state, Date.today())
 
-    tweet = 'http://pray1tim2.org/s/'+st+' Please pray for:'
+    tweet = 'http://www.pray1tim2.org/s/'+st+' Please pray for:'
     @leaders.each do |l|
       title = l.title || ''
       unless title.blank?
