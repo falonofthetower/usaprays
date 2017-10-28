@@ -27,6 +27,7 @@ group :test, :development do
 end
 
 gem 'aws-s3'
+gem 'aws-sdk', '~> 3'
 
 gem 'oauth'
 
@@ -71,4 +72,5 @@ gem 'excon', '~> 0.50.0'
 gem 'redis'
 gem 'timecop'
 gem 'rubyzip'
+gem 'test-unit'
 # gem 'dalli'
