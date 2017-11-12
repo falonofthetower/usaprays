@@ -42,7 +42,15 @@ class Leader < ActiveRecord::Base
     self.prefix || ""
   end
 
+  def host
+    "http://#{ENV['HTTP_HOST']}/assets/"
+  end
+
   def photo_src
+    host + photo_path
+  end
+
+  def photo_path
     path =
       case legtype
       when "SL"
