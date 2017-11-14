@@ -45,7 +45,6 @@ class Slugifier
   end
 
   def self.know_who_id(string)
-    require 'pry'; binding.pry;
     slugged = Slug.find_by_path(string)
     if slugged.nil?
       LeaderFinder.send(snake_case(chamber(string)), state(string))
