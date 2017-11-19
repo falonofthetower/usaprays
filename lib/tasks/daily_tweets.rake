@@ -3,9 +3,9 @@ require 'csv'
 require 'oauth'
 
 def prepare_access_token(consumer_key, consumer_secret, oauth_token, oauth_token_secret)
-  consumer = OAuth::Consumer.new(consumer_key, consumer_secret,
+  consumer = OAuth::Consumer.new(ENV[consumer_key], ENV[consumer_secret],
                                  { :site => "https://api.twitter.com", :scheme => :header })
-  token_hash = { :oauth_token => oauth_token, :oauth_token_secret => oauth_token_secret }
+  token_hash = { :oauth_token => ENV[oauth_token], :oauth_token_secret => ENV[oauth_token_secret] }
   OAuth::AccessToken.from_hash(consumer, token_hash )
 end
 
@@ -57,19 +57,20 @@ task :daily_tweets => [:environment] do
     @state = UsState.new(st)
     @leaders = LeaderSelector.for_day(@state, Date.today())
 
-    tweet = 'http://www.pray1tim2.org/s/'+st+' Please pray for:'
+    tweet = "http://www.pray1tim2.org/s/#{st} Please pray for:\n"
     @leaders.each do |l|
       title = l.title || ''
-      unless title.blank?
-        TITLE_ABBV.each do | title__abbv |
-          if title.index(title__abbv[0])
-            title = title__abbv[1]
-            next
-          end
-        end
-      end
+      # unless title.blank?
+      #   TITLE_ABBV.each do | title__abbv |
+      #     if title.index(title__abbv[0])
+      #       title = title__abbv[1]
+      #       next
+      #     end
+      #   end
+      # end
       tweet += ' ' + title unless title.blank?
-      tweet += ' ' + last_name(l.name)
+      tweet += ' ' + l.legalname
+      tweet += "\n"
     end
 
     Rails.logger.info ">>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Tweeting: #{row.inspect} ---> #{tweet}"
