@@ -83,7 +83,7 @@ task :daily_tweets => [:environment] do
     unless response.to_s =~ /.*HTTPOK/
       msg = ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
       msg += ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" unless response.body.blank?
-      File.open('twitter_states_messages.msg','a') { |f| f.write(msg) }
+      TwitterMessage.create(message: msg)
     end
 
   end
