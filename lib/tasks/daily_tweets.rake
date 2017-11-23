@@ -43,7 +43,6 @@ TITLE_ABBV = [
 
 desc "Tweet to all the states"
 task :daily_tweets => [:environment] do
-
   start=Time.now
   uniq = start.to_i.to_s
   Rails.logger.info ">>>>> #{start.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) Processing daily_tweets..."
@@ -68,9 +67,11 @@ task :daily_tweets => [:environment] do
       #     end
       #   end
       # end
-      tweet += ' ' + title unless title.blank?
-      tweet += ' ' + l.legalname
-      tweet += "\n"
+      if !title.blank?
+        tweet += ' ' + title
+        tweet += ' ' + l.legalname
+        tweet += "\n"
+      end
     end
 
     Rails.logger.info ">>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Tweeting: #{row.inspect} ---> #{tweet}"
