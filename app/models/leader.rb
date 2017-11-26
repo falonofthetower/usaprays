@@ -43,7 +43,7 @@ class Leader < ActiveRecord::Base
   end
 
   def host
-    "http://#{ENV['HTTP_HOST']}/assets/"
+    "http://#{ENV['CDN_URL']}/assets/"
   end
 
   def photo_src
