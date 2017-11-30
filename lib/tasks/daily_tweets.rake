@@ -84,9 +84,8 @@ task :daily_tweets => [:environment] do
 
     msg = "test"
     unless response.to_s =~ /.*HTTPOK/
-      msg = ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
-      msg += ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" unless response.body.blank?
-      TwitterMessage.create(message: msg)
+      Rails.logger.info ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
+      Rails.logger.info ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" # unless response.body.blank?
     end
 
   end
