@@ -67,9 +67,10 @@ task :daily_tweets => [:environment] do
       #     end
       #   end
       # end
+
       if !title.blank?
         tweet += ' ' + title
-        tweet += ' ' + l.legalname
+        tweet += ' ' + l.name
         tweet += "\n"
       end
     end
