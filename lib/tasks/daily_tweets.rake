@@ -69,7 +69,7 @@ task :daily_tweets => [:environment] do
       # end
 
       if !title.blank?
-        tweet += ' ' + title
+        tweet += ' ' + title.gsub(/Associate /, '')
         tweet += ' ' + l.name
         tweet += "\n"
       end
