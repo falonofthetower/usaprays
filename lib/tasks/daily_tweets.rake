@@ -82,6 +82,7 @@ task :daily_tweets => [:environment] do
 
     response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
 
+    msg = "test"
     unless response.to_s =~ /.*HTTPOK/
       msg = ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
       msg += ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" unless response.body.blank?
