@@ -20,4 +20,8 @@ module ApplicationHelper
   def asset_url asset
     "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
   end
+
+  def fastly_url(url)
+    url.gsub(/#{ENV['HTTP_HOST']}/, "#{ENV['CDN_URL']}")
+  end
 end
