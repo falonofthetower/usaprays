@@ -21,10 +21,22 @@ namespace :knowwho do
     Net::FTP.open(ENV['KWHOST'], ENV['KWUSERNAME'], ENV['KWPASSWORD']) do |ftp|
       ftp.passive = true
       ftp.nlst('*csv*.zip').each do |file_name|
+        if KnowwhoFile.find_by_name(file_name)
+          Rails.logger.info("File #{file_name} already seen")
+          next
+        else
+          Rails.logger.info("File #{file_name} being processed")
+        end
         ftp.getbinaryfile(file_name, "#{destination}#{file_name}")
         file_names << "#{destination}#{file_name}"
       end
       ftp.nlst('*photos*.zip').each do |file_name|
+        if KnowwhoFile.find_by_name(file_name)
+          Rails.logger.info("File #{file_name} already seen")
+          next
+        else
+          Rails.logger.info("File #{file_name} being processed")
+        end
         ftp.getbinaryfile(file_name, "#{destination}#{file_name}")
         photo_zip_files << "#{destination}#{file_name}"
       end
@@ -64,6 +76,14 @@ namespace :knowwho do
           Slug.create(know_who_id: leader.uid, path: slug)
         end
       end
+    end
+
+    file_names.each do |file_name|
+      KnowwhoFile.create!(name: file_name.split('/')[-1])
+    end
+
+    photo_zip_files.each do |file_name|
+      KnowwhoFile.create!(name: file_name.split('/')[-1])
     end
 
     ImportRecord.create!(
