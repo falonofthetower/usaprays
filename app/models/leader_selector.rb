@@ -15,9 +15,9 @@ class LeaderSelector
   end
 
   def select
-    if first_day_of_month? 
+    if first_day_of_month?
       ExecutiveSelector.for_day(state_code, date)
-    elsif last_day_of_month?
+    elsif last_days_of_month?
       JusticeSelector.for_day(state_code, date)
     else
       LegislatorSelector.for_day(state_code, date)
@@ -30,7 +30,7 @@ class LeaderSelector
       EdgeDay.new(date).first_day_of_month?
     end
 
-    def last_day_of_month?
-      EdgeDay.new(date).last_day_of_month?
+    def last_days_of_month?
+      EdgeDay.new(date).last_days_of_month?
     end
 end

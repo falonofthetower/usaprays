@@ -7,7 +7,11 @@ class JusticeSelector
   end
 
   def self.for_day(state, date)
-    Refinery::Justices::Justice.all(order: "position")
+    if EdgeDay.new(date).last_day_of_month?
+      Refinery::Justices::Justice.all(order: "position", limit: 4)
+    else
+      Refinery::Justices::Justice.all(order: "position DESC", limit: 5).reverse
+    end
   end
 
   def leader_type

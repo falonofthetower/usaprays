@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Slugifier do
   describe ".construct" do
     context "US House" do
-      let(:title)
     end
 
     context "US Senate" do

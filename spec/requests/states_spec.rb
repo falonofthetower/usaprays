@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe "States page", :skip => false do
-
   it "presents a home page" do
+    ImportRecord.create
+    create_admin_user
     visit "/"
     page.should have_content('Find Your State')
   end
-  
+
   context "Consistantly keeps track of current leaders while" do
     let :todays_path do
       "/states/tx"
@@ -17,6 +18,8 @@ describe "States page", :skip => false do
     end
 
     it "shows future leaders" do
+      ImportRecord.create
+      create_admin_user
       visit tomorrows_path
       tomorrows_leader = find(".leader-name").text
       visit todays_path

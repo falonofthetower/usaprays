@@ -13,6 +13,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3'
+  gem 'omniauth-twitter'
 end
 
 group :test, :development do
@@ -24,6 +25,8 @@ group :test, :development do
   gem 'fakeweb'
   gem 'test-unit'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 gem 'aws-s3'
@@ -73,4 +76,5 @@ gem 'redis'
 gem 'timecop'
 gem 'rubyzip'
 gem 'test-unit'
+gem 'twitter'
 # gem 'dalli'
