@@ -59,7 +59,7 @@ class Leader < ActiveRecord::Base
         "photos/#{legtype}/#{chamber}/#{photofile}"
       end
 
-    return path if path.end_with?("jpg")
+    return path if path.try(:end_with?, "jpg")
     return "placeholder.jpg"
   end
 end
