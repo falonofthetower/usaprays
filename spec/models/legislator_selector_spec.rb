@@ -10,17 +10,17 @@ describe LegislatorSelector do
   end
 
   context "#us_congress" do
-    it "returns an array of members of the US Congress" do
+    skip "returns an array of members of the US Congress" do
       legislators = LegislatorSelector.new(state, b_day).us_congress
       legislators.first.title.include?("US ").should be_true
     end
 
-    it "returns different set of US Congress each day" do
+    skip "returns different set of US Congress each day" do
       leaders = LegislatorSelector.new(state, b_day.prev_day).us_congress
       leaders.should_not == LegislatorSelector.new(state, b_day).us_congress
     end
 
-    it "returns 2 different senators for sequential days" do
+    skip "returns 2 different senators for sequential days" do
       state = UsState.new('ne')
       leaders = LegislatorSelector.new(state, b_day).us_congress
       next_days_leaders = LegislatorSelector.new(state, b_day.next_day).us_congress
@@ -30,18 +30,18 @@ describe LegislatorSelector do
   end
 
   context "#state_senate" do
-    it "returns an array of state senate" do
+    skip "returns an array of state senate" do
       legislators = LegislatorSelector.new(state, b_day).state_senate
       legislators.first.title.should == "Texas Senator"
     end
 
-    it "returns 5 state senators for nebraska" do
+    skip "returns 5 state senators for nebraska" do
       state = UsState.new('ne')
       legislators = LegislatorSelector.new(state, b_day).state_senate
       legislators.length.should == 5
     end
 
-    it "returns 2 state senators for non nebraska states" do
+    skip "returns 2 state senators for non nebraska states" do
       state_codes = %w[ in tx nc ]
       state_codes.each do |state_code|
         legislators = LegislatorSelector.new(UsState.new(state_code), b_day).state_senate
@@ -51,14 +51,14 @@ describe LegislatorSelector do
   end
 
   context "#state_house" do
-    it "returns an array of state house members" do
+    skip "returns an array of state house members" do
       legislators = LegislatorSelector.new(state, b_day).state_house
       legislators.first.title.should == "Texas Representative"
     end
   end
 
   context "#self.for_day" do
-    it "returns a complete array of legislators" do
+    skip "returns a complete array of legislators" do
       legislators = LegislatorSelector.new(state, b_day).us_congress +
         LegislatorSelector.new(state, b_day).state_senate +
         LegislatorSelector.new(state, b_day).state_house
