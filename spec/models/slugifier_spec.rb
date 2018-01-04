@@ -79,7 +79,7 @@ describe Slugifier do
         let(:slug) { "state-sen-tx-konni-burton"}
         let(:response) { Slugifier.deconstruct(slug) }
 
-        it "returns the know_who_id if" do
+        skip "returns the know_who_id if" do
           response[:know_who_id].should eq("482956")
         end
       end
