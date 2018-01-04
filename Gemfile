@@ -23,7 +23,7 @@ group :test, :development do
   # gem 'guard-spork'
   gem 'vcr'
   gem 'fakeweb'
-  gem 'test-unit'
+  gem 'test-unit', :require => false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'faker'
