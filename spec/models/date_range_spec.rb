@@ -21,14 +21,14 @@ describe DateRange do
 
   it "knows how many (non first or last) days between start date and end date" do
     rd = DateRange.new(start_date: oct_first, end_date: oct_last.next_day(15))
-    rd.non_edge_days_between.should == 43
+    rd.non_edge_days_between.should == 42
   end
 
   it "returns count of non monthly edge dates for the year" do
     start_date = Date.new(2012,1,1)
     end_date = Date.new(2012,12,31)
     days_in_year = (start_date..end_date).to_a.length
-    day_count = days_in_year - (12 * 2)
+    day_count = days_in_year - (12 * 3)
     date_range = DateRange.new(start_date: start_date, 
                                end_date: end_date)
     date_range.non_edge_days_between.should == day_count
