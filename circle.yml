@@ -1,22 +1,23 @@
-machine:
-  dependencies: pre: - echo "export rvm_ignore_gemsets_flag=1" >> ~/.rvmrc - gem install bundler
+dependencies:
+  pre:
+    - gem install bundler --pre
   ruby:
     version: 2.2.3
-    deployment:
-      production:
-        branch: heroku-master
-        commands:
-          - heroku maintenance:on --app bob-pray1tim2
-          - heroku pg:backups capture --app bob-pray1tim2
-          - git fetch origin --unshallow
-          - git push git@heroku.com:bob-pray1tim2.git $CIRCLE_SHA1:refs/heads/master
-          - heroku run rake db:migrate --app bob-pray1tim2
-          - heroku maintenance:off --app bob-pray1tim2
-        staging:
-          branch: heroku-staging
-          commands:
-            - heroku maintenance:on --app pray1tim2-staging
-            - git fetch origin --unshallow
-            - git push git@heroku.com:pray1tim2-staging.git $CIRCLE_SHA1:refs/heads/master
-            - heroku run rake db:migrate --app pray1tim2-staging
-            - heroku maintenance:off --app pray1tim2-staging
+deployment:
+  production:
+    branch: heroku-master
+    commands:
+      - heroku maintenance:on --app bob-pray1tim2
+      - heroku pg:backups capture --app bob-pray1tim2
+      - git fetch origin --unshallow
+      - git push git@heroku.com:bob-pray1tim2.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app bob-pray1tim2
+      - heroku maintenance:off --app bob-pray1tim2
+  staging:
+    branch: heroku-staging
+    commands:
+      - heroku maintenance:on --app pray1tim2-staging
+      - git fetch origin --unshallow
+      - git push git@heroku.com:pray1tim2-staging.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app pray1tim2-staging
+      - heroku maintenance:off --app pray1tim2-staging
