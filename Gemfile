@@ -29,6 +29,7 @@ group :test, :development do
   gem 'faker'
 end
 
+gem 'test-unit' #, :require => false
 gem 'aws-s3'
 gem 'aws-sdk', '~> 3'
 
