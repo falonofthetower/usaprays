@@ -1,4 +1,4 @@
-require 'dragonfly/rails/images'
+require 'dragonfly'
 
 app = Dragonfly[:images]
 app.datastore = Dragonfly::DataStorage::S3DataStore.new({
