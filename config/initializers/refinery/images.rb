@@ -27,7 +27,7 @@ Refinery::Images.configure do |config|
   # Configure S3 (you can also use ENV for this)
   # The s3_backend setting by default defers to the core setting for this but can be set just for images.
   config.s3_backend = Refinery::Core.s3_backend
-  config.s3_bucket_name = ENV['BUCKETEER_AWS_BUCKET_NAME']
+  config.s3_bucket_name = ENV['BUCKETEER_BUCKET_NAME']
   config.s3_access_key_id = ENV['BUCKETEER_AWS_ACCESS_KEY_ID']
   config.s3_secret_access_key = ENV['BUCKETEER_AWS_SECRET_ACCESS_KEY']
   config.s3_region = ENV['BUCKETEER_AWS_REGION']

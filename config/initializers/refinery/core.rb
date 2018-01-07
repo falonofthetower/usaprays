@@ -51,7 +51,7 @@ Refinery::Core.configure do |config|
 
   # Spike using AWS S3 as back-end storage
   config.s3_backend = true
-  config.s3_bucket_name = ENV['BUCKETEER_AWS_BUCKET_NAME']
+  config.s3_bucket_name = ENV['BUCKETEER_BUCKET_NAME']
   config.s3_access_key_id = ENV['BUCKETEER_AWS_ACCESS_KEY_ID']
   config.s3_secret_access_key = ENV['BUCKETEER_AWS_SECRET_ACCESS_KEY']
   config.s3_region = ENV['BUCKETEER_AWS_REGION']
