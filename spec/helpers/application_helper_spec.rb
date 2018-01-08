@@ -8,7 +8,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(result).to eq url_with_fastly_root
     end
 
-    it 'returns the url with a fastly root when supplied one with a non-fastly root' do
+    skip 'returns the url with a fastly root when supplied one with a non-fastly root' do
       url_with_fastly_root = "bob-pray1tim2-herokuapp-com.global.ssl.fastly.net/foo_bar"
       url_with_non_fastly_root = "#{ENV['HTTP_HOST']}/foo_bar"
 
