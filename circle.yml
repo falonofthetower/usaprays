@@ -3,6 +3,11 @@ dependencies:
     - gem install bundler --pre
   ruby:
     version: 2.2.3
+test:
+  post:
+    - bundle exec rspec:
+      environment:
+        RAILS_ENV: test
 deployment:
   production:
     branch: heroku-master
