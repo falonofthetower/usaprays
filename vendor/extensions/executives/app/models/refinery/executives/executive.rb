@@ -13,8 +13,7 @@ module Refinery
 
       def photo_src
         if photo && photo.image_uid
-          # Ex: http://pray1tim2.org/system/refinery/images/2013/01/27/08_37_46_241_220px_File_Official_roberts_CJ_cropped.jpg
-          #'http://www.pray1tim2.org/system/refinery/images/' + photo.image_uid
+          dragonfly = Dragonfly[:images].fetch(photo.image_uid)
           "http://#{ENV['CDN_URL']}/system/images/#{dragonfly.url}/#{photo.image_name}"
         else
           'http://www.pray1tim2.org/images/placeholder.jpg'
