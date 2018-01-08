@@ -4,7 +4,7 @@ dependencies:
   ruby:
     version: 2.2.3
 test:
-  post:
+  override:
     - bundle exec rspec:
       environment:
         RAILS_ENV: test

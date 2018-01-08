@@ -77,3 +77,7 @@ gem 'timecop'
 gem 'rubyzip'
 gem 'twitter'
 # gem 'dalli'
+
+# exceptions
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'

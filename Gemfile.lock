@@ -623,6 +623,7 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     oauth (0.4.7)
+    oj (2.12.14)
     omniauth (1.4.2)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
@@ -718,6 +719,8 @@ GEM
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
       refinerycms-core (= 2.0.8)
+    rollbar (2.15.5)
+      multi_json
     rspec (2.99.0)
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
@@ -834,6 +837,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   oauth
+  oj (~> 2.12.14)
   omniauth-twitter
   pg
   pry-rails
@@ -844,6 +848,7 @@ DEPENDENCIES
   refinerycms
   refinerycms-executives!
   refinerycms-justices!
+  rollbar
   rspec-rails (~> 2.99)
   rubyzip
   sass-rails (~> 3.2.3)
