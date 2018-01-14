@@ -21,7 +21,7 @@
 <p style="margin: 7px 3px">
   <%= glyph_link_to('329_web_browser', leader.website, "Website") %>
   <%= glyph_link_to('309_comments', leader.webform, "Contact") %>
-  <%= glyph_link_to('399_e-mail', 'mailto:'+leader.email, "Email") %>
+  <%= glyph_link_to('399_e-mail', 'mailto:'+leader.email, "Email") unless leader.email.blank? %>
   <%= glyph_link_to('391_twitter_t', leader.twitter, "Twitter") %>
   <%= glyph_link_to('390_facebook', leader.facebook, "Facebook") %>
 </p>
