@@ -43,7 +43,7 @@ class Leader < ActiveRecord::Base
   end
 
   def host
-    "https://s3.amazonaws.com/#{ENV['S3_BUCKET']}/"
+    "#{ENV['CLOUDFRONT']}/"
   end
 
   def photo_src
