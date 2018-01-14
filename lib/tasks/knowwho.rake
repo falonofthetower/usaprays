@@ -13,7 +13,7 @@ namespace :knowwho do
     file_names = []
     photo_zip_files = []
     destination = "#{Rails.root.to_s}/tmp/"
-    photo_destination = "#{Rails.root.to_s}/app/assets/images/"
+    # photo_destination = "#{Rails.root.to_s}/app/assets/images/"
 
     Dir.foreach(destination) {|f| File.delete("#{destination}#{f}") if f.split(".")[-1] == "csv"}
     Dir.foreach(destination) {|f| File.delete("#{destination}#{f}") if f.split(".")[-1] == "zip"}
@@ -44,8 +44,13 @@ namespace :knowwho do
     photo_zip_files.each do |file_name|
       Zip::File.open(file_name) do |zip_file|
         zip_file.each do |f|
-          fpath = File.join(photo_destination, f.name.downcase)
+          filename = f.name.downcase
+          fpath = File.join(destination, filename)
           zip_file.extract(f, fpath) unless File.exist?(fpath)
+          Dir.chdir(destination) do
+            uploader = S3FolderUpload.new(filename.chomp("/"), ENV['S3_BUCKET'], ENV['S3_KEY'], ENV['S3_SECRET'])
+            uploader.upload!
+          end
         end
       end
     end
