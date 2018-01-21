@@ -23,13 +23,13 @@ group :test, :development do
   # gem 'guard-spork'
   gem 'vcr'
   gem 'fakeweb'
-  gem 'test-unit' #, :require => false
   gem 'minitest'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'faker'
 end
 
+gem 'test-unit' #, :require => false
 gem 'aws-s3'
 gem 'aws-sdk', '~> 3'
 
