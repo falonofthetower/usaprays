@@ -24,6 +24,7 @@ group :test, :development do
   gem 'vcr'
   gem 'fakeweb'
   gem 'test-unit', :require => false
+  gem 'minitest'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'faker'
