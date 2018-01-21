@@ -20,7 +20,7 @@ group :test, :development do
   gem 'rspec-rails', '~> 2.99'
   gem 'capybara', '1.1.2'
   gem 'guard-rspec'
-  gem 'guard-spork'
+  # gem 'guard-spork'
   gem 'vcr'
   gem 'fakeweb'
   gem 'test-unit', :require => false
@@ -75,6 +75,9 @@ gem 'excon', '~> 0.50.0'
 gem 'redis'
 gem 'timecop'
 gem 'rubyzip'
-gem 'test-unit'
 gem 'twitter'
 # gem 'dalli'
+
+# exceptions
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
