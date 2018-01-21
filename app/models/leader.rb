@@ -43,7 +43,7 @@ class Leader < ActiveRecord::Base
   end
 
   def host
-    "http://#{ENV['CDN_URL']}/assets/"
+    "#{ENV['CLOUDFRONT']}/"
   end
 
   def photo_src
@@ -54,9 +54,9 @@ class Leader < ActiveRecord::Base
     path =
       case legtype
       when "SL"
-        "photos/#{legtype}/#{statecode}/#{chamber}/#{photofile}"
+        "photos/#{legtype}/#{statecode}/#{chamber}/#{photofile}".downcase
       when "FL"
-        "photos/#{legtype}/#{chamber}/#{photofile}"
+        "photos/#{legtype}/#{chamber}/#{photofile}".downcase
       end
 
     return path if path.try(:end_with?, "jpg")

@@ -22,6 +22,7 @@ module ApplicationHelper
   end
 
   def fastly_url(url)
+    return url
     url.gsub(/#{ENV['HTTP_HOST']}/, "#{ENV['CDN_URL']}")
   end
 end

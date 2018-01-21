@@ -7,7 +7,7 @@ Refinery::Core.configure do |config|
 
   # When true will use Amazon's Simple Storage Service instead of
   # the default file system for storing resources and images
-  config.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
+  # config.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
 
   # Whenever Refinery caches anything and can set a cache key, it will add
   # a prefix to the cache key containing the string you set here.
@@ -50,10 +50,10 @@ Refinery::Core.configure do |config|
   # config.register_stylesheet "custom", :media => 'screen'
 
   # Spike using AWS S3 as back-end storage
-  #config.s3_backend = true
-  #config.s3_access_key_id = 'AKIAIJJ2DUWDFU3P4GKA'
-  #config.s3_secret_access_key = 'zIPceohRVHm4qTQzyKNTBfN6PHWfDskgn3fDplFL'
-  #config.s3_bucket_name = 'pray1tim2_production'
-  #config.s3_region = 'fill_in_your_buckets_region_here' # this one's not always required, default is 'us-east-1'
+  config.s3_backend = true
+  config.s3_bucket_name = ENV['S3_BUCKET']
+  config.s3_access_key_id = ENV['S3_KEY']
+  config.s3_secret_access_key = ENV['S3_SECRET']
+  config.s3_region = ENV['S3_AWS_REGION']
 
 end
