@@ -68,6 +68,7 @@ task :daily_tweets => [:environment] do
       #   end
       # end
 
+
       if !title.blank?
         tweet += ' ' + title
           .gsub(/Associate Justice/, 'AJ')
@@ -78,7 +79,11 @@ task :daily_tweets => [:environment] do
           .gsub(/Attorney General/, 'AG')
           .gsub(/Governor/, 'Gov.')
 
-        tweet += ' ' + l.name
+        if !l.twitter.blank?
+          tweet += l.twitter.gsub("http://twitter.com/", "@")
+        else
+          tweet += ' ' + l.name
+        end
         tweet += "\n"
       end
     end
