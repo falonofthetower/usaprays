@@ -91,10 +91,12 @@ namespace :knowwho do
       KnowwhoFile.create!(name: file_name.split('/')[-1])
     end
 
-    ImportRecord.create!(
-      timestamp: timestamp,
-      leader_count: uids.count,
-    )
+    if uids.count > 7000
+      ImportRecord.create!(
+        timestamp: timestamp,
+        leader_count: uids.count,
+      )
+    end
     Dir.foreach(destination) {|f| File.delete("#{destination}#{f}") if f.split(".")[-1] == "csv"}
     Dir.foreach(destination) {|f| File.delete("#{destination}#{f}") if f.split(".")[-1] == "zip"}
   end
