@@ -1,0 +1,52 @@
+{
+  "name": "usaprays",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "FACEBOOK_PICTURE": {
+      "required": true
+    },
+    "FACEBOOK_TOKEN": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "MC_API_KEY": {
+      "required": true
+    },
+    "MC_LIST_ID": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "CDN_URL": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql",
+    "scheduler"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
