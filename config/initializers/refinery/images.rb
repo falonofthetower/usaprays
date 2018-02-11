@@ -26,11 +26,13 @@ Refinery::Images.configure do |config|
 
   # Configure S3 (you can also use ENV for this)
   # The s3_backend setting by default defers to the core setting for this but can be set just for images.
-  config.s3_backend = true
-  config.s3_bucket_name = ENV['S3_BUCKET']
-  config.s3_access_key_id = ENV['S3_KEY']
-  config.s3_secret_access_key = ENV['S3_SECRET']
-  config.s3_region = ENV['S3_AWS_REGION']
+  if Rails.env.production?
+    config.s3_backend = true
+    config.s3_bucket_name = ENV['S3_BUCKET']
+    config.s3_access_key_id = ENV['S3_KEY']
+    config.s3_secret_access_key = ENV['S3_SECRET']
+    config.s3_region = ENV['S3_AWS_REGION']
+  end
 
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware

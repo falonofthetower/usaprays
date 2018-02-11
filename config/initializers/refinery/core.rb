@@ -50,10 +50,12 @@ Refinery::Core.configure do |config|
   # config.register_stylesheet "custom", :media => 'screen'
 
   # Spike using AWS S3 as back-end storage
-  config.s3_backend = true
-  config.s3_bucket_name = ENV['S3_BUCKET']
-  config.s3_access_key_id = ENV['S3_KEY']
-  config.s3_secret_access_key = ENV['S3_SECRET']
-  config.s3_region = ENV['S3_AWS_REGION']
+  if Rails.env.production?
+    config.s3_backend = true
+    config.s3_bucket_name = ENV['S3_BUCKET']
+    config.s3_access_key_id = ENV['S3_KEY']
+    config.s3_secret_access_key = ENV['S3_SECRET']
+    config.s3_region = ENV['S3_AWS_REGION']
+  end
 
 end
