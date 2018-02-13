@@ -69,6 +69,17 @@ body {
   box-shadow: 0px -1px 0px 0px rgb(177, 177, 177) inset, 0px 1px 0px 0px rgb(217, 217, 217);
 }
 
+@media (max-width: 767px) {
+  #header {
+    height: 147px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 979px) {
+  h1.usa-prays small.tablet-shrunk {
+    font-size: 12px;
+  }
+}
 #cc-logo {
   padding: 15px;
   Xposition: relative;
@@ -95,7 +106,7 @@ body {
 h1.usa-prays {
   color: rgb(14, 46, 88);
   margin-top: 0;
-  padding-top: 0px;
+  padding-top: .5em;
   padding-left: 1em;
   font-weight: normal;
   line-height: 0.8em;

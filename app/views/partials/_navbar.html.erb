@@ -3,38 +3,42 @@
 <div class="container">
 
   <div class="row-fluid">
-    <div class="span6 hidden-phone">
+    <div class="span4">
+      <h1 class="usa-prays">Pray1Tim2<br />
+        <small class="tablet-shrunk">God's Prayer for Political Leaders<br />A Ministry of Capitol Commission</small>
+      </h1>
+    </div>
+    <div class="span4">
+      <div>
+        <div class="block-nav">
+          <div>
+            <ul class="nav nav-pills" style="margin-bottom:10px">
+              <li><%= link_to 'Find Your State', main_app.states_path, style: "padding-left:6px;padding-right:6px" %></li>
+              <li><%= link_to 'CapitolCom.org', 'http://capitolcom.org', style: "padding-left:6px;padding-right:6px" %></li>
+              <li><%= link_to(image_tag('f.png', width: 32, height: 32),
+                          "http://www.facebook.com/pages/Capitol-Commission/389944543080",
+                          style: "position:relative;bottom:3px;margin:5px 0 0 0;padding:0 0 0 4px", 
+                          title: "Follow us on Facebook", target: "_blank") %></li>
+              <li><%= link_to(image_tag('t.png', width: 32, height: 32),
+                          "http://twitter.com/CapCommission",
+                          style: "position:relative;bottom:3px;margin:5px 0 0 0;padding:0", 
+                          title: "Follow us on Twitter", target: "_blank") %></li>
+              <li><%= link_to(image_tag('in.png', width: 32, height: 32),
+                          "http://www.linkedin.com/company/capitol-commission",
+                          style: "position:relative;bottom:3px;margin:5px 0 0 0;padding:0", 
+                          title: "Follow us on Linked In", target: "_blank") %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span4 hidden-phone hidden-tablet">
       <div style="position:relative;height:100px">
         <%= image_tag("cc-logo-top.png", id: "cc-logo", width: 320, style: "position:absolute;top:0;bottom:0;left:0;margin:auto",
                       alt: "Capitol Commission Reaching Capitol Communities for Christ") %>
       </div>
     </div>
 
-    <div class="span6">
-      <div class="cc-gradient pull-right">
-        <div class="block-nav">
-        <ul class="nav nav-pills" style="margin-bottom:10px">
-          <li><%= link_to 'Find Your State', main_app.states_path, style: "padding-left:6px;padding-right:6px" %></li>
-          <li><%= link_to 'CapitolCom.org', 'http://capitolcom.org', style: "padding-left:6px;padding-right:6px" %></li>
-          <li><%= link_to(image_tag('f.png', width: 32, height: 32),
-                      "http://www.facebook.com/pages/Capitol-Commission/389944543080",
-                      style: "position:relative;bottom:3px;margin:5px 0 0 0;padding:0 0 0 4px", 
-                      title: "Follow us on Facebook", target: "_blank") %></li>
-          <li><%= link_to(image_tag('t.png', width: 32, height: 32),
-                      "http://twitter.com/CapCommission",
-                      style: "position:relative;bottom:3px;margin:5px 0 0 0;padding:0", 
-                      title: "Follow us on Twitter", target: "_blank") %></li>
-          <li><%= link_to(image_tag('in.png', width: 32, height: 32),
-                      "http://www.linkedin.com/company/capitol-commission",
-                      style: "position:relative;bottom:3px;margin:5px 0 0 0;padding:0", 
-                      title: "Follow us on Linked In", target: "_blank") %></li>
-        </ul>
-        </div>
-        <h1 class="usa-prays">Pray1Tim2<br />
-          <small>A Ministry of Capitol Commission</small>
-        </h1>
-      </div>
-    </div>
   </div>
 
 </div>
