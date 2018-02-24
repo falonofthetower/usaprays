@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe DonationLink do
   it "Returns default donation url" do
-    DonationLink.url.should == "https://www.egsnetwork.com/gift/gift.php?giftid=EBBB84EB-568B-4F1E-BAED-69CFD18C7270"
+    DonationLink.url.should == "https://www.egsnetwork.com/gift2?giftid=40CA3B1B00824E7"
   end
 
-  it "Returns donation url" do 
-    DonationLink.url('al').should == "https://www.egsnetwork.com/gift/gift.php?giftid=BD5EE61FBBF9449"
+  it "Returns donation url" do
+    DonationLink.url('al').should == "https://www.egsnetwork.com/gift2?giftid=BD5EE61FBBF9449"
   end
 end
