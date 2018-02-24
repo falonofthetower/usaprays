@@ -14,7 +14,7 @@ body {
   margin: 1em;
 }
 .thumbnail-leader {
-  margin: 0.5em 0; 
+  margin: 0.5em 0;
   color: #0F2D4D;
   text-align: center;
 }
@@ -22,7 +22,7 @@ body {
 .nolink:hover { text-decoration: none }
 .nolink:active { text-decoration: none }
 .nolink:visited { text-decoration: none }
-    
+
 
 .state-header {
   color: #0F2D4D;
@@ -56,7 +56,7 @@ body {
 }
 
 #header {
-  background: none repeat scroll 0% 0% #eeeeee; 
+  background: none repeat scroll 0% 0% #eeeeee;
   padding: 0 70px 0 35px;
   border-bottom: 1px solid rgb(202, 202, 202);
   position: absolute;
@@ -145,7 +145,7 @@ footer {
   min-height: 3em;
   border-top: 1px solid rgb(202, 202, 202);
   box-shadow: 0px +1px 0px 0px rgb(177, 177, 177) inset, 0px -1px 0px 0px rgb(217, 217, 217);
-  
+
   background: #143e76; /* Old browsers */
   background: -moz-linear-gradient(top,  #143e76 0%, #0e2e58 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#143e76), color-stop(100%,#0e2e58)); /* Chrome,Safari4+ */
@@ -159,4 +159,28 @@ footer {
 .pray-day{
   color: #1111FF;
   background-color: #FFE5B4;
+}
+form {
+  margin: 0;
+}
+.donation-link input[type="submit"] {
+  background:none!important;
+  border:none;
+  padding: 0px 0px 0px 19px;
+  /*optional*/
+  font-family:arial,sans-serif; /*input has OS specific
+  font-family*/
+  color:#143e76;
+  cursor:pointer;
+  background-position: -96px 0;
+}
+
+.donation-link input[type="submit"]:hover {
+  background: gray;
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+.donation-link input[type="submit"]:focus {
+  outline: none;
 }
