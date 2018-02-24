@@ -163,24 +163,3 @@ footer {
 form {
   margin: 0;
 }
-.donation-link input[type="submit"] {
-  background:none!important;
-  border:none;
-  padding: 0px 0px 0px 19px;
-  /*optional*/
-  font-family:arial,sans-serif; /*input has OS specific
-  font-family*/
-  color:#143e76;
-  cursor:pointer;
-  background-position: -96px 0;
-}
-
-.donation-link input[type="submit"]:hover {
-  background: gray;
-  text-decoration: none;
-  background-color: #eeeeee;
-}
-
-.donation-link input[type="submit"]:focus {
-  outline: none;
-}

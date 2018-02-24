@@ -17,11 +17,6 @@
   <%= state_nav_li("Make a Donation to #{UsState.names[@state.to_param]} Director", DonationLink.url(@state.to_param), 'heart', false) if UsState.cc_states.include?(@state.code)%>
 
   <%= state_nav_li("Make a Donation to National Ministry", DonationLink.url('National'), 'heart', false) %>
-  <li>
-    <a>
-      <%= button_to "Make a Donation to National Ministry", "https://www.egsnetwork.com/gift/gift.php", method: :post, form_class: "donation-link icon-heart" %>
-    </a>
-  </li>
 </ul>
 
 <div style="margin-top:1em">
