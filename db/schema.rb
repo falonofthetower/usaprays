@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171121023332) do
+ActiveRecord::Schema.define(:version => 20180307025640) do
 
   create_table "counts", :force => true do |t|
     t.integer  "count"
@@ -226,6 +226,13 @@ ActiveRecord::Schema.define(:version => 20171121023332) do
     t.string   "know_who_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "task_runs", :force => true do |t|
+    t.string   "name"
+    t.date     "last",       :default => '1980-01-01'
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "twitter_messages", :force => true do |t|

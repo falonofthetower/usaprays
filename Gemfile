@@ -77,6 +77,7 @@ gem 'redis'
 gem 'timecop'
 gem 'rubyzip'
 gem 'twitter'
+gem 'koala'
 # gem 'dalli'
 
 # exceptions

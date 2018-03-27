@@ -14,7 +14,7 @@
   <div class="span6">
     <div class="hidden-phone">
       <%= render :partial => 'partials/right_column' %>
-      <p style="font-size:14px;color:#555555;padding-top:15em;" title="<%= @what_to_pray_for_message %>">Please pray today for
+      <p style="font-size:14px;color:#555555;padding-top:15em;" title="<%= @what_to_pray_for_message %>" class="message">Please pray today for
       <a href='http://<%= request.env["HTTP_HOST"]%>/how_to_pray/<%= @what_to_pray_for_day %>&#35;prayfor<%= @what_to_pray_for_day %>'><%= @what_to_pray_for_text %></a></p>
     </div>
   </div>
