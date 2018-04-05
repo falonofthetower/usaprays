@@ -1,4 +1,6 @@
 class StatesController < ApplicationController
+  before_filter :set_what_to_pray_for, :only => [:show, :email]
+
   layout "templates/states"
 
   WHAT_TO_PRAY_FOR = ['the SALVATION of those who have not yet put their faith in the Lord Jesus Christ',
@@ -65,10 +67,15 @@ class StatesController < ApplicationController
 
   private
 
-    def build_date
-      year = params[:year] || Date.current.year
-      month = params[:month] || Date.current.month
-      day = params[:day] || Date.current.day
-      Date.new(year.to_i, month.to_i, day.to_i)
-    end
+  def build_date
+    DateBuilder.build_date(params)
+  end
+
+  def set_what_to_pray_for
+    @date = build_date
+    pray_for = Pray.new(@date)
+    @what_to_pray_for_text = pray_for.text
+    @what_to_pray_for_message = pray_for.message
+    @what_to_pray_for_day = pray_for.day
+  end
 end
