@@ -18,6 +18,8 @@ Psp::Application.routes.draw do
 
   match "/states/:id/:year/:month/:day", to: "states#show", as: "state_date"
 
+  match "/privacy_policy", to: "pages#privacy_policy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
