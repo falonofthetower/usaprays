@@ -79,6 +79,7 @@ gem 'rubyzip'
 gem 'twitter'
 gem 'koala'
 # gem 'dalli'
+gem 'rest-client'
 
 # exceptions
 gem 'rollbar'
