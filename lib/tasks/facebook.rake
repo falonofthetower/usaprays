@@ -1,3 +1,5 @@
+require 'rest-client'
+
 namespace :facebook do
   desc "TODO"
   task :post => :environment do
@@ -7,6 +9,7 @@ namespace :facebook do
     if task.last.today?
       Rails.logger.info "Facebook already ran successfully, waiting to run"
     else
+      email = ''
       date = Date.current
       config = File.join(Rails.root, 'config', 'states.yml')
       states = YAML.load_file config
@@ -18,7 +21,9 @@ namespace :facebook do
         post = build_post(@leaders)
         link = "http://www.pray1tim2.org/states/#{state}"
         description = "You are invited to join us as we pray daily for these elected officals. Pray1Tim2 is a ministry of Capitol Commission."
-        Rails.logger.info "Pushing Facebook Post for #{state}"
+        text = "Pushing Facebook Post for #{state}"
+        Rails.logger.info text
+        email += "#{text}\n"
         begin
           @page_graph.put_wall_post(post, link: link, description: description, scheduled_publish_time: DateTime.now.tomorrow.change({hour: 4, min: 0, sec: 0}).to_i , published: false)
         rescue Exception => e
@@ -27,7 +32,20 @@ namespace :facebook do
         task.last = DateTime.now
         task.save
       end
+      send_email(email)
     end
+  end
+
+  def send_email(email)
+    RestClient.post api_url+"/messages",
+      :from => "peterskarth@gmail.com",
+      :to => "peterskarth@gmail.com",
+      :subject => "Facebook Posts",
+      :text => email
+  end
+
+  def api_url
+    "https://api:#{ENV['MAILGUN_API_KEY']}@api.mailgun.net/v2/custom-communications.herokuapp.com"
   end
 
   def build_post(leaders)
