@@ -65,6 +65,6 @@ namespace :facebook do
   end
 
   def daily_text
-    Pray.new(Date.current + 8).text
+    Pray.new(Date.current).text
   end
 end
