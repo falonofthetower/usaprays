@@ -16,6 +16,14 @@ def last_name(name)
   $1
 end
 
+def send_email(email)
+  RestClient.post api_url+"/messages",
+    :from => "peterskarth@gmail.com",
+    :to => "peterskarth@gmail.com",
+    :subject => "Tweets #{Time.now}",
+    :text => email
+end
+
 TITLE_ABBV = [
     # Legislators from http://knowwho
     ['US Representative', 'US Rep'],
@@ -43,9 +51,10 @@ TITLE_ABBV = [
 
 desc "Tweet to all the states"
 task :daily_tweets => [:environment] do
+  email_text = ""
   start=Time.now
   uniq = start.to_i.to_s
-  Rails.logger.info ">>>>> #{start.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) Processing daily_tweets..."
+  email_text << ">>>>> #{start.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) Processing daily_tweets...\n"
   past_first_row = false
   CSV.foreach("twitter_states_credentials.csv") do |row|
     unless past_first_row
@@ -88,22 +97,22 @@ task :daily_tweets => [:environment] do
       end
     end
 
-    Rails.logger.info ">>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Tweeting: #{row.inspect} ---> #{tweet}"
+    email_text << ">>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Tweeting: #{row.inspect} ---> #{tweet}\n"
     # Use the access token to post my status, Note that POSTing requires read/write access to the app and user
     update_hash = {'status' => tweet}
     access_token = prepare_access_token(row[1], row[2], row[3], row[4])
 
     response = access_token.post('https://api.twitter.com/1.1/statuses/update.json', update_hash, { 'Accept' => 'application/xml' })
 
-    msg = "test"
     unless response.to_s =~ /.*HTTPOK/
-      Rails.logger.info ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
-      Rails.logger.info ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" # unless response.body.blank?
+      email_text << ">>>>>>>>>>>>>>> #{Time.now.strftime('%Y-%m-%d@%H:%M:%S')} (#{uniq}) Twitter Tweet Non 200 Response for #{st} is #{response.to_s}\n"
+      email_text << ">>>>>>>>>>>>>>> (#{uniq}) response.body = #{response.body}\n" # unless response.body.blank?
+    else
+      email_text << response.body
     end
-
   end
 
   finish = Time.now
-  Rails.logger.info ">>>>> #{finish.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) daily_tweets finished - #{(finish-start).round.to_s} seconds."
-
+  email_text << ">>>>> #{finish.strftime('%Y-%m-%d_%H:%M:%S')} (#{uniq}) daily_tweets finished - #{(finish-start).round.to_s} seconds.\n"
+  send_email(email_text)
 end
