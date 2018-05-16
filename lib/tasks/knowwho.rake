@@ -2,11 +2,20 @@ require 'net/ftp'
 require 'zip'
 require 'securerandom'
 
+def send_email(email)
+  RestClient.post api_url+"/messages",
+    :from => "peterskarth@gmail.com",
+    :to => "peterskarth@gmail.com",
+    :subject => "Import #{Time.now}",
+    :text => email
+end
+
 namespace :knowwho do
   PERMITTED = %w[uid legalname firstname lastname prefix photofile statecode district spouse website twitter email facebook webform chamber legtype birthyear birthmonth birthdate residence district].freeze
 
   desc "TODO"
   task :import => :environment do
+    email = ""
     timestamp = DateTime.current
 
     files = []
@@ -22,23 +31,24 @@ namespace :knowwho do
       ftp.passive = true
       ftp.nlst('*csv*.zip').each do |file_name|
         if KnowwhoFile.find_by_name(file_name)
-          Rails.logger.info("File #{file_name} already seen")
+          email << ("File #{file_name} already seen")
           next
         else
-          Rails.logger.info("File #{file_name} being processed")
+          email << "File #{file_name} being processed"
         end
         ftp.getbinaryfile(file_name, "#{destination}#{file_name}")
         file_names << "#{destination}#{file_name}"
       end
       ftp.nlst('*photos*.zip').each do |file_name|
         if KnowwhoFile.find_by_name(file_name)
-          Rails.logger.info("File #{file_name} already seen")
+          email << "File #{file_name} already seen"
           next
         else
-          Rails.logger.info("File #{file_name} being processed")
+          email << "File #{file_name} being processed"
         end
         ftp.getbinaryfile(file_name, "#{destination}#{file_name}")
         photo_zip_files << "#{destination}#{file_name}"
+        send_email(email)
       end
     end
     photo_zip_files.each do |file_name|
