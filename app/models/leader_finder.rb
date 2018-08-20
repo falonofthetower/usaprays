@@ -26,33 +26,41 @@ class LeaderFinder
   end
 
   def self.us_senate(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "FL", last_good_import.try(:timestamp)])
+    Leader.find_by_sql([self.search_string, ["S"], state_code.upcase, "FL", self.last_import_time, "Vacant"])
   end
 
   def self.us_house(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "FL", last_good_import.try(:timestamp)])
+    Leader.find_by_sql([self.search_string, ["H"], state_code.upcase, "FL", self.last_import_time, "Vacant"])
   end
 
   def self.state_senate(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["S"], state_code.upcase, "SL", last_good_import.try(:timestamp)])
+    Leader.find_by_sql([self.search_string, ["S"], state_code.upcase, "SL", self.last_import_time, "Vacant"])
   end
 
   def self.state_house(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H"], state_code.upcase, "SL", last_good_import.try(:timestamp)])
+    Leader.find_by_sql([self.search_string, ["H"], state_code.upcase, "SL", self.last_import_time, "Vacant"])
   end
 
   def self.state_congress(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "SL", last_good_import.try(:timestamp)])
+    Leader.find_by_sql([self.search_string, ["H","S"], state_code.upcase, "SL", self.last_import_time, "Vacant"])
   end
 
   def self.us_congress(state_code)
-    Leader.find_by_sql(["SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? ORDER BY lastname ASC", ["H","S"], state_code.upcase, "FL", last_good_import.try(:timestamp)])
+    Leader.find_by_sql([self.search_string, ["H","S"], state_code.upcase, "FL", self.last_import_time, "Vacant"])
   end
 
   private
 
+  def self.search_string
+    "SELECT * FROM leaders WHERE chamber IN (?) AND statecode = ? AND legtype = ? AND import_timestamp = ? AND lastname <> ? ORDER BY lastname ASC"
+  end
+
   def self.last_good_import
     ImportRecord.last
+  end
+
+  def self.last_import_time
+    last_good_import.try(:timestamp)
   end
 
   def self.get(params, options={})
